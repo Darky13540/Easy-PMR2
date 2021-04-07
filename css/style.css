@@ -20,14 +20,17 @@ body {
 /**************************
         header
 **************************/
-header img {
-    max-width: 20%;
-}
-
 header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
+    background-color: rgba(11, 103, 241, 0.16);
+    max-height: 30vh;
+}
+
+header img {
+    max-width: 20%;
+    background-color: white;
 }
 
 header ul {
@@ -43,8 +46,6 @@ header li a {
     padding: 2rem;
     display: block;
 }
-
-
 
 header li a:hover {
     background-color: rgb(22, 177, 227);
@@ -68,7 +69,10 @@ header #current a {
 /**************************
         Footer
 **************************/
-
+.unstyled{
+    display: flex;
+ 
+}
 
 /**************************
         Main EasyMap

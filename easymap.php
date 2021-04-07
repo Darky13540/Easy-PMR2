@@ -1,26 +1,10 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
 session_start();
-/* Connexion à une base MySQL avec l'invocation de pilote */
+require ('database.php');
 
-$user = '229228';
-$password = 'Azertyuiop1#';
+    $reponse = $pdo->query('SELECT * FROM shop');
 
-
-
-
-try {
-    $pdo = new PDO('mysql:host=mysql-darky13540.alwaysdata.net;dbname=darky13540_easy-pmr', $user, $password);
-    
-} catch (PDOException $e) {
-    print "Erreur !: " . $e->getMessage() . "<br/>";
-    die();
-}
-
-$reponse = $pdo->query('SELECT * FROM shop');
-$pdo = null;
-$poi = $reponse->fetchAll();
+    $poi = $reponse->fetchAll();
 
 ?>
 

@@ -4,6 +4,7 @@ let coord = document.querySelectorAll('.item');
 let nb = coord.length;
 
 
+
 window.addEventListener('DOMContentLoaded', ()=>{
 
 
@@ -17,7 +18,7 @@ L.tileLayer(
     }).addTo(map);
 
 
-/* boucle pour afficher tous les poi retournés + popup sur click */
+/* boucle pour afficher tous les poi retournés par la BDD + popup sur click */
 for (let i = 0; i < nb; i++) {
     L.marker([parseFloat(coord[i].dataset.long), parseFloat(coord[i].dataset.lat)]).addTo(map).on('click', onClick);
 
