@@ -8,10 +8,104 @@
 
 html {
     font-size: 62.5%;
-    font-family: 'Athiti', sans-serif;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 body {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
+/**************************
+        header
+**************************/
+header img {
+    max-width: 20%;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+header ul {
+    text-align: center;
+    display: flex;
+    list-style: none;
+}
+
+header li a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    padding: 2rem;
+    display: block;
+}
+
+
+
+header li a:hover {
+    background-color: rgb(22, 177, 227);
+    color: white;
+}
+
+header #current {
+    background-color: rgb(22, 177, 227);
+}
+
+header #current a {
+    color: white;
+}
+
+/**************************
+        Main Index
+**************************/
+
+
+
+/**************************
+        Footer
+**************************/
+
+
+/**************************
+        Main EasyMap
+**************************/
+#mapid {
+    height: 50vh;
+}
+
+
+.listpoi {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 30px;
+    padding: 0 30px;
+}
+
+@media only screen and (min-width: 1100px) {
+    
+    
+    
+    #mapid {
+        position: sticky !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 90vh;
+    }
+
+    .listpoi {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+        padding: 0 30px;
+    }
+
+    .mapListContainer {
+        display: grid;
+        grid-template-columns: 5fr 6fr;
+    }
+} 
