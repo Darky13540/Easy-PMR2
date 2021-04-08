@@ -9,7 +9,7 @@
     <title>Easy-PMR</title>
 </head>
 <body>
-<header class="header">
+<<!-- header class="header">
     <img src="img/logo.png" alt="logo">
       <nav>
         <ul>
@@ -19,7 +19,11 @@
             <li><a href="contacts.html">Contact</a></li>
         </ul>
     </nav>
-</header>
+</header> -->
+
+<?php
+require ('Views/inc/header.phtml');
+?>
 
 <main class="maincontainer">
 <div class="test"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eos sapiente beatae at numquam iste repellat! Commodi temporibus possimus dolores.</p>
