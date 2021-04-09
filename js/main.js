@@ -4,7 +4,7 @@
 let copyright = '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 let coord = document.querySelectorAll('.item');
 let nb = coord.length;
-let map = L.map('mapid').setView([43.529742, 5.447427], 14);
+let map = L.map('mapid').setView([43.529742, 5.447427], 12);
 
 
 /* *********** */
@@ -26,12 +26,13 @@ function addMarker(){
     /* boucle pour afficher tous les poi retournés par la BDD + popup sur click */
 for (let i = 0; i < nb; i++) {
     L.marker([parseFloat(coord[i].dataset.long), parseFloat(coord[i].dataset.lat)]).addTo(map).on('click', onClick);
-
+    /*Ajout du popup au click avec Pan*/
     function onClick(e) {
         L.popup()
             .setLatLng([parseFloat(coord[i].dataset.long), parseFloat(coord[i].dataset.lat)])
             .setContent("<p>" + coord[i].dataset.name + "<br />" + coord[i].dataset.type + "</p>")
             .openOn(map);
+        map.panTo([parseFloat(coord[i].dataset.long), parseFloat(coord[i].dataset.lat)]);
             
         }
     }

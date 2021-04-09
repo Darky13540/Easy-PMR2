@@ -19,6 +19,13 @@ require ('Views/inc/header.phtml');
             <input type="text" name="type" >
             <button type="submit">OK</button>
             </form>
+            <?php 
+            if ($count>0){
+                echo "<p>Il y a " .$count. " résultat(s) à votre recherche</p>";
+            }else{
+                echo "<p>Il n'y a aucun résultat à votre recherche!</p>";
+            }
+            ?>
         </section>
 
         <div class="mapListContainer">

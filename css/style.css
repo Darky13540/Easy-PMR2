@@ -78,15 +78,21 @@ header #current a {
         Main EasyMap
 **************************/
 #mapid {
-    height: 50vh;
+    height: 40vh;
 }
 
 
 .listpoi {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 30px;
-    padding: 0 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: space-around;
+}
+
+.item{
+    width: 95%;
+    text-align: center;
+
 }
 
 @media only screen and (min-width: 1100px) {
@@ -98,18 +104,20 @@ header #current a {
         top: 0;
         left: 0;
         right: 0;
-        height: 90vh;
+        height: 70vh;
     }
-
-    .listpoi {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        column-gap: 30px;
-        padding: 0 30px;
-    }
-
+    
     .mapListContainer {
         display: grid;
-        grid-template-columns: 5fr 6fr;
+        grid-template-columns: 6fr 5fr;
     }
+    .listpoi {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 30px;
+        padding: 0 30px;
+
+    }
+
+    
 } 
