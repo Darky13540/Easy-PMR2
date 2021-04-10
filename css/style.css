@@ -8,7 +8,7 @@
 
 html {
     font-size: 62.5%;
-    max-width: 1400px;
+
     margin-left: auto;
     margin-right: auto;
 }
@@ -94,8 +94,57 @@ header #current a {
     text-align: center;
 
 }
+@media only screen and (min-width: 425px) {
+    
+    
+    
+    #mapid {
+        height: 40vh;
+    }
+    
+    .listpoi {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+    }
+    
+    .item{
+        width: 40%;
+        text-align: center;
+        justify-content: center;
+    
+    }
 
-@media only screen and (min-width: 1100px) {
+    
+} 
+
+@media only screen and (min-width: 768px) {
+    
+    
+    
+    #mapid {
+        height: 40vh;
+    }
+    
+    .listpoi {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+    }
+    
+    .item{
+        width: 30%;
+        text-align: center;
+        justify-content: center;
+    
+    }
+
+    
+} 
+
+@media only screen and (min-width: 1024px) {
     
     
     
@@ -112,11 +161,50 @@ header #current a {
         grid-template-columns: 6fr 5fr;
     }
     .listpoi {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        column-gap: 30px;
-        padding: 0 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+    }
+    
+    .item{
+        width: 45%;
+        text-align: center;
+        justify-content: center;
+    
+    }
 
+    
+} 
+
+@media only screen and (min-width: 1400px) {
+    
+    
+    
+    #mapid {
+        position: sticky !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 70vh;
+    }
+    
+    .mapListContainer {
+        display: grid;
+        grid-template-columns: 6fr 5fr;
+    }
+    .listpoi {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: space-around;
+    }
+    
+    .item{
+        width: 30%;
+        text-align: center;
+        justify-content: center;
+    
     }
 
     
