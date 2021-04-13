@@ -1,7 +1,7 @@
 <?php
 require ('Views/inc/head.phtml');
 ?>
-<body>
+
 
 
 <?php
@@ -9,7 +9,7 @@ require ('Views/inc/header.phtml');
 ?>
 
 <main class="maincontainer">
-<div class="test"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eos sapiente beatae at numquam iste repellat! Commodi temporibus possimus dolores.</p>
+<div class="ipsum"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eos sapiente beatae at numquam iste repellat! Commodi temporibus possimus dolores.</p>
 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim odio, natus, doloremque perferendis numquam officiis similique eligendi expedita earum ad deserunt eius beatae, debitis illo vero delectus labore voluptatem magni.</p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, aliquid!</p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et pariatur excepturi autem neque iure laborum quasi eveniet quas, enim esse praesentium animi consequatur! Aspernatur quos cum incidunt veniam magnam architecto exercitationem, mollitia quaerat rerum ducimus, voluptatem, ullam beatae fuga. Praesentium cum error aliquam iste eum?</p>
@@ -20,6 +20,7 @@ require ('Views/inc/header.phtml');
 <?php
 require ('Views/inc/footer.phtml');
 ?>
-<script src="js/main.js"></script>
+   <!-- Chargement JS -->
+   <script src="js/main.js"></script>
 </body>
 </html>

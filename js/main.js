@@ -1,10 +1,20 @@
 /* *********** */
 /* Déclaration des variables globales */
 /* *********** */
+/* MAP */
 let copyright = '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 let coord = document.querySelectorAll('.item');
 let nb = coord.length;
 let map = L.map('mapid').setView([43.529742, 5.447427], 12);
+
+/* MENU BURGER */
+let content = document.querySelector('#hamburger-content');
+let sidebarBody = document.querySelector('#hamburger-sidebar-body');
+sidebarBody.innerHTML = content.innerHTML;
+let button = document.querySelector('#hamburger-button');
+let closeBurger = document.querySelector('#close-burger');
+let activatedClass = 'hamburger-activated';
+let hamburger = document.querySelector('#hamburger');
 
 
 /* *********** */
@@ -41,12 +51,23 @@ for (let i = 0; i < nb; i++) {
 /* code Principal */
 /* *********** */
 window.addEventListener('DOMContentLoaded', ()=>{
-
-
-/* Initialisation de la carte et chargement des layers OSMFR centré sur Aix en Provence*/
-
-InitMap();
-addMarker();
+    
+    /* menu burger open*/
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+        this.parentNode.classList.add(activatedClass);
+        console.log('1er click');
+    });
+    closeBurger.addEventListener('click', function(e){
+        e.preventDefault();
+        hamburger.classList.remove(activatedClass);
+        console.log('click');
+    });
+    
+    /* Initialisation de la carte et chargement des layers OSMFR centré sur Aix en Provence*/
+    
+    InitMap();
+    addMarker();
 
 
 });

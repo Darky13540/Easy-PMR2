@@ -20,31 +20,127 @@ body {
 /**************************
         header
 **************************/
+/* MENU BURGER */
+
+#hamburger{
+    display: block;
+}
+#hamburger-content{
+    display: none;
+    text-transform: uppercase;
+}
+
+#hamburger-button{
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 4rem;
+    padding: 3.2rem;
+    vertical-align: top;
+    line-height: 4.7rem;
+    float: right;
+
+}
+
+#close-burger{
+    float: right;
+    border: 0;
+    cursor: pointer;
+    font-size: 4rem;
+    padding: 1rem;
+    display: block;
+}
+
+#hamburger-sidebar{
+    position: fixed;
+    z-index: 25;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    transform: translateX(-100%);
+    transition: transform .3s ease-out;
+    display : block;
+}
+
+
+
+#hamburger-sidebar li{
+    display: block;
+    text-transform: uppercase;
+}
+
+#hamburger-header{
+    margin: 3rem;
+    height: 10vh;
+    max-width: 100%;
+    text-align: center;
+}
+
+#hamburger-sidebar-body{
+    padding: 16px 8px; 
+    text-align: center;  
+}
+
+
+#hamburger-sidebar-body li:before {
+    content: '';
+    display : inline-block;
+    vertical-align: middle;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-right: 1.6rem;
+    margin-bottom: 4px;
+}
+
+#hamburger-sidebar-body li:first-child:before{
+    background-image: url(../img/icons/homemini.png);
+}
+
+#hamburger-sidebar-body li:nth-child(2):before{
+    background-image: url(../img/icons/mapmini.png);
+}
+
+#hamburger-sidebar-body{
+    float: none;
+}
+
+#hamburger-button, #hamburger-sidebar, .hamburger-activated #hamburger-overlay{
+    display: block;
+}
+
+.hamburger-activated #hamburger-sidebar {
+    transform: translateX(0%);
+}
+
+
+/* OK */
 header {
     display: flex;
     justify-content: space-between;
+    justify-items: center;
+    align-content: center;
     align-items: center;
-    background-color: rgba(11, 103, 241, 0.16);
-    max-height: 30vh;
+    max-height: 10vh;
 }
 
 header img {
-    max-width: 20%;
+    max-width: 25vh;
     background-color: white;
 }
 
-header ul {
-    text-align: center;
-    display: flex;
-    list-style: none;
+header ul{
+    padding: 0;
 }
 
+/* OK */
 header li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
     padding: 2rem;
-    display: block;
+    display: inline-block;
 }
 
 header li a:hover {
@@ -52,13 +148,9 @@ header li a:hover {
     color: white;
 }
 
-header #current {
-    background-color: rgb(22, 177, 227);
-}
-
-header #current a {
+/*header #current a {
     color: white;
-}
+} */
 
 /**************************
         Main Index
@@ -79,6 +171,8 @@ header #current a {
 **************************/
 #mapid {
     height: 40vh;
+    z-index: 0;
+    margin-bottom: 2rem;
 }
 
 
@@ -94,13 +188,12 @@ header #current a {
     text-align: center;
 
 }
+
+
+
+/* MEDIA QUERIES */
+
 @media only screen and (min-width: 425px) {
-    
-    
-    
-    #mapid {
-        height: 40vh;
-    }
     
     .listpoi {
         display: flex;
@@ -120,25 +213,8 @@ header #current a {
 } 
 
 @media only screen and (min-width: 768px) {
-    
-    
-    
-    #mapid {
-        height: 40vh;
-    }
-    
-    .listpoi {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: space-around;
-    }
-    
     .item{
         width: 30%;
-        text-align: center;
-        justify-content: center;
-    
     }
 
     
@@ -146,66 +222,94 @@ header #current a {
 
 @media only screen and (min-width: 1024px) {
     
+    .header{
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    header ul {
+        text-align: center;
+
+        list-style: none;
+    }
+
+    #hamburger-content{
+        display: inline;
+        list-style: none;
+
+    }
+
+   #hamburger-content nav ul{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between
+    }
+
+   /*  #hamburger-content nav ul li{
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+        align-content: space-between
+    } */
+
+
+
     
+    header li a {
+        text-decoration: none;
+        list-style-type: none;
+        color: black;
+        font-weight: bold;
+        padding: 1rem;
     
+    }
+    
+    header li a:hover {
+        background-color: rgb(22, 177, 227);
+        color: white;
+    }
+
+
+
+    
+    #hamburger-sidebar{
+        display: none;
+    }
+
+
+
+    #hamburger-button{
+        display: none;
+    }
+ 
     #mapid {
         position: sticky !important;
         top: 0;
         left: 0;
         right: 0;
         height: 70vh;
+        margin-bottom: 0;
     }
     
     .mapListContainer {
         display: grid;
         grid-template-columns: 6fr 5fr;
     }
-    .listpoi {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: space-around;
-    }
     
     .item{
         width: 45%;
-        text-align: center;
-        justify-content: center;
-    
     }
 
     
 } 
 
 @media only screen and (min-width: 1400px) {
-    
-    
-    
-    #mapid {
-        position: sticky !important;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 70vh;
-    }
-    
-    .mapListContainer {
-        display: grid;
-        grid-template-columns: 6fr 5fr;
-    }
-    .listpoi {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: space-around;
-    }
-    
+   
     .item{
         width: 30%;
-        text-align: center;
-        justify-content: center;
-    
     }
+
 
     
 } 
