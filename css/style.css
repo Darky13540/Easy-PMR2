@@ -195,19 +195,10 @@ header li a:hover {
 /* MEDIA QUERIES */
 
 @media only screen and (min-width: 425px) {
-    
-    .listpoi {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-        align-content: space-around;
-    }
-    
     .item{
         width: 40%;
         text-align: center;
         justify-content: center;
-    
     }
 
     
@@ -270,15 +261,10 @@ header li a:hover {
         background-color: rgb(22, 177, 227);
         color: white;
     }
-
-
-
     
     #hamburger-sidebar{
         display: none;
     }
-
-
 
     #hamburger-button{
         display: none;
@@ -310,7 +296,5 @@ header li a:hover {
     .item{
         width: 30%;
     }
-
-
-    
+   
 } 
