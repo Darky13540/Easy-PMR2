@@ -20,7 +20,5 @@ require ('Views/inc/header.phtml');
 <?php
 require ('Views/inc/footer.phtml');
 ?>
-   <!-- Chargement JS -->
-   <script src="js/main.js"></script>
 </body>
 </html>
