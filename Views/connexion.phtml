@@ -1,0 +1,31 @@
+<?php
+require ('inc/head.phtml');
+
+require ('inc/header.phtml');
+?>
+<main class="container">
+        
+        <!--Formulaire inscription-->
+    <h1>Connexion</h1>
+    <div class="container">
+ 			 		 	<form action="connexion.php" method="POST">
+			    			<div class="form-group">
+			    				<input type="email" name="mail" id="mail" class="" placeholder="Votre Email" required>
+			    			</div>
+			    			<div class="form-group">
+			    				<input type="password" name="password" id="password" class="" placeholder="Votre Mot de Passe" required>
+			    			</div>
+			    			<div class="input-group-append">
+                                  <button type="submit" id="envoyer" class="">Connexion</button>
+                              </div>
+			    		</form>
+
+		</div>
+
+      
+   </main>
+<?php include ('Views/inc/footer.phtml') ?>
+<!-- Chargement JS PRINCIPAL -->
+<script src="js/main.js"></script>
+</body>
+</html>

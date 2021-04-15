@@ -9,14 +9,13 @@
                         <li><a href="index.php" title="Accueil">Accueil</a></li>
                         <li><a href="easymap.php" title="carte des lieux">Map</a></li>
                         <li><a href="contacts.html">Contact</a></li>
-                <?php if(!isset($_SESSION["user"])): ?>                    
+                <?php if(!isset($_SESSION["user"])):?>                    
                         <li><a href="inscription.php">Inscription</a></li>
-                        <li><a href="#">Connexion</a></li>
+                        <li><a href="connexion.php">Connexion</a></li>
                 <?php else:?>        
-                        <li>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></li>
-                        <li><a href="profil.php">Profil</a></li>
-                        <li><a href="deconnexion.php">Déconnexion</a></li>
-                <?php endif; ?>
+                    <li><a href="profil.php">Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></a></li>
+                    <li><a href="deconnexion.php">Déconnexion</a></li>
+                <?php endif;?>
                     </ul>
                 </nav>
             </div>
