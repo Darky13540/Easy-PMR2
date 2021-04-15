@@ -27,7 +27,7 @@ if(!empty($_POST)){
     //test si l'email n'existe pas -> retour sur la page de connexion
        if(!$user) {
             header('Location: connexion.php');
-            exit(); 
+            exit();
         }
 
      /* si le user existe, on vérifie le MDP */
@@ -61,7 +61,5 @@ if(!empty($_POST)){
         header('Location: profil.php');
         exit();
     }
-    
-
-}
+ }
 require 'Views/connexion.phtml';
