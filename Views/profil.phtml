@@ -1,0 +1,39 @@
+<?php 
+require ('inc/head.phtml');
+require ('inc/header.phtml');
+?>
+
+        <?php if(!empty($_SESSION["user"])):?> 
+        
+     <main class="container">
+         
+    <h1>Page de Profil</h1>
+      <div class="container">
+        <span>Bienvenue, votre Pseudo est : <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
+        <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br/>
+        <div class="input-group-append">
+             <a id="edit" href="editprofil.php" class="btn btn-primary">Editer Mon Profil</a>
+             <a href="deconnexion.php" class="nav-link text-uppercase font-weight-bold">Déconnexion</a>
+        </div>
+      
+        
+    </div>
+      
+   </main>
+   
+   <?php else: ?> 
+   
+   <div class="container">
+       <span>Vous n'êtes pas inscrit, merci de vous inscrire ou de vous connecter</span><br/>
+       <a href="inscription.php" class="btn btn-primary">S'inscrire</a><br /><br />
+       <a href="connexion.php" class="btn btn-primary">Se connecter</a>
+   </div>
+   
+    <?php endif; ?>
+    <?php 
+require ('inc/footer.phtml');
+
+?>
+    
+</body>
+</html>

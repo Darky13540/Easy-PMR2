@@ -134,7 +134,6 @@ header {
 header img {
     max-width: 80%;
     max-height: 10vh;
-    background-color: white;
 }
 
 header ul{
@@ -199,6 +198,12 @@ header li a:hover {
 
 /**************************
         Main details
+**************************/
+
+
+
+/**************************
+        Main inscription
 **************************/
 
 
