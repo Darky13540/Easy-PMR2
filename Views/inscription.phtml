@@ -2,28 +2,46 @@
 require ('inc/head.phtml');
 require ('inc/header.phtml');
 ?>
+<main class="container">
+  
 
-<main class="mainInscription">   
-    <form role="form" action="inscription.php" method="POST">
-        <div class="form-group">
-            <input type="text" name="pseudo" id="pseudo" class="form-control input-sm" placeholder="Votre Pseudo" required>
-        </div>
-		<div class="form-group">
-			<input type="email" name="mail" id="mail" class="form-control input-sm" placeholder="Votre Email" required>
-		</div>
-		<div class="form-group">
-            <div class="form-group">
-                <input type="text" name="ville" id="ville" class="ville" placeholder="Ville de résidence" required>
-            </div>
-			<input type="password" name="password" id="password" class="password" placeholder="Votre Mot de Passe" required>
-		</div>
-		<div class="form-group">
-			<input type="password" name="password2" id="verif-password" class="password" placeholder="Resaisir" required>
-		</div>
-		<div class="input-group-append">
-            <button type="submit" id="envoyer" class="btn">Inscrivez Vous</button>
-        </div>
-	</form>
+  <!-- notifications   --> 
+  <?php
+  require 'inc/notifications.phtml';
+  ?>
+  
+		  <!--Formulaire d'inscription'-->
+	<h1>Inscription</h1>
+	<div class="formulaire">
+	<fieldset>
+		<legend>Merci de compléter les informations demandées pour vous inscrire</legend>   
+		<form role="form" action="inscription.php" method="POST" class="formulaire">
+			<div class="form-group">
+				
+				<input type="text" name="pseudo" id="pseudo" class="form-control input-sm" placeholder="Votre Pseudo" required>
+			</div>
+			<div class="form-group">
+				<input type="email" name="mail" id="mail" class="form-control input-sm" placeholder="Votre Email" required>
+			</div>
+			<div class="form-group">
+				<div class="form-group">
+					<input type="text" name="ville" id="ville" class="ville" placeholder="Ville de résidence" required>
+				</div>
+				<input type="password" name="password" id="password" class="password" placeholder="Votre Mot de Passe" required>
+			</div>
+			<div class="form-group">
+				<input type="password" name="password2" id="verif-password" class="password" placeholder="Ressaisissez votre mot de passe" required>
+			</div>
+			<div class="input-group-append">
+				<button type="submit" id="envoyer" class="btnForm">Inscrivez Vous</button>
+			</div>
+		</form>
+	</fieldset>
+	<div>
+        <p>Déjà un compte?</p>
+        <a href="connexion.php"><button  type="submit" class="btnForm">Connectez vous!</button></a>
+    </div> 
+	</div>
 </main> 
 
 <?php 

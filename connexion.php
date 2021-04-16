@@ -1,9 +1,11 @@
 <?php
 session_start();
+
  if(isset($_SESSION['user'])){
      header("Location: profil.php");
      exit();
 };
+require 'utils.php';
 
 if(!empty($_POST)){
     if(isset($_POST['mail']) && isset($_POST['password'])
@@ -12,6 +14,7 @@ if(!empty($_POST)){
      require 'functionPass.php';
      require 'bdconnect.php';
      
+
      
     /*Préparation pour vérification des informations de connexion*/
 
@@ -26,16 +29,20 @@ if(!empty($_POST)){
      
     //test si l'email n'existe pas -> retour sur la page de connexion
        if(!$user) {
-            header('Location: connexion.php');
-            exit();
+        addFlash('error','Le mot de passe et/ou login est incorrect');
+        header('Location: connexion.php');
+        die();
         }
 
      /* si le user existe, on vérifie le MDP */
 
+     
         if(!verifPassword($_POST['password'], $user['password'])) {
+        addFlash('error','Le mot de passe et/ou login est incorrect');
         header('Location: connexion.php');
-        echo("Le mot de passe et/ou le login est incorrect");
-        exit();
+        die();
+        /*echo("Le mot de passe et/ou le login est incorrect"); */
+        /* exit(); */
         }
         
         /* User + MDP ok */
@@ -58,8 +65,9 @@ if(!empty($_POST)){
         $query->execute([$_SESSION['user']['id']]);
         
         //on redirige vers la page de profil
+        addFlash('success','Bienvenue sur votre page de profil');
         header('Location: profil.php');
         exit();
     }
  }
-require 'Views/connexion.phtml';
+ require 'Views/connexion.phtml';

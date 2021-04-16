@@ -16,4 +16,5 @@ $reponse->execute([$_GET['id']]);
 $details = $reponse->fetch(PDO::FETCH_ASSOC);
 
 
+var_dump($_SESSION['user']);
 require ('Views/details.phtml');

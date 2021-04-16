@@ -7,19 +7,21 @@ if(isset($_SESSION['user'])){
 //tester si les champs sont vides
 //https://www.php.net/manual/fr/function.openssl-encrypt
 
-
+require 'utils.php';
 if(isset($_POST)){
         if (isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['password']) && isset($_POST['password2']) && isset($_POST['ville'])){
                 // tester si les 2 mots de passe ont bien la même valeur
                 if ($_POST['password'] != $_POST['password2']) {
+                        addFlash('error','Les mots de passe saisis ne correspondent pas');
                         header('Location: inscription.php');
-                        exit(); 
+                        die();  
                 }
                 
                 //tester l'email (format)
                 if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
+                        addFlash('error','le mail est invalide');
                         header('Location: inscription.php');
-                        exit();       
+                        die();       
                 }
                 
                 require 'functionPass.php';
@@ -46,8 +48,9 @@ $query->execute([$_POST['pseudo'], $pwd_crypted, $_POST['mail'], $_POST['ville']
             'mail' => $_POST["mail"]
             ];
             //on redirige vers la page de profil
-        header("Location: profil.php");
-        exit();
+            addFlash('success','Inscription prise en compte');
+                header("Location: profil.php");
+                exit();
 }
 };
 require 'Views/inscription.phtml';
