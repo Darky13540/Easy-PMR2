@@ -17,20 +17,24 @@ require ('inc/header.phtml');
 		<legend>Merci de compléter les informations demandées pour vous inscrire</legend>   
 		<form role="form" action="inscription.php" method="POST" class="formulaire">
 			<div class="form-group">
-				
+				<i class="fas fa-user"></i>
 				<input type="text" name="pseudo" id="pseudo" class="form-control input-sm" placeholder="Votre Pseudo" required>
 			</div>
 			<div class="form-group">
+				<i class="fas fa-envelope"></i>
 				<input type="email" name="mail" id="mail" class="form-control input-sm" placeholder="Votre Email" required>
 			</div>
 			<div class="form-group">
-				<div class="form-group">
-					<input type="text" name="ville" id="ville" class="ville" placeholder="Ville de résidence" required>
-				</div>
+				<i class="fas fa-house-user"></i>
+				<input type="text" name="ville" id="ville" class="ville" placeholder="Ville de résidence" required>
+			</div>
+			<div class="form-group">
+				<i class="fas fa-key"></i>
 				<input type="password" name="password" id="password" class="password" placeholder="Votre Mot de Passe" required>
 			</div>
 			<div class="form-group">
-				<input type="password" name="password2" id="verif-password" class="password" placeholder="Ressaisissez votre mot de passe" required>
+				<i class="fas fa-lock"></i>
+				<input type="password" name="password2" id="verif-password" class="password" placeholder="Vérification du mot de passe" required>
 			</div>
 			<div class="input-group-append">
 				<button type="submit" id="envoyer" class="btnForm">Inscrivez Vous</button>

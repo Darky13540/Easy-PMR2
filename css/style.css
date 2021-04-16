@@ -170,6 +170,7 @@ header li a:hover {
 }
 .formulaire input{
     margin: 1rem;
+    border-color: rgb(22, 177, 227);
 }
 
 fieldset{
@@ -375,6 +376,9 @@ fieldset{
 /**************************
         Main inscription
 **************************/
+.form-group{
+    color: rgb(22, 177,227);
+}
 
 
 /**************************
