@@ -16,8 +16,8 @@ require ('inc/header.phtml');
         <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
         <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br/>
         <div class="input-group-append">
-             <a id="edit" href="editprofil.php" class="btn btn-primary">Editer Mon Profil</a>
-             <a href="deconnexion.php"><button  type="submit" class="btnForm">Déconnexion</button></a>
+             <a id="edit" href="editprofil.php"><button class="btnForm">Editer Mon Profil</button></a>
+             <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
         </div>         
     </div>      
    </main>

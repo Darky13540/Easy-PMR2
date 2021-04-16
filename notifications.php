@@ -1,4 +1,10 @@
-<?php 
+<?php
+/**
+ * Permet d'ajouter une notification
+ *
+ * @param string $type
+ * @param string $message
+ */
 function addFlash(string $type, string $message)
 {
     if (empty($_SESSION['messages'])) {
@@ -9,6 +15,13 @@ function addFlash(string $type, string $message)
     }
     $_SESSION['messages'][$type][] = $message;
 }
+
+/**
+ * Permet de récupérer la notification
+ *
+ * @param string $type
+ * @return array
+ */
 function getFlashes(string $type): array
     {
         if (empty($_SESSION['messages'])) {

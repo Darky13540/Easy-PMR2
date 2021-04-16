@@ -86,7 +86,7 @@ main{
 
 #hamburger-sidebar-body{
     padding: 1.6rem 0.8rem; 
-    text-align: center; 
+    text-align: center;
 }
 
 
@@ -102,7 +102,7 @@ main{
 }
 
 #hamburger-sidebar-body li:first-child:before{
-    background-image: url(../img/icons/homemini.png);
+    background-image: url(../img/icons/homemini.png) cover;
 }
 
 #hamburger-sidebar-body li:nth-child(2):before{
@@ -121,7 +121,7 @@ main{
     transform: translateX(0%);
 }
 
-
+/* Header */
 /* OK */
 header {
     display: flex;
@@ -155,8 +155,10 @@ header li a {
 }
 
 header li a:hover {
-    background-color: rgb(22, 177, 227);
+    background-color: rgba(22, 177, 227, 0.7);
+    border-color: rgb(22, 60, 227);
     color: white;
+    border-radius: 4px;
 }
 
 
@@ -259,6 +261,7 @@ fieldset{
     background-color: red;
     text-align: center;
 }
+
 .iconSuccess{
     text-align: center;
 }
@@ -371,6 +374,16 @@ fieldset{
 
 /**************************
         Main inscription
+**************************/
+
+
+/**************************
+        Main connexion
+**************************/
+
+
+/**************************
+        Main profil
 **************************/
 
 

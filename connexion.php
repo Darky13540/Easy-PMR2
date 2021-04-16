@@ -5,7 +5,7 @@ session_start();
      header("Location: profil.php");
      exit();
 };
-require 'utils.php';
+require 'notifications.php';
 
 if(!empty($_POST)){
     if(isset($_POST['mail']) && isset($_POST['password'])
