@@ -1,29 +1,38 @@
 <?php
-require ('inc/head.phtml');
-require ('inc/header.phtml');
+require('inc/head.phtml');
+require('inc/header.phtml');
 ?>
 <main class="profilContainer">
-  
 
-  <!-- notifications   --> 
+
+  <!-- notifications   -->
   <?php
   require 'inc/notifications.phtml';
   ?>
-  
-		  <!--Formulaire d'inscription'-->
-	<h1>Page de profil</h1>
-      <div class="profil">
-        <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
-        <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br/>
-        <div class="input-group-append">
-             <a id="edit" href="editprofil.php"><button class="btnForm">Editer Mon Profil</button></a>
-             <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
-        </div>         
-    </div>      
-   </main>
- <?php 
-require ('inc/footer.phtml');
-?>
+
+  <!--Formulaire d'inscription'-->
+  <h1>Page de profil</h1>
+  <div class="profil">
+    <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
+    <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br />
+    <span>Vous habitez : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></span> <br />
+    <?php if (isset($_SESSION['user']['role'])):
+          if ($_SESSION['user']['role'] == 1):?>
+          <span>La chance!! Vous êtes ADMINISTRATEUR OUAISSSSS</span>
+    <?php endif;?>
+    <?php endif;?>
     
+    <div class="input-group-append">
+      <a id="edit" href="editProfil.php"><button class="btnForm">Éditer mes informations</button></a>
+      <a id="edit" href="editpwd.php"><button class="btnForm">Modifier mon mot de passe</button></a>
+      <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
+    </div>
+  </div>
+</main>
+<?php
+require('inc/footer.phtml');
+?>
+
 </body>
+
 </html>

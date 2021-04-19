@@ -1,0 +1,50 @@
+<?php
+require('inc/head.phtml');
+
+require('inc/header.phtml');
+?>
+<main class="editProfilContainer">
+
+
+    <!-- notifications   -->
+    <?php
+    require 'inc/notifications.phtml';
+    ?>
+
+    <!--Formulaire de connexion-->
+    <h1>Edition de vos informations</h1>
+    <div class="formulaire">
+        <fieldset>
+            <legend>Merci de remplir les informations à modifier.</legend>
+            <form role="form" action="editProfil.php" method="POST" class="formulaire">
+                <div class="form-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" name="mail" id="mail" class="form-control input-sm" value="<?=$_SESSION["user"]["mail"]?>" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-house-user"></i>
+                    <input type="text" name="ville" id="ville" class="ville" value="<?=$_SESSION["user"]["ville"]?>" required>
+                </div>
+                <!-- <div class="form-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" name="password" id="password" class="password" placeholder="Votre Mot de Passe" required>
+                </div>
+                <div class="form-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" name="password2" id="verif-password" class="password" placeholder="Vérification du mot de passe" required>
+                </div> -->
+                <div class="input-group-append">
+                    <button type="submit" id="envoyer" class="btnForm">Validez</button>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</main>
+
+<?php require('Views/inc/footer.phtml'); 
+?>
+<!-- Chargement JS PRINCIPAL -->
+<script src="js/main.js"></script>
+</body>
+
+</html>

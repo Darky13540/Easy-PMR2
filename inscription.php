@@ -20,7 +20,7 @@ if (isset($_POST)) {
 
                 //tester l'email (format)
                 if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-                        addFlash('error', 'Le mail est invalide');
+                        addFlash('error', 'Le mail n\'est pas valide');
                         header('Location: inscription.php');
                         die();
                 }
@@ -54,16 +54,17 @@ if (isset($_POST)) {
                 $pseudo = $_POST['pseudo'];
                 $mail = $_POST['mail'];
                 $ville = $_POST['ville'];
-                signIn($pdo, $pseudo, $pwd_crypted, $mail, $ville );
+                insertUser($pdo, $pseudo, $pwd_crypted, $mail, $ville );
 
                 //on stocke dans $_SESSION les infos
                 $_SESSION['user'] = [
-                        'id' => $id,
-                        'pseudo' => $_POST["pseudo"],
-                        'mail' => $_POST["mail"]
+                        'id' => intVal($id),
+                        'pseudo' => htmlspecialchars($_POST["pseudo"]),
+                        'mail' => htmlspecialchars($_POST["mail"]),
+                        'ville' => htmlspecialchars($_POST["ville"])
                 ];
                 //on redirige vers la page de profil
-                addFlash('success', 'Inscription prise en compte');
+                addFlash('success', 'L\'inscription est bien prise en compte');
                 header("Location: profil.php");
                 exit();
         }

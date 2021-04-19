@@ -1,44 +1,46 @@
 <?php
-require ('inc/head.phtml');
+require('inc/head.phtml');
 
-require ('inc/header.phtml');
+require('inc/header.phtml');
 ?>
 <main class="connexionContainer">
-  
 
-<!-- notifications   --> 
-<?php
-require 'inc/notifications.phtml';
-?>
 
-        <!--Formulaire de connexion-->
+    <!-- notifications   -->
+    <?php
+    require 'inc/notifications.phtml';
+    ?>
+
+    <!--Formulaire de connexion-->
     <h1>Connexion</h1>
     <div class="formulaire">
         <fieldset>
             <legend>Veuillez saisir votre mail et votre mot de passe</legend>
- 			<form action="connexion.php" method="POST">
-				<div class="form-group">
+            <form action="connexion.php" method="POST">
+                <div class="form-group">
                     <i class="fas fa-envelope"></i>
-					<input type="email" name="mail" id="mail" class="" placeholder="Votre Email" required>
-				</div>
-				<div class="form-group">
-                    <i class="fas fa-key"></i>
-					<input type="password" name="password" id="password" class="" placeholder="Votre Mot de Passe" required>
-				</div>
-				<div class="input-group-append">
-                      <button type="submit" class="btnForm">Connexion</button>
+                    <input type="email" name="mail" id="mail" class="" placeholder="Votre Email" required>
                 </div>
-			</form>
+                <div class="form-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" name="password" id="password" class="" placeholder="Votre Mot de Passe" required>
+                </div>
+                <div class="input-group-append">
+                    <button type="submit" class="btnForm">Connexion</button><br />
+                    <a href="#">Mot de passe oublié?</a>
+                </div>
+            </form>
         </fieldset>
-    <div>
-        <p>Pas encore de compte?</p>
-        <a href="inscription.php"><button class="btnForm">Créer un compte</button></a>
-    </div>                        
-	</div>
+        <div>
+            <p>Pas encore de compte?</p>
+            <a href="inscription.php"><button class="btnForm">Créer un compte</button></a>
+        </div>
+    </div>
 </main>
 
-<?php require ('Views/inc/footer.phtml') ?>
+<?php require('Views/inc/footer.phtml') ?>
 <!-- Chargement JS PRINCIPAL -->
 <script src="js/main.js"></script>
 </body>
+
 </html>

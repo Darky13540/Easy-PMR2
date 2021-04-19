@@ -22,7 +22,7 @@ if (!empty($_POST)) {
 
       //preparer la requête
    
-      $query = $pdo->prepare('SELECT id, pseudo, password, mail FROM users WHERE mail = ? LIMIT 1');
+      $query = $pdo->prepare('SELECT id, pseudo, password, mail, ville, role FROM users WHERE mail = ? LIMIT 1');
 
       //executer la requête
       $query->execute([$_POST['mail']]);
@@ -37,8 +37,6 @@ if (!empty($_POST)) {
       }
 
       /* si le user existe, on vérifie le MDP */
-
-
       if (!verifPassword($_POST['password'], $user['password'])) {
          addFlash('error', 'Le mot de passe et/ou login est incorrect');
          header('Location: connexion.php');
@@ -53,18 +51,15 @@ if (!empty($_POST)) {
       $_SESSION['user'] = [
          'id' => intVal($user['id']),
          'pseudo' => htmlspecialchars($user['pseudo']),
-         'mail' => htmlspecialchars($user['mail'])
+         'mail' => htmlspecialchars($user['mail']),
+         'ville' => htmlspecialchars($user['ville']),
+         'role' => intVal($user['role'])
       ];
 
+      $userId = $_SESSION['user']['id'];
+
       /* mise à jour de la date de login */
-
-      //preparer la requête
-      $query = $pdo->prepare('
-        UPDATE users SET LastLogin = NOW() 
-        WHERE id = ?');
-
-      //executer la requête
-      $query->execute([$_SESSION['user']['id']]);
+      updateLoginDate($pdo, $userId);
 
       //on redirige vers la page de profil
       addFlash('success', 'Bienvenue sur votre page de profil');

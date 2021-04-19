@@ -52,7 +52,7 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
  * @param string $ville
  * @return void
  */
-function signIn(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, string $ville)/*  */
+function insertUser(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, string $ville)/*  */
 {
     //preparer la requête
     $query = $pdo->prepare('INSERT INTO users (pseudo, password, mail, ville) VALUES (?, ?, ?, ?);');
@@ -64,3 +64,34 @@ function signIn(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, str
 
     return $query->fetch(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Permet de mettre à jour la date de dernière connexion
+ *
+ * @param PDO $pdo
+ * @param integer $userId
+ * @return void
+ */
+function updateLoginDate(PDO $pdo, int $userId)
+{
+    //preparer la requete
+    $query = $pdo->prepare('
+    UPDATE users SET LastLogin = NOW() 
+    WHERE Id = ?');
+
+    //executer la requete
+    $query->execute([$userId]);
+}
+
+//////////////////////////////
+function updateUser(PDO $pdo, string $mail, string $ville, int $userId)
+{
+    //preparer la requete
+    $query = $pdo->prepare('
+    UPDATE users SET mail = ?, ville= ?
+    WHERE Id = ?');
+
+    //executer la requete
+    $query->execute([$mail, $ville, $userId]);
+}
+/////////////////
