@@ -1,13 +1,16 @@
 <?php
-require('inc/head.phtml');
-require('inc/header.phtml');
+session_start();
+var_dump($_SERVER['DOCUMENT_ROOT']);
+require ('../Views/inc/head.phtml');
+require ('../Views/inc/header.phtml');
+
 ?>
-<main class="profilContainer">
+<main class="adminContainer">
 
 
   <!-- notifications   -->
   <?php
-  require 'inc/notifications.phtml';
+  require '../Views/inc/notifications.phtml';
   ?>
 
   <!--Formulaire d'inscription'-->
@@ -31,7 +34,7 @@ require('inc/header.phtml');
   </div>
 </main>
 <?php
-require('inc/footer.phtml');
+require('../Views/inc/footer.phtml');
 ?>
 
 </body>

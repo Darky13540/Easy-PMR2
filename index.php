@@ -1,6 +1,8 @@
 <?php
 session_start();
+
 require ('Views/inc/head.phtml');
+
 ?>
 
 

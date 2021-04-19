@@ -3,7 +3,7 @@ session_start();
 require 'notifications.php';
 
 if (!isset($_SESSION['user'])) {
-    addFlash('error', 'Vous devez vous connecter');
+    addFlash('error', 'Vous devez d\'abord vous connecter');
     header("Location: connexion.php");
     exit();
 };

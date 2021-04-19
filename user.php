@@ -83,7 +83,15 @@ function updateLoginDate(PDO $pdo, int $userId)
     $query->execute([$userId]);
 }
 
-//////////////////////////////
+/**
+ * Permet de modifier le mail et/ou la ville de résidence
+ *
+ * @param PDO $pdo
+ * @param string $mail
+ * @param string $ville
+ * @param integer $userId
+ * @return void
+ */
 function updateUser(PDO $pdo, string $mail, string $ville, int $userId)
 {
     //preparer la requete
@@ -94,4 +102,3 @@ function updateUser(PDO $pdo, string $mail, string $ville, int $userId)
     //executer la requete
     $query->execute([$mail, $ville, $userId]);
 }
-/////////////////
