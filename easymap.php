@@ -40,4 +40,3 @@ $count = count($poi);
 
 
 require ('Views/easymap.phtml');
-?>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Permet d'ajouter une notification
  *
@@ -23,29 +24,29 @@ function addFlash(string $type, string $message)
  * @return array
  */
 function getFlashes(string $type): array
-    {
-        if (empty($_SESSION['messages'])) {
-            return [];
-        }
-
-        $messages = $_SESSION['messages'][$type];
-
-        $_SESSION['messages'][$type] = [];
-
-        return $messages;
+{
+    if (empty($_SESSION['messages'])) {
+        return [];
     }
 
-    /**
-     * Permet de savoir si il existe des messages d'un certain type
-     *
-     * @param string $type
-     * @return boolean
-     */
- function hasFlashes(string $type): bool
-    {
-        if (empty($_SESSION['messages'])) {
-            return false;
-        }
+    $messages = $_SESSION['messages'][$type];
 
-        return !empty($_SESSION['messages'][$type]);
+    $_SESSION['messages'][$type] = [];
+
+    return $messages;
+}
+
+/**
+ * Permet de savoir si il existe des messages d'un certain type
+ *
+ * @param string $type
+ * @return boolean
+ */
+function hasFlashes(string $type): bool
+{
+    if (empty($_SESSION['messages'])) {
+        return false;
     }
+
+    return !empty($_SESSION['messages'][$type]);
+}

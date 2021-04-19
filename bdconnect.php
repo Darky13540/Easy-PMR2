@@ -7,8 +7,8 @@ const HOST = 'mysql-darky13540.alwaysdata.net';
 const LOGIN = '229228';
 const PASSWORD = 'Azertyuiop1#';
 
-     $pdo = new PDO(
-        'mysql:host='.HOST.';dbname='.DBNAME.';charset=UTF8', LOGIN,
-        PASSWORD
-        );
-
+$pdo = new PDO(
+   'mysql:host=' . HOST . ';dbname=' . DBNAME . ';charset=UTF8',
+   LOGIN,
+   PASSWORD
+);

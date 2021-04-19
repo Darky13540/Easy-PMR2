@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Permet de vérifier si l'email est déjà dans la BDD
  *
@@ -6,13 +7,13 @@
  * @param string $email
  * @return false ou array
  */
-function getUserFromEmail(PDO $pdo, string $email) 
+function getUserFromEmail(PDO $pdo, string $email)
 {
     //prepare la requête
     $query = $pdo->prepare('
-    SELECT Id, Email, Password, Admin
+    SELECT id, mail, password
     FROM users 
-    WHERE Email = ? LIMIT 1');
+    WHERE mail = ? LIMIT 1');
 
     //execute la requête
     $query->execute([$email]);
@@ -20,15 +21,46 @@ function getUserFromEmail(PDO $pdo, string $email)
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
-///////////////////////a mettre dans traitement
+/**
+ * Permet de vérifier si le pseudo est déjà dans la BDD
+ *
+ * @param PDO $pdo
+ * @param string $pseudo
+ * @return false ou array
+ */
+function getUserFromPseudo(PDO $pdo, string $pseudo)
+{
+    //prepare la requête
+    $query = $pdo->prepare('
+    SELECT id, pseudo, password
+    FROM users 
+    WHERE pseudo = ? LIMIT 1');
 
-//chercher un user qui possède l'email
-    /* $user = getUserFromEmail($pdo, $_POST['mail']);
+    //execute la requête
+    $query->execute([$pseudo]);
 
-    //test si l'email n'existe pas dans la base de données
-    if($user) 
-    {
-       addFlash('error','Vous êtes déjà inscrit');
-       header('Location: login.php');
-       exit(); 
-    } */
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+/**
+ * Permet d'insérer un nouvel utilisateur dans la BDD
+ *
+ * @param PDO $pdo
+ * @param string $pseudo
+ * @param string $pwd_crypted
+ * @param string $mail
+ * @param string $ville
+ * @return void
+ */
+function signIn(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, string $ville)/*  */
+{
+    //preparer la requête
+    $query = $pdo->prepare('INSERT INTO users (pseudo, password, mail, ville) VALUES (?, ?, ?, ?);');
+
+    //executer la requête
+    $query->execute([$pseudo, $pwd_crypted, $mail, $ville]);
+
+    $id = $pdo->lastInsertId();
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
