@@ -29,7 +29,7 @@ if (isset($_POST)) {
                 require 'bdconnect.php';
                 require 'user.php';
 
-                $user = getUserFromEmail($pdo, htmlspecialchars($_POST['mail']));
+                $user = getUserFromEmail($pdo, $_POST['mail']);
 
                 //test si l'email n'existe pas dans la base de données
                 if ($user) {
@@ -38,7 +38,7 @@ if (isset($_POST)) {
                         exit();
                 }
 
-                $pseudo = getUserFromPseudo($pdo, htmlspecialchars($_POST['pseudo']));
+                $pseudo = getUserFromPseudo($pdo, $_POST['pseudo']);
 
                 //test si le pseudo n'existe pas dans la base de données
                 if ($pseudo) {

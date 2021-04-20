@@ -74,12 +74,12 @@ function insertUser(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail,
  */
 function updateLoginDate(PDO $pdo, int $userId)
 {
-    //preparer la requete
+    //preparer la requête
     $query = $pdo->prepare('
     UPDATE users SET LastLogin = NOW() 
     WHERE Id = ?');
 
-    //executer la requete
+    //executer la requête
     $query->execute([$userId]);
 }
 
@@ -94,11 +94,11 @@ function updateLoginDate(PDO $pdo, int $userId)
  */
 function updateUser(PDO $pdo, string $mail, string $ville, int $userId)
 {
-    //preparer la requete
+    //preparer la requête
     $query = $pdo->prepare('
     UPDATE users SET mail = ?, ville= ?
     WHERE Id = ?');
 
-    //executer la requete
+    //executer la requête
     $query->execute([$mail, $ville, $userId]);
 }

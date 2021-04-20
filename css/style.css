@@ -77,7 +77,7 @@ main{
 }
 
 #hamburger-header{
-    margin: 3rem;
+    margin: 1rem;
     height: 10vh;
     max-width: 100%;
     text-align: center;
@@ -86,6 +86,11 @@ main{
 #hamburger-sidebar-body{
     padding: 1.6rem 0.8rem; 
     text-align: center;
+}
+
+#hamburger-sidebar-body li{
+    padding: 0.5em 0.8rem; 
+
 }
 
 /* #hamburger-sidebar-body li:before {
@@ -142,13 +147,15 @@ header img {
 header ul{
     padding: 0;
 }
+header nav li{
+    max-width: 100%;
 
+}
 /* OK */
 header li a {
     text-decoration: none;
     color: black;
     font-weight: bold;
-    padding: 2rem;
     display: inline-block;
 }
 
@@ -514,7 +521,7 @@ fieldset span{
         align-content: space-between
     }
 
-   /*  #hamburger-content nav ul li{
+   /* #hamburger-content nav ul li{
         justify-content: space-between;
         justify-items: center;
         align-items: center;
