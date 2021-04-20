@@ -1,35 +1,35 @@
 <?php
-require ('../Views/inc/head.phtml');
-require ('../Views/inc/header.phtml');
+require('../Views/inc/head.phtml');
+require('../Views/inc/header.phtml');
 
 ?>
 <main class="adminContainer">
 
 
-  <!-- notifications   -->
-  <?php
-  require '../Views/inc/notifications.phtml';
-  ?>
+    <!-- notifications   -->
+    <?php
+    require '../Views/inc/notifications.phtml';
+    ?>
 
-  <!--Formulaire d'inscription'-->
-  <h1>Page d'administration</h1>
-  <div class="profil">
-    <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
-    <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br />
-    <span>Vous habitez : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></span> <br />
-    <?php if (isset($_SESSION['user']['role'])) :
-          if ($_SESSION['user']['role'] == 1) : ?>
-        <span>La chance!! Vous êtes ADMINISTRATEUR OUAISSSSS</span>
-        <a id="adm" href="admin/administration.php"><button class="btnForm">Administration</button></a>
-    <?php endif; ?>
-    <?php endif; ?>
+    <!--Formulaire d'inscription'-->
+    <h1>Page d'administration</h1>
+    <div class="profil">
+        <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
+        <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br />
+        <span>Vous habitez : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></span> <br />
+        <?php if (isset($_SESSION['user']['role'])) :
+            if ($_SESSION['user']['role'] == 1) : ?>
+                <span>La chance!! Vous êtes ADMINISTRATEUR OUAISSSSS</span>
+                <a id="adm" href="admin/administration.php"><button class="btnForm">Administration</button></a>
+            <?php endif; ?>
+        <?php endif; ?>
 
-    <div class="input-group-append">
-      <a  href="editProfil.php"><button class="btnForm">Éditer mes informations</button></a>
-      <a  href="editpwd.php"><button class="btnForm">Modifier mon mot de passe</button></a>
-      <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
+        <div class="input-group-append">
+            <a href="editProfil.php"><button class="btnForm">Éditer mes informations</button></a>
+            <a href="editpwd.php"><button class="btnForm">Modifier mon mot de passe</button></a>
+            <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
+        </div>
     </div>
-  </div>
 </main>
 <?php
 require('../Views/inc/footer.phtml');

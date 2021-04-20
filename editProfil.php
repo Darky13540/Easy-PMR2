@@ -19,7 +19,7 @@ if (!empty($_POST)) {
         $mail = htmlspecialchars($_POST['mail']);
         $ville = htmlspecialchars($_POST['ville']);
         $userId = $_SESSION['user']['id'];
-        
+
         updateUser($pdo, $mail, $ville, $userId);
 
         //on stocke les nouvelles infos dans $_SESSION
@@ -37,4 +37,4 @@ if (!empty($_POST)) {
     }
 }
 
-require ('Views/editProfil.phtml');
+require('Views/editProfil.phtml');

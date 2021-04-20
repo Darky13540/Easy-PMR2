@@ -54,7 +54,7 @@ if (isset($_POST)) {
                 $pseudo = htmlspecialchars($_POST['pseudo']);
                 $mail = htmlspecialchars($_POST['mail']);
                 $ville = htmlspecialchars($_POST['ville']);
-                insertUser($pdo, $pseudo, $pwd_crypted, $mail, $ville );
+                insertUser($pdo, $pseudo, $pwd_crypted, $mail, $ville);
 
                 //on stocke dans $_SESSION les infos
                 $_SESSION['user'] = [

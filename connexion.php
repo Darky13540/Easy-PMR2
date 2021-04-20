@@ -21,7 +21,7 @@ if (!empty($_POST)) {
       /*Préparation pour vérification des informations de connexion*/
 
       //preparer la requête
-   
+
       $query = $pdo->prepare('SELECT id, pseudo, password, mail, ville, role FROM users WHERE mail = ? LIMIT 1');
 
       //executer la requête
@@ -41,9 +41,7 @@ if (!empty($_POST)) {
          addFlash('error', 'Le mot de passe et/ou login est incorrect');
          header('Location: connexion.php');
          die();
-         /*echo("Le mot de passe et/ou le login est incorrect"); */
-         /* exit(); */
-      }
+           }
 
       /* User + MDP ok */
 

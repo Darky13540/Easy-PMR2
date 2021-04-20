@@ -1,56 +1,57 @@
-<?php 
-require ('inc/head.phtml');
-require ('inc/header.phtml');
+<?php
+require('inc/head.phtml');
+require('inc/header.phtml');
 ?>
 <main class="inscriptionContainer">
-  
 
-  <!-- notifications   --> 
-  <?php
-  require 'inc/notifications.phtml';
-  ?>
-  
-		  <!--Formulaire d'inscription'-->
+
+	<!-- notifications   -->
+	<?php
+	require 'inc/notifications.phtml';
+	?>
+
+	<!--Formulaire d'inscription'-->
 	<h1>Inscription</h1>
 	<div class="formulaire">
-	<fieldset>
-		<legend>Merci de compléter les informations demandées pour vous inscrire. <span>Attention, vous ne pourrez plus modifier votre pseudo</span></legend>   
-		<form role="form" action="inscription.php" method="POST" class="formulaire">
-			<div class="form-group">
-				<i class="fas fa-user"></i>
-				<input type="text" name="pseudo" id="pseudo" class="form-control input-sm" placeholder="Votre Pseudo" required>
-			</div>
-			<div class="form-group">
-				<i class="fas fa-envelope"></i>
-				<input type="email" name="mail" id="mail" class="form-control input-sm" placeholder="Votre Email" required>
-			</div>
-			<div class="form-group">
-				<i class="fas fa-house-user"></i>
-				<input type="text" name="ville" id="ville" class="ville" placeholder="Ville de résidence" required>
-			</div>
-			<div class="form-group">
-				<i class="fas fa-key"></i>
-				<input type="password" name="password" id="password" class="password" placeholder="Votre Mot de Passe" required>
-			</div>
-			<div class="form-group">
-				<i class="fas fa-lock"></i>
-				<input type="password" name="password2" id="verif-password" class="password" placeholder="Vérification du mot de passe" required>
-			</div>
-			<div class="input-group-append">
-				<button type="submit" id="envoyer" class="btnForm">Inscrivez Vous</button>
-			</div>
-		</form>
-	</fieldset>
-	<div>
-        <p>Déjà un compte?</p>
-        <a href="connexion.php"><button class="btnForm">Connectez vous!</button></a>
-    </div> 
+		<fieldset>
+			<legend>Merci de compléter les informations demandées pour vous inscrire. <span>Attention, vous ne pourrez plus modifier votre pseudo</span></legend>
+			<form role="form" action="inscription.php" method="POST" class="formulaire">
+				<div class="form-group">
+					<label for="mail"><i class="fas fa-user"></i>
+					<input type="text" name="pseudo" id="pseudo" class="form-control input-sm" placeholder="Votre Pseudo" required>
+				</div>
+				<div class="form-group">
+					<label for="mail"><i class="fas fa-envelope"></i></label>
+					<input type="email" name="mail" class="form-control input-sm" placeholder="Votre Email" required>
+				</div>
+				<div class="form-group">
+					<label for="ville"><i class="fas fa-house-user"></i></label>
+					<input type="text" name="ville" class="ville" placeholder="Ville de résidence" required>
+				</div>
+				<div class="form-group">
+					<label for="password"><i class="fas fa-key"></i></label>
+					<input type="password" name="password" class="password" placeholder="Votre Mot de Passe" required>
+				</div>
+				<div class="form-group">
+					<label for="password2"><i class="fas fa-lock"></i></label>
+					<input type="password" name="password2" class="password" placeholder="Vérification du mot de passe" required>
+				</div>
+				<div class="input-group-append">
+					<button type="submit" class="btnForm">Inscrivez Vous</button>
+				</div>
+			</form>
+		</fieldset>
+		<div>
+			<p>Déjà un compte?</p>
+			<a href="connexion.php"><button class="btnForm">Connectez vous!</button></a>
+		</div>
 	</div>
-</main> 
+</main>
 
-<?php 
-require ('inc/footer.phtml');
+<?php
+require('inc/footer.phtml');
 ?>
-    
+
 </body>
+
 </html>

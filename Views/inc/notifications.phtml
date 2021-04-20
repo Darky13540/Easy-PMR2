@@ -1,22 +1,22 @@
-<?php if (hasFlashes('error')): ?>
+<?php if (hasFlashes('error')) : ?>
     <div class="notification">
         <div class="iconError">
-            <img src="img/wheelchairerror.svg" alt="notification icon">  
+            <img src="img/wheelchairerror.svg" alt="notification icon">
         </div>
         <div class="textError">
-            <?php foreach (getFlashes('error') as $message): ?>
-            <p><?=$message?></p>
-            <?php endforeach?>
+            <?php foreach (getFlashes('error') as $message) : ?>
+                <p><?= $message ?></p>
+            <?php endforeach ?>
         </div>
-            <?php endif?>
-            <?php if (hasFlashes('success')): ?>
+    <?php endif ?>
+    <?php if (hasFlashes('success')) : ?>
         <div class="iconSuccess">
             <img src="img/success.svg" alt="notification icon" />
         </div>
         <div class="textSuccess">
-            <?php foreach (getFlashes('success') as $message): ?>
-            <p><?=$message?></p>
-            <?php endforeach?>
-         </div>
+            <?php foreach (getFlashes('success') as $message) : ?>
+                <p><?= $message ?></p>
+    <?php endforeach ?>
+        </div>
     </div>
-            <?php endif?>
+    <?php endif ?>

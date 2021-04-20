@@ -1,13 +1,13 @@
 <?php
-require ('../notifications.php');
+require('../notifications.php');
 session_start();
 
-if (isset($_SESSION)){
+if (isset($_SESSION)) {
 
-    if ($_SESSION['user']['role'] != 1){
-    addFlash('error', 'Vous ne disposez pas des droits nécessaires');
-    header("Location: ../connexion.php");
-    exit();
+    if ($_SESSION['user']['role'] != 1) {
+        addFlash('error', 'Vous ne disposez pas des droits nécessaires');
+        header("Location: ../connexion.php");
+        exit();
     }
 }
-require ('../Views/admin/administration.phtml');
+require('../Views/admin/administration.phtml');

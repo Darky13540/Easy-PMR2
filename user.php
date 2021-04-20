@@ -102,3 +102,14 @@ function updateUser(PDO $pdo, string $mail, string $ville, int $userId)
     //executer la requête
     $query->execute([$mail, $ville, $userId]);
 }
+
+function updatePwd(PDO $pdo, string $pwd_crypted, int $userId)
+{
+    //preparer la requête
+    $query = $pdo->prepare('
+    UPDATE users SET password = ?
+    WHERE Id = ?');
+
+    //executer la requête
+    $query->execute([$pwd_crypted, $userId]);
+}

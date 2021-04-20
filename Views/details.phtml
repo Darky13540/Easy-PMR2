@@ -1,18 +1,17 @@
-
-<?php 
-require ('inc/head.phtml');
-require ('inc/header.phtml');
+<?php
+require('inc/head.phtml');
+require('inc/header.phtml');
 ?>
-    <main class="mainDetails">
+<main class="mainDetails">
     <h1>Détails du lieu</h1>
-        <div class="identite">
+    <div class="identite">
         <section class="identite">
-            <h1><?= $details['name'];?></h1>
-            
+            <h1><?= $details['name']; ?></h1>
+
             <button class="btnForm"><a href="easymap.php">Retour à la carte</a></button>
         </section>
-        </div>
-        <div class="tag">
+    </div>
+    <div class="tag">
         <section class="tagPark">
             <h2>Informations concernant l'accès depuis un parking</h2>
         </section>
@@ -25,13 +24,14 @@ require ('inc/header.phtml');
         <section class="commodites">
             <h2>Informations concernant les commodités</h2>
         </section>
-        </div>
-    </main>
+    </div>
+</main>
 
 
-    <?php 
-    require ('inc/footer.phtml'); 
-    ?>
-    
+<?php
+require('inc/footer.phtml');
+?>
+
 </body>
+
 </html>
