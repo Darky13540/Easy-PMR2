@@ -16,9 +16,10 @@ if (!empty($_POST)) {
         require 'bdconnect.php';
         require 'user.php';
 
-        $mail = $_POST['mail'];
-        $ville = $_POST['ville'];
+        $mail = htmlspecialchars($_POST['mail']);
+        $ville = htmlspecialchars($_POST['ville']);
         $userId = $_SESSION['user']['id'];
+        
         updateUser($pdo, $mail, $ville, $userId);
 
         //on stocke les nouvelles infos dans $_SESSION
