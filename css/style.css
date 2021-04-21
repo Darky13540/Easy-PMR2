@@ -628,8 +628,50 @@ fieldset span {
 /**************************
         Main adminContainer
 **************************/
+/* .adminContainer{
+    text-align: justify;
+} */
 
+.homeAdmin {
+    padding: 0 2rem;
+    
+    margin: 0 auto;
+}
 
+/**************************
+        Admin Side nav
+**************************/
+.adminPanel {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+}
+
+.sidenav {
+    position: static;
+    top: 10vh;
+    left: 0;
+    float: left;
+    max-width: 20rem;
+    background-color: white;
+    border-right: 2px solid rgb(22, 177, 227);
+}
+
+.sidenav a {
+    padding: 2rem 0.5rem;
+    text-decoration: none;
+    color: black;
+    display: block;
+    max-width: 150px;
+    text-align: center;
+    margin: 0.2rem;
+}
+
+.sidenav a:hover {
+    background-color: rgba(22, 177, 227, 0.7);
+    border-color: rgb(22, 60, 227);
+    color: white;
+    border-radius: 4px;
+}
 
 /**************************
         Footer

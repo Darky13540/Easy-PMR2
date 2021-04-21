@@ -12,22 +12,22 @@ require('../Views/inc/header.phtml');
     ?>
 
     <!--Formulaire d'inscription'-->
-    <h1>Page d'administration</h1>
-    <div class="profil">
-        <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
-        <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br />
-        <span>Vous habitez : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></span> <br />
-        <?php if (isset($_SESSION['user']['role'])) :
-            if ($_SESSION['user']['role'] == 1) : ?>
-                <span>La chance!! Vous êtes ADMINISTRATEUR OUAISSSSS</span>
-                <a id="adm" href="admin/administration.php"><button class="btnForm">Administration</button></a>
-            <?php endif; ?>
-        <?php endif; ?>
-
-        <div class="input-group-append">
-            <a href="editProfil.php"><button class="btnForm">Éditer mes informations</button></a>
-            <a href="editpwd.php"><button class="btnForm">Modifier mon mot de passe</button></a>
-            <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
+    <h1>Page d'Administration</h1>
+    <div class="adminPanel">
+        <nav class="sidenav">
+            <a href="#">Utilisateurs</a>
+            <a href="#">P.O.I.</a>
+            <a href="#">Tags</a>
+        </nav>
+        <div class="homeAdmin">
+            <p>Bienvenue dans votre espace administration</p>
+            <p>Dans cet espace vous pouvez gérer le CRUD (Create, Read, Update, Delete) pour :</p>
+            <ul>
+                <li>Les utilisateurs</li>
+                <li>Les points d'intérêt (P.O.I.)</li>
+                <li>Les tags utilisés</li>
+            </ul>
+            <p>Pour faire les modifications il vous suffit de cliquer sur le lien correspondant à gauche</p>
         </div>
     </div>
 </main>

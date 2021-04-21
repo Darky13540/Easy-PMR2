@@ -4,9 +4,8 @@ if (isset($_SESSION['user'])) {
         header("Location: profil.php");
         exit();
 }
-//tester si les champs sont vides
-//https://www.php.net/manual/fr/function.openssl-encrypt
 
+//tester si les champs sont vides
 require 'notifications.php';
 
 if (isset($_POST)) {
@@ -15,14 +14,14 @@ if (isset($_POST)) {
                 if ($_POST['password'] != $_POST['password2']) {
                         addFlash('error', 'Les mots de passe saisis ne correspondent pas');
                         header('Location: inscription.php');
-                        die();
+                        exit();
                 }
 
                 //tester l'email (format)
                 if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                         addFlash('error', 'Le mail n\'est pas valide');
                         header('Location: inscription.php');
-                        die();
+                        exit();
                 }
 
                 require 'functionPass.php';
@@ -54,6 +53,8 @@ if (isset($_POST)) {
                 $pseudo = htmlspecialchars($_POST['pseudo']);
                 $mail = htmlspecialchars($_POST['mail']);
                 $ville = htmlspecialchars($_POST['ville']);
+
+                //on insère les informations en BDD
                 insertUser($pdo, $pseudo, $pwd_crypted, $mail, $ville);
 
                 //on stocke dans $_SESSION les infos
@@ -63,6 +64,7 @@ if (isset($_POST)) {
                         'mail' => htmlspecialchars($_POST["mail"]),
                         'ville' => htmlspecialchars($_POST["ville"])
                 ];
+
                 //on redirige vers la page de profil
                 addFlash('success', 'L\'inscription est bien prise en compte');
                 header("Location: profil.php");
