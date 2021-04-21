@@ -7,4 +7,4 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-require 'Views/profil.phtml';
+require 'views/profil.phtml';

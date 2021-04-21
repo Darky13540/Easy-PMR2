@@ -39,4 +39,4 @@ if (empty($_POST['type']) && empty($_POST['name'])){
 $count = count($poi);
 
 
-require ('Views/easymap.phtml');
+require ('views/easymap.phtml');

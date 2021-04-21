@@ -18,7 +18,7 @@ body {
 
 main {
     max-width: 1400px;
-    margin: 0 auto;
+    margin: 0 2rem;
 }
 
 h1 {
@@ -653,7 +653,7 @@ fieldset span {
     float: left;
     max-width: 20rem;
     background-color: white;
-    border-right: 2px solid rgb(22, 177, 227);
+    border-right: 2px solid rgb(22, 177, 227);  
 }
 
 .sidenav a {

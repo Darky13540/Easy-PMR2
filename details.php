@@ -15,4 +15,4 @@ $reponse = $pdo->prepare('SELECT idi, name FROM shop WHERE idi= ?');
 $reponse->execute([$_GET['id']]);
 $details = $reponse->fetch(PDO::FETCH_ASSOC);
 
-require ('Views/details.phtml');
+require ('views/details.phtml');

@@ -1,6 +1,6 @@
 <?php
-require('../Views/inc/head.phtml');
-require('../Views/inc/header.phtml');
+require('../views/inc/head.phtml');
+require('../views/inc/header.phtml');
 
 ?>
 <main class="adminContainer">
@@ -8,16 +8,16 @@ require('../Views/inc/header.phtml');
 
     <!-- notifications   -->
     <?php
-    require '../Views/inc/notifications.phtml';
+    require '../views/inc/notifications.phtml';
     ?>
 
     <!--Formulaire d'inscription'-->
     <h1>Page d'Administration</h1>
     <div class="adminPanel">
         <nav class="sidenav">
-            <a href="#">Utilisateurs</a>
-            <a href="#">P.O.I.</a>
-            <a href="#">Tags</a>
+            <a href="admin/useradmin.php">Utilisateurs</a>
+            <a href="admin/poiadmin.php">P.O.I.</a>
+            <a href="admin/demandesadmin.php">Demandes</a>
         </nav>
         <div class="homeAdmin">
             <p>Bienvenue dans votre espace administration</p>
@@ -25,14 +25,14 @@ require('../Views/inc/header.phtml');
             <ul>
                 <li>Les utilisateurs</li>
                 <li>Les points d'intérêt (P.O.I.)</li>
-                <li>Les tags utilisés</li>
             </ul>
-            <p>Pour faire les modifications il vous suffit de cliquer sur le lien correspondant à gauche</p>
+            <p>Vous pouvez également consulter les demandes des utilisateurs</p>
+            <p>Pour faire les modifications ou accéder aux demandes, il vous suffit de cliquer sur le lien correspondant à gauche</p>
         </div>
     </div>
 </main>
 <?php
-require('../Views/inc/footer.phtml');
+require('../views/inc/footer.phtml');
 ?>
 
 </body>

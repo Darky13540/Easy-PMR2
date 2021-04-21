@@ -37,4 +37,4 @@ if (!empty($_POST)) {
     }
 }
 
-require('Views/editProfil.phtml');
+require('views/editprofil.phtml');

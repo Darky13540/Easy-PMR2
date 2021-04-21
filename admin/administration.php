@@ -10,4 +10,4 @@ if (isset($_SESSION)) {
         exit();
     }
 }
-require('../Views/admin/administration.phtml');
+require('../views/admin/administration.phtml');

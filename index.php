@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require('Views/inc/head.phtml');
-require('Views/inc/header.phtml');
+require('views/inc/head.phtml');
+require('views/inc/header.phtml');
 ?>
 
 <main class="maincontainer">
@@ -17,7 +17,7 @@ require('Views/inc/header.phtml');
 </main>
 
 <?php
-require('Views/inc/footer.phtml');
+require('views/inc/footer.phtml');
 ?>
 </body>
 

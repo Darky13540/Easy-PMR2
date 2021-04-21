@@ -24,7 +24,7 @@ if (isset($_POST)) {
                         exit();
                 }
 
-                require 'functionPass.php';
+                require 'functionpass.php';
                 require 'bdconnect.php';
                 require 'user.php';
 
@@ -71,4 +71,4 @@ if (isset($_POST)) {
                 exit();
         }
 };
-require 'Views/inscription.phtml';
+require 'views/inscription.phtml';

@@ -12,7 +12,7 @@ if (!empty($_POST)) {
       isset($_POST['mail']) && isset($_POST['password'])
       && !empty($_POST['mail'] && !empty($_POST['password']))
    ) {
-      require 'functionPass.php';
+      require 'functionpass.php';
       require 'bdconnect.php';
       require 'user.php';
 
@@ -65,4 +65,4 @@ if (!empty($_POST)) {
       exit();
    }
 }
-require 'Views/connexion.phtml';
+require 'views/connexion.phtml';

@@ -7,11 +7,11 @@ if (isset($_POST)) {
         // tester si les 2 mots de passe ont bien la même valeur
         if ($_POST['password'] != $_POST['password2']) {
             addFlash('error', 'Les mots de passe saisis ne correspondent pas');
-            header('Location: editPwd.php');
+            header('Location: editpwd.php');
             die();
         }
 
-        require 'functionPass.php';
+        require 'functionpass.php';
         require 'bdconnect.php';
         require 'user.php';
 
@@ -28,7 +28,7 @@ if (isset($_POST)) {
         /* si le user existe, on vérifie le MDP */
         if (!verifPassword($_POST['password3'], $user['password'])) {
             addFlash('error', 'Merci de saisir votre mot de passe actuel');
-            header('Location: editPwd.php');
+            header('Location: editpwd.php');
             die();
         }
 
@@ -45,4 +45,4 @@ if (isset($_POST)) {
     }
 };
 
-require('Views/editPwd.phtml');
+require('views/editpwd.phtml');

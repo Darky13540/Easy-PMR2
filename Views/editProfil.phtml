@@ -16,7 +16,7 @@ require('inc/header.phtml');
     <div class="formulaire">
         <fieldset>
             <legend>Merci de remplir les informations à modifier.</legend>
-            <form role="form" action="editProfil.php" method="POST" class="formulaire">
+            <form role="form" action="editprofil.php" method="POST" class="formulaire">
                 <div class="form-group">
                     <label for="mail"><i class="fas fa-envelope"></i></label>
                     <input type="email" name="mail" class="form-control input-sm" value="<?= $_SESSION["user"]["mail"] ?>" required>
@@ -33,7 +33,7 @@ require('inc/header.phtml');
     </div>
 </main>
 
-<?php require('Views/inc/footer.phtml');
+<?php require('views/inc/footer.phtml');
 ?>
 <!-- Chargement JS PRINCIPAL -->
 <script src="js/main.js"></script>
