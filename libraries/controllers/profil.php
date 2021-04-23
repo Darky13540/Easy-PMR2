@@ -3,8 +3,10 @@
 require('notifications.php');
 if (!isset($_SESSION['user'])) {
     addFlash('error', 'Connectez vous pour accéder à la page');
-    header("Location: connexion.php");
+    header("Location: connexion");
     exit();
 }
 
-require 'views/profil.phtml';
+$template = 'profil.phtml';
+
+require('views/layout.phtml');

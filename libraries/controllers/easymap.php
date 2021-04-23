@@ -1,9 +1,5 @@
 <?php
-
-
-require (ROOT .'bdconnect.php');
 require (ROOT .'/libraries/models/easymapmodel.php');
-
 
 if (empty($_POST['type']) && empty($_POST['name'])){
     

@@ -5,7 +5,7 @@ if (isset($_SESSION)) {
 
     if ($_SESSION['user']['role'] != 1) {
         addFlash('error', 'Vous ne disposez pas des droits nécessaires');
-        header("Location: ../connexion.php");
+        header("Location: connexion");
         exit();
     }
 }

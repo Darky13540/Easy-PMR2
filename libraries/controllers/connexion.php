@@ -1,8 +1,7 @@
 <?php
-session_start();
 
 if (isset($_SESSION['user'])) {
-   header("Location: profil.php");
+   header("Location: profil");
    exit();
 };
 require 'notifications.php';
@@ -12,9 +11,9 @@ if (!empty($_POST)) {
       isset($_POST['mail']) && isset($_POST['password'])
       && !empty($_POST['mail'] && !empty($_POST['password']))
    ) {
-      require 'functionpass.php';
-      require 'bdconnect.php';
-      require 'user.php';
+      require(ROOT .'/libraries/models/functionpassmodel.php');
+      require ('bdconnect.php');
+      require(ROOT .'/libraries/models/usermodel.php');
 
 
 
@@ -32,14 +31,14 @@ if (!empty($_POST)) {
       //test si l'email n'existe pas -> retour sur la page de connexion
       if (!$user) {
          addFlash('error', 'Le mot de passe et/ou login est incorrect');
-         header('Location: connexion.php');
+         header('Location: connexion');
          die();
       }
 
       /* si le user existe, on vérifie le MDP */
       if (!verifPassword($_POST['password'], $user['password'])) {
          addFlash('error', 'Le mot de passe et/ou login est incorrect');
-         header('Location: connexion.php');
+         header('Location: connexion');
          die();
            }
 

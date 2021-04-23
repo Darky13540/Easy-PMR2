@@ -1,11 +1,7 @@
-<?php
-require('inc/head.phtml');
-require('inc/header.phtml');
-?>
+
 <main class="profilContainer">
 
-
-  <!-- notifications   -->
+<!-- notifications   -->
   <?php
   require 'inc/notifications.phtml';
   ?>
@@ -24,16 +20,9 @@ require('inc/header.phtml');
     <?php endif; ?>
 
     <div class="input-group-append">
-      <a href="editprofil.php"><button class="btnForm">Éditer mes informations</button></a>
-      <a href="editpwd.php"><button class="btnForm">Modifier mon mot de passe</button></a>
+      <a href="editprofil"><button class="btnForm">Éditer mes informations</button></a>
+      <a href="editpwd"><button class="btnForm">Modifier mon mot de passe</button></a>
       <a href="deconnexion"><button class="btnForm">Déconnexion</button></a>
     </div>
   </div>
 </main>
-<?php
-require('inc/footer.phtml');
-?>
-
-</body>
-
-</html>

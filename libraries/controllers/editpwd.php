@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'notifications.php';
 
 if (isset($_POST)) {
@@ -7,13 +6,13 @@ if (isset($_POST)) {
         // tester si les 2 mots de passe ont bien la même valeur
         if ($_POST['password'] != $_POST['password2']) {
             addFlash('error', 'Les mots de passe saisis ne correspondent pas');
-            header('Location: editpwd.php');
+            header('Location: editpwd');
             die();
         }
 
-        require 'functionpass.php';
-        require 'bdconnect.php';
-        require 'user.php';
+        require(ROOT .'/libraries/models/functionpassmodel.php');
+        require('bdconnect.php');
+        require(ROOT .'/libraries/models/usermodel.php');
 
 
         $query = $pdo->prepare('SELECT password FROM users WHERE id = ? LIMIT 1');
@@ -28,7 +27,7 @@ if (isset($_POST)) {
         /* si le user existe, on vérifie le MDP */
         if (!verifPassword($_POST['password3'], $user['password'])) {
             addFlash('error', 'Merci de saisir votre mot de passe actuel');
-            header('Location: editpwd.php');
+            header('Location: editpwd');
             die();
         }
 
@@ -40,9 +39,11 @@ if (isset($_POST)) {
 
         //on redirige vers la page de profil
         addFlash('success', 'La modification est bien prise en compte');
-        header("Location: profil.php");
+        header("Location: profil");
         exit();
     }
 };
 
-require('views/editpwd.phtml');
+$template = 'editpwd.phtml';
+
+require('views/layout.phtml');

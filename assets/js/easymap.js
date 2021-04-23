@@ -29,7 +29,7 @@ function InitMap(){
     function addMarker(){
         /* boucle pour afficher tous les poi retournés par la BDD + popup sur click */
         for (let i = 0; i < nb; i++) {
-        let url = "details.php?id="+ coord[i].dataset.id;
+        let url = "details?id="+ coord[i].dataset.id;
         L.marker([parseFloat(coord[i].dataset.long), parseFloat(coord[i].dataset.lat)]).addTo(map).on('click', onClick);
         
         /*Ajout du popup au click avec Zoom et carte centrée*/

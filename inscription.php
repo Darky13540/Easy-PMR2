@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['user'])) {
-        header("Location: profil.php");
+        header("Location: profil");
         exit();
 }
 
@@ -24,9 +24,9 @@ if (isset($_POST)) {
                         exit();
                 }
 
-                require 'functionpass.php';
+                require('libraries/models/functionpassmodel.php');
                 require 'bdconnect.php';
-                require 'user.php';
+                require('libraries/models/usermodel.php');
 
                 $user = getUserFromEmail($pdo, $_POST['mail']);
 
@@ -67,7 +67,7 @@ if (isset($_POST)) {
 
                 //on redirige vers la page de profil
                 addFlash('success', 'L\'inscription est bien prise en compte');
-                header("Location: profil.php");
+                header("Location: profil");
                 exit();
         }
 };

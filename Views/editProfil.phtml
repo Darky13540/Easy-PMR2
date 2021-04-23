@@ -1,8 +1,4 @@
-<?php
-require('inc/head.phtml');
 
-require('inc/header.phtml');
-?>
 <main class="editProfilContainer">
 
 
@@ -16,7 +12,7 @@ require('inc/header.phtml');
     <div class="formulaire">
         <fieldset>
             <legend>Merci de remplir les informations à modifier.</legend>
-            <form role="form" action="editprofil.php" method="POST" class="formulaire">
+            <form role="form" action="editprofil" method="POST" class="formulaire">
                 <div class="form-group">
                     <label for="mail"><i class="fas fa-envelope"></i></label>
                     <input type="email" name="mail" class="form-control input-sm" value="<?= $_SESSION["user"]["mail"] ?>" required>
@@ -32,9 +28,3 @@ require('inc/header.phtml');
         </fieldset>
     </div>
 </main>
-
-<?php require('views/inc/footer.phtml');
-?>
-</body>
-
-</html>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 require 'notifications.php';
 
 if (!isset($_SESSION['user'])) {
@@ -13,8 +12,8 @@ if (!empty($_POST)) {
         isset($_POST['mail']) && isset($_POST['ville'])
         && !empty($_POST['mail'] && !empty($_POST['ville']))
     ) {
-        require 'bdconnect.php';
-        require 'user.php';
+        require ('bdconnect.php');
+        require(ROOT .'/libraries/models/usermodel.php');
 
         $mail = htmlspecialchars($_POST['mail']);
         $ville = htmlspecialchars($_POST['ville']);
@@ -36,5 +35,6 @@ if (!empty($_POST)) {
         exit();
     }
 }
+$template = 'editprofil.phtml';
 
-require('views/editprofil.phtml');
+require('views/layout.phtml');
