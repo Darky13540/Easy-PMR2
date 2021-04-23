@@ -1,6 +1,5 @@
 <?php
-require('../notifications.php');
-session_start();
+require(ROOT.'notifications.php');
 
 if (isset($_SESSION)) {
 
@@ -10,4 +9,6 @@ if (isset($_SESSION)) {
         exit();
     }
 }
-require('../views/admin/administration.phtml');
+
+$template = 'administration.phtml';
+require(ROOT.'views/admin/layoutadmin.phtml');

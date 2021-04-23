@@ -32,7 +32,7 @@ if (!empty($_POST)) {
 
         //on redirige vers la page de profil
         addFlash('success', 'La demande de modification est bien prise en compte');
-        header("Location: profil.php");
+        header("Location: profil");
         exit();
     }
 }

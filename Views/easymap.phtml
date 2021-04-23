@@ -1,18 +1,10 @@
-<?php
-require ('views/inc/head.phtml');
-?>
-
-<?php
-require ('views/inc/header.phtml');
-?>
-
     <main class="maineasymap">
 
         <section class="filtres">
-            <form action="#" method="post">
+            <form action="easymap" method="post">
             <input type="text" name="name" >
             <input type="text" name="type" >
-            <button type="submit">OK</button>
+            <button type="submit" class="btnForm">OK/RAZ</button>
             </form>
             <?php 
             if ($count>0){
@@ -45,13 +37,9 @@ require ('views/inc/header.phtml');
                 <?php endforeach;?>
             </div>
             <div id="scroll_to_top">
-                <a href="#top"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
+                <a href="easymap#top"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
             </div>  
     </main>
-
-<?php
-require ('inc/footer.phtml');
-?>
 
     <!-- Chargement librairie JS Leaflet pour affichage de la carte -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -60,6 +48,3 @@ require ('inc/footer.phtml');
 
    <!-- Chargement JS MAP -->
     <script src="assets/js/easymap.js"></script>
-</body>
-
-</html>

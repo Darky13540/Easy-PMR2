@@ -19,14 +19,14 @@ require('inc/header.phtml');
     <?php if (isset($_SESSION['user']['role'])) :
           if ($_SESSION['user']['role'] == 1) : ?>
         <span>La chance!! Vous êtes ADMINISTRATEUR OUAISSSSS</span>
-        <a id="adm" href="admin/administration.php"><button class="btnForm">Administration</button></a>
+        <a id="adm" href="admin/administration"><button class="btnForm">Administration</button></a>
     <?php endif; ?>
     <?php endif; ?>
 
     <div class="input-group-append">
       <a href="editprofil.php"><button class="btnForm">Éditer mes informations</button></a>
       <a href="editpwd.php"><button class="btnForm">Modifier mon mot de passe</button></a>
-      <a href="deconnexion.php"><button class="btnForm">Déconnexion</button></a>
+      <a href="deconnexion"><button class="btnForm">Déconnexion</button></a>
     </div>
   </div>
 </main>

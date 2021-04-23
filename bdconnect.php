@@ -12,3 +12,4 @@ $pdo = new PDO(
    LOGIN,
    PASSWORD
 );
+

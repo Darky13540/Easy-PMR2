@@ -1,24 +1,34 @@
 <?php
 session_start();
+error_reporting(E_ALL);
+/* error_reporting(-1); */
 
-require('views/inc/head.phtml');
-require('views/inc/header.phtml');
-?>
+//Constante qui contiendra le chemin vers index.php
+define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 
-<main class="maincontainer">
-    <div class="ipsum">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis eos sapiente beatae at numquam iste repellat! Commodi temporibus possimus dolores.</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim odio, natus, doloremque perferendis numquam officiis similique eligendi expedita earum ad deserunt eius beatae, debitis illo vero delectus labore voluptatem magni.</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, aliquid!</p>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et pariatur excepturi autem neque iure laborum quasi eveniet quas, enim esse praesentium animi consequatur! Aspernatur quos cum incidunt veniam magnam architecto exercitationem, mollitia quaerat rerum ducimus, voluptatem, ullam beatae fuga. Praesentium cum error aliquam iste eum?</p>
-        <p>Lorem, ipsum dolor.</p>
-    </div>
 
-</main>
+//on sépare les paramètres passés dans l'URL
+if (isset($_GET['p'])) {
+    $path = explode('-', $_GET['p']);
 
-<?php
-require('views/inc/footer.phtml');
-?>
-</body>
+    if ($path[0] != "") {
+        $controller = $path[0];
 
-</html>
+        //on construit le chemin à appeler pour charger le controlleur
+        if (file_exists('libraries/controllers/' . $controller . '.php')) {
+            require(ROOT . 'libraries/controllers/' . $controller . '.php');
+        } else {
+            //sinon rediriger vers la page d'erreur
+            header('Location: page404.php');
+            die();
+        }
+    } else {
+        //si $path=null on affiche l'accueil
+        $template = 'accueil.phtml';
+        require('views/layout.phtml');
+    }
+} else {
+    //si $_GET['p'] n'existe pas on affiche la page d'accueil
+    $template = 'accueil.phtml';
+    require('views/layout.phtml');
+}

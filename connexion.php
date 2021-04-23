@@ -61,8 +61,11 @@ if (!empty($_POST)) {
 
       //on redirige vers la page de profil
       addFlash('success', 'Bienvenue sur votre page de profil');
-      header('Location: profil.php');
+      header('Location: profil');
       exit();
    }
 }
-require 'views/connexion.phtml';
+
+$template = 'connexion.phtml';
+
+require 'views/layout.phtml';
