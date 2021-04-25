@@ -1,5 +1,40 @@
 <?php
+const SECRETKEY = 'mysecretkey1234';
+require ('bdconnect.php');
+//déclaration des functions
 
+/**
+ * Permet de retourner le mot de passe encrypté, passé en argument
+ *
+ * @param [type] $pass
+ * /* @return string */
+
+function cryptPassword($pass)
+{
+    /* hashage MDP le mot de passe */
+    return openssl_encrypt($pass, "AES-128-ECB", SECRETKEY);
+}
+
+/**
+ * Permet de comparer un mot passe en clair et un mot de passe crypté
+ *  renvoie true si ils sont égaux, false si c'est pas le cas
+ *
+ * @param [type] $pass
+ * @param [type] $pass_hash
+ * /* @return bool */
+
+function verifPassword($pass, $pass_hash)
+{
+    //vérifier le mot de passe
+    //https://www.php.net/manual/fr/function.openssl-decrypt
+
+
+    if ($pass === openssl_decrypt($pass_hash, "AES-128-ECB", SECRETKEY)) {
+        return true;
+    }
+
+    return false;
+}
 /**
  * Permet de vérifier si l'email est déjà dans la BDD
  *
@@ -11,7 +46,7 @@ function getUserFromEmail(PDO $pdo, string $email)
 {
     //prepare la requête
     $query = $pdo->prepare('
-    SELECT id, mail, password
+    SELECT id, mail, password, role, ville, pseudo
     FROM users 
     WHERE mail = ? LIMIT 1');
 
@@ -41,6 +76,24 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
 
     return $query->fetch(PDO::FETCH_ASSOC);
 }
+
+/**
+ * Permet de rechercher l'user par son Id
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @return array
+ */
+function getUserFromId(PDO $pdo, int $id){
+    //prepare la requête
+    $query = $pdo->prepare('SELECT password FROM users WHERE id = ? LIMIT 1');
+
+    //executer la requête
+    $query->execute([$id]);
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
 
 /**
  * Permet d'insérer un nouvel utilisateur dans la BDD

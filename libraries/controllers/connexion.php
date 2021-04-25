@@ -4,29 +4,21 @@ if (isset($_SESSION['user'])) {
    header("Location: profil");
    exit();
 };
-require 'notifications.php';
+require(ROOT . '/libraries/models/notificationsmodel.php');
 
 if (!empty($_POST)) {
    if (
       isset($_POST['mail']) && isset($_POST['password'])
       && !empty($_POST['mail'] && !empty($_POST['password']))
    ) {
-      require(ROOT .'/libraries/models/functionpassmodel.php');
-      require ('bdconnect.php');
+   
       require(ROOT .'/libraries/models/usermodel.php');
 
 
 
       /*Préparation pour vérification des informations de connexion*/
 
-      //preparer la requête
-
-      $query = $pdo->prepare('SELECT id, pseudo, password, mail, ville, role FROM users WHERE mail = ? LIMIT 1');
-
-      //executer la requête
-      $query->execute([$_POST['mail']]);
-
-      $user = $query->fetch(PDO::FETCH_ASSOC);
+      $user = getUserFromEmail($pdo, $_POST['mail']);
 
       //test si l'email n'existe pas -> retour sur la page de connexion
       if (!$user) {

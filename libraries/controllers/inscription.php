@@ -1,31 +1,28 @@
 <?php
-session_start();
 if (isset($_SESSION['user'])) {
         header("Location: profil");
         exit();
 }
+require(ROOT . '/libraries/models/notificationsmodel.php');
 
 //tester si les champs sont vides
-require 'notifications.php';
 
 if (isset($_POST)) {
         if (isset($_POST['pseudo']) && isset($_POST['mail']) && isset($_POST['password']) && isset($_POST['password2']) && isset($_POST['ville'])) {
                 // tester si les 2 mots de passe ont bien la même valeur
                 if ($_POST['password'] != $_POST['password2']) {
                         addFlash('error', 'Les mots de passe saisis ne correspondent pas');
-                        header('Location: inscription.php');
+                        header('Location: inscription');
                         exit();
                 }
 
                 //tester l'email (format)
                 if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
                         addFlash('error', 'Le mail n\'est pas valide');
-                        header('Location: inscription.php');
+                        header('Location: inscription');
                         exit();
                 }
 
-                require('libraries/models/functionpassmodel.php');
-                require 'bdconnect.php';
                 require('libraries/models/usermodel.php');
 
                 $user = getUserFromEmail($pdo, $_POST['mail']);
@@ -33,7 +30,7 @@ if (isset($_POST)) {
                 //test si l'email n'existe pas dans la base de données
                 if ($user) {
                         addFlash('error', 'Vous êtes déjà inscrit');
-                        header('Location: connexion.php');
+                        header('Location: connexion');
                         exit();
                 }
 
@@ -42,7 +39,7 @@ if (isset($_POST)) {
                 //test si le pseudo n'existe pas dans la base de données
                 if ($pseudo) {
                         addFlash('error', 'Ce pseudo est déjà utilisé, merci d\'en choisir un autre');
-                        header('Location: inscription.php');
+                        header('Location: inscription');
                         exit();
                 }
 
@@ -71,4 +68,7 @@ if (isset($_POST)) {
                 exit();
         }
 };
-require 'views/inscription.phtml';
+
+$template = 'inscription.phtml';
+
+require 'views/layout.phtml';

@@ -1,5 +1,5 @@
 <?php
-require 'notifications.php';
+require(ROOT . '/libraries/models/notificationsmodel.php');
 
 if (!isset($_SESSION['user'])) {
     addFlash('error', 'Vous devez d\'abord vous connecter');

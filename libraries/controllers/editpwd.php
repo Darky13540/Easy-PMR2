@@ -1,5 +1,5 @@
 <?php
-require 'notifications.php';
+require(ROOT . '/libraries/models/notificationsmodel.php');
 
 if (isset($_POST)) {
     if (isset($_POST['password']) && isset($_POST['password2'])) {
@@ -10,19 +10,9 @@ if (isset($_POST)) {
             die();
         }
 
-        require(ROOT .'/libraries/models/functionpassmodel.php');
-        require('bdconnect.php');
-        require(ROOT .'/libraries/models/usermodel.php');
+        require(ROOT . '/libraries/models/usermodel.php');
 
-
-        $query = $pdo->prepare('SELECT password FROM users WHERE id = ? LIMIT 1');
-
-        //executer la requête
-        $query->execute([$_SESSION['user']['id']]);
-
-        $user = $query->fetch(PDO::FETCH_ASSOC);
-
-
+        $user = getUserFromId($pdo, $_SESSION['user']['id']);
 
         /* si le user existe, on vérifie le MDP */
         if (!verifPassword($_POST['password3'], $user['password'])) {

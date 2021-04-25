@@ -11,7 +11,7 @@
                         <li><a href="easymap" title="carte des lieux">Map</a></li>
                         <li><a href="contacts.html" title="contact">Contact</a></li>
                         <?php if (!isset($_SESSION["user"])) : ?>
-                            <li><a href="inscription.php" title="inscription">Inscription</a></li>
+                            <li><a href="inscription" title="inscription">Inscription</a></li>
                             <li><a href="connexion" title="connexion">Connexion</a></li>
                         <?php else : ?>
                             <li><a href="profil" title="profil">Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></a></li>

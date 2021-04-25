@@ -1,7 +1,3 @@
-<?php
-require('inc/head.phtml');
-require('inc/header.phtml');
-?>
 <main class="inscriptionContainer">
 
 	<!-- notifications   -->
@@ -15,7 +11,7 @@ require('inc/header.phtml');
 	<div class="formulaire">
 		<fieldset>
 			<legend>Merci de compléter les informations demandées pour vous inscrire. <span>Attention, vous ne pourrez plus modifier votre pseudo</span></legend>
-			<form role="form" action="inscription.php" method="POST" class="formulaire">
+			<form role="form" action="inscription" method="POST" class="formulaire">
 				<div class="form-group">
 					<label for="mail"><i class="fas fa-user"></i>
 					<input type="text" name="pseudo" id="pseudo" class="form-control input-sm" placeholder="Votre Pseudo" required>
@@ -47,10 +43,3 @@ require('inc/header.phtml');
 		</div>
 	</div>
 </main>
-
-<?php
-require('inc/footer.phtml');
-?>
-
-</body>
-</html>

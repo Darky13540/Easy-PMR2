@@ -1,5 +1,5 @@
 <?php
-require(ROOT.'notifications.php');
+require(ROOT . 'libraries/models/notificationsmodel.php');
 
 if (isset($_SESSION)) {
 
@@ -9,6 +9,9 @@ if (isset($_SESSION)) {
         exit();
     }
 }
+        addFlash('success', 'Bienvenue dans votre espace d\'administration');
+
 
 $template = 'administration.phtml';
+
 require(ROOT.'views/admin/layoutadmin.phtml');
