@@ -9,9 +9,9 @@ if (isset($_SESSION)) {
         exit();
     }
 }
-        addFlash('success', 'Bienvenue dans votre espace d\'administration');
+addFlash('success', 'Bienvenue dans votre espace d\'administration');
 
 
 $template = 'administration.phtml';
 
-require(ROOT.'views/admin/layoutadmin.phtml');
+require(ROOT . 'views/admin/layoutadmin.phtml');

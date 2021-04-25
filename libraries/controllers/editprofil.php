@@ -12,8 +12,8 @@ if (!empty($_POST)) {
         isset($_POST['mail']) && isset($_POST['ville'])
         && !empty($_POST['mail'] && !empty($_POST['ville']))
     ) {
-        require ('bdconnect.php');
-        require(ROOT .'/libraries/models/usermodel.php');
+        require('bdconnect.php');
+        require(ROOT . '/libraries/models/usermodel.php');
 
         $mail = htmlspecialchars($_POST['mail']);
         $ville = htmlspecialchars($_POST['ville']);

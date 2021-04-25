@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Permet d'ajouter une notification dans $_SESSION['messages']
+ * Permet de créer une notification dans $_SESSION['messages']
  *
  * @param string $type
  * @param string $message
