@@ -11,18 +11,17 @@ define('ROOT', str_replace('index.php', '', $_SERVER['SCRIPT_FILENAME']));
 if (isset($_GET['p'])) {
     $path = explode('?', $_GET['p']);
 
-    if ($path[0] != "" ){
+    if ($path[0] != "") {
         $controller = $path[0];
 
-            //on construit le chemin à appeler pour charger le controlleur
-            if (file_exists('libraries/controllers/' . $controller . '.php')) {
+        //on construit le chemin à appeler pour charger le controlleur
+        if (file_exists('libraries/controllers/' . $controller . '.php')) {
             require(ROOT . 'libraries/controllers/' . $controller . '.php');
         } else {
             //sinon rediriger vers la page d'erreur
-            header('Location: page404.php');
+            require(ROOT . 'page404.php');
             die();
         }
-          
     } else {
         //si $path=null on affiche l'accueil
         $template = 'accueil.phtml';

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Permet d'ajouter une notification
+ * Permet d'ajouter une notification dans $_SESSION['messages']
  *
  * @param string $type
  * @param string $message
@@ -18,7 +18,7 @@ function addFlash(string $type, string $message)
 }
 
 /**
- * Permet de récupérer la notification
+ * Permet de récupérer la notification depuis $_SESSION['messages']
  *
  * @param string $type
  * @return array
@@ -30,7 +30,6 @@ function getFlashes(string $type): array
     }
 
     $messages = $_SESSION['messages'][$type];
-
     $_SESSION['messages'][$type] = [];
 
     return $messages;

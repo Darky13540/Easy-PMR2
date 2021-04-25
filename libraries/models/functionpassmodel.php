@@ -5,7 +5,7 @@ const SECRETKEY = 'mysecretkey1234';
 //déclaration des functions
 
 /**
- * va retourner le mot de passe encrypté, passé en argument
+ * Permet de retourner le mot de passe encrypté, passé en argument
  *
  * @param [type] $pass
  * /* @return string */
@@ -17,7 +17,7 @@ function cryptPassword($pass)
 }
 
 /**
- * va comparer un mot passe en clair et un mot de passe crypté
+ * Permet de comparer un mot passe en clair et un mot de passe crypté
  *  renvoie true si ils sont égaux, false si c'est pas le cas
  *
  * @param [type] $pass
