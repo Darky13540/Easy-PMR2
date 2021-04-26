@@ -19,7 +19,8 @@ body {
 
 main {
     max-width: 1400px;
-    margin: 0 2rem;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 h1 {
@@ -622,8 +623,47 @@ fieldset span {
 /**************************
         Main Index
 **************************/
+.maincontainer img{
+    max-width: 60%;
+    border: 2px solid rgb(22, 177, 227);
+    border-radius: 4px;
+}
 
+.image{
+    text-align: center;
+}
 
+.maincontainer figure{
+    display: block;
+}
+
+.maincontainer figcaption{
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.maincontainer a{
+    text-decoration: none;
+}
+
+.maincontainer a:hover{
+    color: rgb(22, 177, 227);
+    font-size: 2rem;
+}
+
+.maincontainer a:visited{
+    color: rgb(22, 177, 227);
+}
+
+.maincontainer span{
+    font-weight: bold;
+    font-size: 2rem;
+    color:rgb(22, 177, 227)
+}
+
+.center{
+    text-align: center;
+}
 
 
 /**************************
@@ -681,6 +721,15 @@ fieldset span {
 /**************************
         Main profil
 **************************/
+.profil {
+    display: grid;
+    grid-template-columns: 2fr 9fr;
+}
+
+.homeProfil {
+    padding: 0 2rem;
+    margin: 0 auto;
+}
 
 
 /**************************
@@ -696,10 +745,6 @@ fieldset span {
 /**************************
         Main adminContainer
 **************************/
-/* .adminContainer{
-    text-align: justify;
-} */
-
 .homeAdmin {
     padding: 0 2rem;
     
@@ -711,17 +756,19 @@ fieldset span {
 **************************/
 .adminPanel {
     display: grid;
-    grid-template-columns: 1fr 9fr;
+    grid-template-columns: 2fr 9fr;
 }
 
 .sidenav {
     position: static;
     top: 10vh;
     left: 0;
+    max-width: 30rem;
     float: left;
-    max-width: 20rem;
     background-color: white;
-    border-right: 2px solid rgb(22, 177, 227);  
+    border-right: 2px solid rgb(22, 177, 227);
+    font-size: 1.3rem;
+    padding-right: 2rem;  
 }
 
 .sidenav a {
@@ -729,7 +776,6 @@ fieldset span {
     text-decoration: none;
     color: black;
     display: block;
-    max-width: 150px;
     text-align: center;
     margin: 0.2rem;
 }
@@ -740,6 +786,7 @@ fieldset span {
     color: white;
     border-radius: 4px;
 }
+
 
 /**************************
         Footer
@@ -817,7 +864,7 @@ fieldset span {
         margin-bottom: 6rem;
     }
 
-    .unstyled {
+    #links {
         display: flex;
         flex-direction: row;
     }

@@ -23,8 +23,8 @@ function getAllPoi(PDO $pdo)
  */
 function getPoiByName(PDO $pdo, string $name)
 {
-    $reponse = $pdo->prepare("SELECT * FROM shop WHERE name= :name");
-    $reponse->execute([':name' => $name]);
+    $reponse = $pdo->prepare('SELECT * FROM shop WHERE name LIKE ?');
+    $reponse->execute(['%' .$name. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
 }
@@ -38,8 +38,8 @@ function getPoiByName(PDO $pdo, string $name)
  */
 function getPoiByType(PDO $pdo, string $type)
 {
-    $reponse = $pdo->prepare("SELECT * FROM shop WHERE type= :type");
-    $reponse->execute([':type' => $type]);
+    $reponse = $pdo->prepare("SELECT * FROM shop WHERE type LIKE ?");
+    $reponse->execute(['%' .$type. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
 }
@@ -54,8 +54,8 @@ function getPoiByType(PDO $pdo, string $type)
  */
 function getPoiByTypeName(PDO $pdo, string $type, string $name)
 {
-    $reponse = $pdo->prepare("SELECT * FROM shop WHERE type= :type AND name= :name");
-    $reponse->execute([':type' => $type, ':name' => $name]);
+    $reponse = $pdo->prepare("SELECT * FROM shop WHERE type LIKE ? AND name LIKE ?");
+    $reponse->execute(['%' .$type. '%', '%' .$name. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
 }
