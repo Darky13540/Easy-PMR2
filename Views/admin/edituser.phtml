@@ -1,0 +1,44 @@
+<section class="edituser">
+    <h2> Edition utilisateur</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Admin</th>
+                <th>Définir Admin?</th>
+                <th colspan="2">Actions</th>                
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><?= htmlspecialchars($user['id']) ?></td>
+                <td><?= htmlspecialchars($user['pseudo']) ?></td>
+                <td><?php
+                    if (intval($user['role']) == 1) :
+                        echo 'Oui';
+                    else :
+                        echo 'Non';
+                    endif;
+                    ?>
+                    </td>
+                <td>
+                    <form action="admin/edituser?id=<?= $user['id'] ?>" method="post">
+                        <select name="role" id="selectrole">
+                            <option value="1">Oui</option>
+                            <option value="0" selected>Non</option>
+                        </select>
+                </td>
+                <td>
+                <button class="btnForm" type="submit">Modifier</button>
+                <button class="btnFormDelete" type="submit" name="delete" value="delete">Supprimer</button>
+                </td>
+            </form>
+            <a href="admin/useradmin" class="btnForm">Retour</a>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</section>
+</main>

@@ -1,0 +1,43 @@
+<section class="homeAdminUser">
+    <h2>Utilisateurs</h2>
+    <p>Ici vous pouvez modifier le rôle de chaque utilisateur ou le supprimer</p>
+    <form action="admin/useradmin" method="post">
+            <input type="text" name="pseudo" placeholder="Pseudo user">
+            <button type="submit" class="btnForm">OK/RAZ</button>
+            <?php 
+            if ($count == 0){
+                echo "<p>Il n'y a pas de résultat à votre recherche</p>";
+            }
+            ?>
+        </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Pseudo</th>
+                <th>Admin</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($users as $user) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($user['id']) ?></td>
+                    <td><?= htmlspecialchars($user['pseudo']) ?></td>
+                    <td><?php
+                        if (intval($user['role']) == 1) :
+                            echo 'Oui';
+                        else :
+                            echo 'Non';
+                        endif;
+                        ?>
+                    </td>
+                    <td><a href="admin/edituser?id=<?=$user['id'] ?>" class="btnForm">Modifier</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    </div>
+</section>
+</section>
+</main>

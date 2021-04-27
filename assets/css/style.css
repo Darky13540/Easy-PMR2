@@ -100,25 +100,6 @@ h1 {
 
 }
 
-/* #hamburger-sidebar-body li:before {
-    content: '';
-    display : inline-block;
-    vertical-align: middle;
-    width: 2.4rem;
-    height: 2.4rem;
-    margin-right: 1.6rem;
-    margin-bottom: 0.4rem;
-    border-radius: 30%;
-}
-
-#hamburger-sidebar-body li:first-child:before{
-    background-image: url(../img/icons/homemini.png) cover;
-}
-
-#hamburger-sidebar-body li:nth-child(2):before{
-    background-image: url(../img/icons/mapmini.png);
-} */
-
 #hamburger-sidebar-body {
     float: none;
 }
@@ -134,7 +115,6 @@ h1 {
 }
 
 /* Header */
-/* OK */
 header {
     display: flex;
     justify-content: space-between;
@@ -161,7 +141,6 @@ header nav li {
 
 }
 
-/* OK */
 header li a {
     text-decoration: none;
     color: black;
@@ -211,13 +190,31 @@ fieldset span {
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
-    font-size: 14px;
-    line-height: 1.42857143;
+    font-size: 1.4rem;
     border-radius: 4px;
     color: #fff;
     background-color: rgba(22, 177, 227, 0.7);
-    border-color: rgb(22, 60, 227);
+    border: rgb(22, 60, 227) 2px solid;
 }
+
+.btnFormDelete {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    color: #fff;
+    background-color: rgba(227, 22, 22, 0.7);
+    border: rgb(245, 6, 6) 2px solid;
+}
+
 
 .btnForm a {
     text-decoration: none;
@@ -552,7 +549,7 @@ fieldset span {
 
 
 /**************************
-        erreur 404
+        Erreur 404
 **************************/
 
 .erreur404{
@@ -621,7 +618,7 @@ fieldset span {
     max-width: 100%;
 }
 /**************************
-        Main Index
+        Index
 **************************/
 .maincontainer img{
     max-width: 60%;
@@ -646,6 +643,12 @@ fieldset span {
     text-decoration: none;
 }
 
+.maincontainer button{
+    display: block;
+    margin: 4rem auto;
+}
+
+
 .maincontainer a:hover{
     color: rgb(22, 177, 227);
     font-size: 2rem;
@@ -661,13 +664,13 @@ fieldset span {
     color:rgb(22, 177, 227)
 }
 
-.center{
+#center{
     text-align: center;
 }
 
 
 /**************************
-        Main EasyMap
+        Map
 **************************/
 #mapid {
     height: 40vh;
@@ -702,82 +705,68 @@ fieldset span {
 }
 
 /**************************
-        Main details
+        POI
 **************************/
 
 
 
 /**************************
-        Main inscription
+        profil
 **************************/
 
-
-
-/**************************
-        Main connexion
-**************************/
-
-
-/**************************
-        Main profil
-**************************/
-.profil {
-    display: grid;
-    grid-template-columns: 2fr 9fr;
+/*Profil*/
+.profil{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .homeProfil {
-    padding: 0 2rem;
+    padding: 0 1rem;
     margin: 0 auto;
 }
 
-
-/**************************
-        Main EditProfil
-**************************/
-
-
-/**************************
-        Main EditPwd
-**************************/
-
-
-/**************************
-        Main adminContainer
-**************************/
-.homeAdmin {
-    padding: 0 2rem;
-    
-    margin: 0 auto;
+/*Edit profil*/
+.editProfil{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-/**************************
-        Admin Side nav
-**************************/
-.adminPanel {
+/*Edit pwd*/
+.editpwd{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*Profil navbar*/
+.sidenav{
     display: grid;
-    grid-template-columns: 2fr 9fr;
+    grid-template-columns: 1fr;
+    margin-bottom: 2rem;
+    border-bottom: solid 2px rgb(22, 177, 227);
+    border-right: none;
 }
 
-.sidenav {
-    position: static;
-    top: 10vh;
-    left: 0;
-    max-width: 30rem;
-    float: left;
-    background-color: white;
-    border-right: 2px solid rgb(22, 177, 227);
-    font-size: 1.3rem;
-    padding-right: 2rem;  
-}
-
-.sidenav a {
-    padding: 2rem 0.5rem;
+.sidenav a{
     text-decoration: none;
-    color: black;
-    display: block;
+    font-size: 1.6rem;
+    padding: 1rem;
     text-align: center;
-    margin: 0.2rem;
+}
+
+.sidenav a:visited { 
+    color: black;
 }
 
 .sidenav a:hover {
@@ -787,6 +776,56 @@ fieldset span {
     border-radius: 4px;
 }
 
+/**************************
+        Admin
+**************************/
+
+/*Admin*/
+.homeAdmin {
+    padding: 0 2rem;
+    margin: 0 auto;
+    
+}
+
+/*User*/
+.homeAdminUser {
+    padding: 0 2rem;
+    margin: 0 auto; 
+    text-align: center;
+ 
+}
+
+.homeAdminUser table, th, td{
+    text-align: center;
+    border: 2px solid rgb(22, 177, 227);
+    border-collapse: collapse;
+}
+
+.homeAdminUser table{
+    margin: 2rem auto;
+}
+
+/*Edit User*/
+.edituser table, th, td{
+    text-align: center;
+    border: 2px solid rgb(22, 177, 227);
+    border-collapse: collapse;
+    padding: 0.5rem;
+}
+
+.edituser table{
+    margin: 2rem auto;
+}
+
+/*Admin navbar*/
+.adminPanel{
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 /**************************
         Footer
@@ -847,12 +886,57 @@ fieldset span {
     .footer a {
         padding: 2rem;
     }
+
+    .sidenav {
+        font-size: 1.6rem;  
+    }
 }
 
 /* Tablette */
 @media only screen and (min-width: 768px) {
     .item {
         width: 30%;
+    }
+
+    .editProfil {
+        display: grid;
+        grid-template-columns: 2fr 9fr;
+    }
+
+    .adminPanel {
+        display: grid;
+        grid-template-columns: 2fr 9fr;
+    }
+
+    .profil {
+        display: grid;
+        grid-template-columns: 2fr 9fr;
+    }
+
+    .editpwd {
+        display: grid;
+        grid-template-columns: 2fr 9fr;
+    }
+    
+    .sidenav {
+        position: static;
+        top: 0;
+        left: 0;
+        max-width: 20rem;
+        background-color: white;
+        border-right: 2px solid rgb(22, 177, 227);
+        border-bottom: none;
+        font-size: 1.6rem;
+        padding-right: 2rem;  
+    }
+    
+    .sidenav a {
+        padding: 2rem 0.5rem;
+        text-decoration: none;
+        color: black;
+        display: block;
+        text-align: center;
+        margin: 0.2rem;
     }
 
     .footercontainer {

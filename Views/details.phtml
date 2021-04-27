@@ -3,7 +3,7 @@
     <h1>Détails du lieu</h1>
     <div class="identite">
         <section class="identite">
-            <h1><?= $details['name']; ?></h1>
+            <h1><?= htmlspecialchars($details['name']); ?></h1>
 
             <button class="btnForm"><a href="easymap">Retour à la carte</a></button>
         </section>

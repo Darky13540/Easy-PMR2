@@ -67,14 +67,14 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
 {
     //prepare la requête
     $query = $pdo->prepare('
-    SELECT id, pseudo, password
+    SELECT id, pseudo, password, role
     FROM users 
     WHERE pseudo = ? LIMIT 1');
 
     //execute la requête
     $query->execute([$pseudo]);
 
-    return $query->fetch(PDO::FETCH_ASSOC);
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }
 
 /**
@@ -86,7 +86,7 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
  */
 function getUserFromId(PDO $pdo, int $id){
     //prepare la requête
-    $query = $pdo->prepare('SELECT password FROM users WHERE id = ? LIMIT 1');
+    $query = $pdo->prepare('SELECT id, pseudo, role, password FROM users WHERE id = ? LIMIT 1');
 
     //executer la requête
     $query->execute([$id]);
@@ -94,6 +94,21 @@ function getUserFromId(PDO $pdo, int $id){
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
+/**
+ * Permet de récupérer l'ensemble des users
+ *
+ * @param PDO $pdo
+ * @return void
+ */
+function getAllUsers(PDO $pdo){
+    //prepare la requête
+    $query = $pdo->prepare('SELECT id, pseudo, role FROM users');
+
+    //executer la requête
+    $query->execute();
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+}
 
 /**
  * Permet d'insérer un nouvel utilisateur dans la BDD
@@ -165,4 +180,38 @@ function updatePwd(PDO $pdo, string $pwd_crypted, int $userId)
 
     //executer la requête
     $query->execute([$pwd_crypted, $userId]);
+}
+
+/**
+ * Permet de changer le role du user
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @param integer $role
+ * @return void
+ */
+function changeRole(PDO $pdo, int $id, int $role)
+{
+
+    //prepare la requête
+    $query = $pdo->prepare('
+    UPDATE users
+    SET role = ? 
+    WHERE id = ? LIMIT 1');
+
+    //execute la requête
+    $query->execute([$role, $id]);
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+function deleteUser(PDO $pdo, int $id){
+    //prepare la requête
+    $query = $pdo->prepare('
+    DELETE FROM users 
+    WHERE id = ? LIMIT 1');
+    //execute la requête
+    $query->execute([$id]);
+
+    $query->fetch(PDO::FETCH_ASSOC);
 }

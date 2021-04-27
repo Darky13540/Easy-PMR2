@@ -5,28 +5,31 @@
   require 'inc/notifications.phtml';
   ?>
 
-  <!--Formulaire d'inscription'-->
   <h1>Page de profil</h1>
-  <div class="profil">
+  <section class="profil">
     <nav class="sidenav">
-      <a href="editprofil">Éditer mes informations</a>
-      <a href="admin/poiadmin.php">Modifier mon mot de passe</a>
-      <?php if (isset($_SESSION['user']['role'])) :
-        if ($_SESSION['user']['role'] == 1) : ?>
-          <a href="admin/administration">Administration</a>
-        <?php endif; ?>
-      <?php endif; ?>
-      <a href="deconnexion">Déconnexion</a>
-    </nav>
+          <a href="profil">Retour au profil</a>
+          <a href="editprofil">Éditer mes informations</a>
+          <a href="editpwd">Modifier mon mot de passe</a>
+          <?php if (isset($_SESSION['user']['role'])) :
+              if ($_SESSION['user']['role'] == 1) : ?>
+            <a href="admin/administration">Administration</a>
+          <?php endif; ?>
+          <?php endif; ?>
+          <a href="deconnexion">Déconnexion</a>
+      </nav>
     <div class="homeProfil">
-      <span>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></span> <br />
-      <span>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></span> <br />
-      <span>Vous habitez : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></span> <br />
-      <?php if (isset($_SESSION['user']['role'])) :
-        if ($_SESSION['user']['role'] == 1) : ?>
-          <span>Vous êtes Administrateur</span>
+        <p>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?>, voici votre page de profil, vous pouvez modifier votre profil grâce au panel sur la gauche</p>
+        <p>Vos informations actuelles :</p>
+          <ul>
+            <li>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></li>
+            <li>Votre ville de résidence actuelle est : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></li>
+          <?php if (isset($_SESSION['user']['role'])) :
+                 if ($_SESSION['user']['role'] == 1) : ?>
+            <li>Vous êtes Administrateur</li>
+         <?php endif; ?>
         <?php endif; ?>
-      <?php endif; ?>
-    </div>
-  </div>
+          </ul>
+     </div>
+</section>
 </main>

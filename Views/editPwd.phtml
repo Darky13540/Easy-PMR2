@@ -5,8 +5,20 @@
     ?>
     <!--Formulaire de connexion-->
     <h1>Edition de votre mot de passe</h1>
-    <div class="formulaire">
-        <fieldset>
+    <section class="editpwd">
+        <nav class="sidenav">
+            <a href="profil">Retour au profil</a>
+            <a href="editprofil">Éditer mes informations</a>
+            <a href="editpwd">Modifier mon mot de passe</a>
+            <?php if (isset($_SESSION['user']['role'])) :
+                if ($_SESSION['user']['role'] == 1) : ?>
+                <a href="admin/administration">Administration</a>
+            <?php endif; ?>
+            <?php endif; ?>
+            <a href="deconnexion">Déconnexion</a>
+        </nav>
+        <div>
+        <fieldset class="formulaire">
             <legend>Merci de remplir les informations à modifier.</legend>
             <form role="form" action="editpwd" method="POST" class="formulaire">
                 <div class="form-group">
@@ -27,5 +39,6 @@
                 </div>
             </form>
         </fieldset>
-    </div>
+        </div>
+    </section>
 </main>
