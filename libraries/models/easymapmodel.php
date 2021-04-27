@@ -69,7 +69,10 @@ function getPoiByTypeName(PDO $pdo, string $type, string $name)
  */
 function getPoiById(PDO $pdo, string $id)
 {
-    $reponse = $pdo->prepare("SELECT name FROM shop WHERE id= :id");
+    $reponse = $pdo->prepare("
+    SELECT name, id, lat, longitude, typeId, cp, commune 
+    FROM shop 
+    WHERE id= :id");
     $reponse->execute([':id' => $id]);
     $details = $reponse->fetch(PDO::FETCH_ASSOC);
     return $details;

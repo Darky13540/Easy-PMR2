@@ -11,14 +11,10 @@ if (isset($_SESSION)) {
     }
 }
 
-if (isset($_POST['name'])) {
-    $poi = getPoiByName($pdo, $_POST['name']);
-} else {
-    $poi = getAllPoi($pdo);
-}
+$shop = getPoiById($pdo, $_GET['id']);
 
-$count = count($poi);
-
-$template = 'poiadmin.phtml';
+$template = 'editpoi.phtml';
 
 require(ROOT . 'views/admin/layoutadmin.phtml');
+
+

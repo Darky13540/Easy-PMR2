@@ -1,0 +1,50 @@
+<section class="editpoi">
+    <h2> Edition d'un P.O.I.</h2>
+        <form action="admin/editpoi" method="post">
+            <fieldset>  
+                <legend>Modifiez les informations nécessaires</legend>
+                <div class="form-group">
+                    <label for="name">Nom</label>       
+                    <input class=" inputpoi" type="text" name="name" value="<?=htmlspecialchars($shop['name'])?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="lat">Latitude</label>       
+                    <input class=" inputpoi" type="text" name="lat" value="<?=floatval($shop['lat'])?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Latitude</label>       
+                    <input class=" inputpoi" type="text" name="longitude" value="<?=floatval($shop['longitude'])?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type</label>       
+                    <input class=" inputpoi" type="text" name="type" value="<?=htmlspecialchars($shop['typeId'])?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse</label>       
+                    <input class=" inputpoi" type="text" name="adresse"  required>
+                </div>
+                <div class="form-group">
+                    <label for="cp">Cp</label>
+                    <input type="text" class="inputpoi" name="cp" value="<?=intval($shop['cp'])?>" required>                   
+                </div>
+                <div class="form-group">
+                    <label for="cp">Ville</label>
+                    <input type="text" class="inputpoi" name="commune" value="<?=htmlspecialchars($shop['commune'])?>" required>                   
+                </div>
+                
+        
+        
+        
+            </fieldset> 
+        </br>
+                <button class="btnForm" type="submit">Modifier</button>
+                <button class="btnFormDelete" type="submit" name="delete" value="delete">Supprimer</button>
+                </td>
+            </form>
+            <a href="admin/poiadmin" class="btnForm">Retour</a>
+            </tr>
+        </tbody>
+    </table>
+</section>
+</section>
+</main>

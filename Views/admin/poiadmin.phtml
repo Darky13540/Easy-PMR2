@@ -4,13 +4,18 @@
     <form action="admin/poiadmin" method="post">
             <input type="text" name="name" placeholder="Nom lieu">
             <button type="submit" class="btnForm">OK/RAZ</button>
+            <?php 
+            if ($count == 0){
+                echo "<p>Il n'y a pas de résultat à votre recherche</p>";
+            }
+            ?>
     </form>
     <table>
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Type</th>
                 <th>Nom</th>
+                <th>Type</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -18,8 +23,8 @@
             <?php foreach ($poi as $item) : ?>
                 <tr>
                     <td><?= intval($item['id']) ?></td>
-                    <td><?= htmlspecialchars($item['type']) ?></td>
                     <td><?= htmlspecialchars($item['name']) ?></td>
+                    <td><?= htmlspecialchars($item['typeId']) ?></td>
                     <td><a href="admin/editpoi?id=<?=$item['id'] ?>" class="btnForm">Modifier</a></td>
                 </tr>
             <?php endforeach; ?>

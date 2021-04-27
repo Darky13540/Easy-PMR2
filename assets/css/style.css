@@ -223,6 +223,7 @@ fieldset span {
 
 .form-group {
     color: rgb(22, 177, 227);
+    margin: 0.5rem;
 }
 
 /**************************
@@ -756,6 +757,10 @@ fieldset span {
     margin-bottom: 2rem;
     border-bottom: solid 2px rgb(22, 177, 227);
     border-right: none;
+}
+
+.inputpoi{
+    max-width: 100%;
 }
 
 .sidenav a{

@@ -24,14 +24,14 @@
                     <div class="item js-marker"
                     id="id<?= intval($item['id']) ?>"
                     data-id="<?= htmlspecialchars($item['id']) ?>"
-                    data-type="<?= htmlspecialchars($item['type']) ?>"
+                    data-type="<?= htmlspecialchars($item['typeId']) ?>"
                     data-name="<?= htmlspecialchars($item['name']) ?>"
                     data-lat="<?= floatval($item['lat']) ?>"
                     data-long="<?= floatval($item['longitude']) ?>">
                     <a href="details?id=<?=$item['id'] ?>" title="page de détails">
                 <img src="https://fakeimg.pl/200/" alt="photo poi">
                 <h2><?= htmlspecialchars( $item['name']) ?></h2>
-                <p><?= htmlspecialchars($item['type']) ?></p>
+                <p><?= htmlspecialchars($item['typeId']) ?></p>
                 </a>
             </div>
                 <?php endforeach;?>
