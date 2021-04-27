@@ -205,6 +205,13 @@ function changeRole(PDO $pdo, int $id, int $role)
     return $query->fetch(PDO::FETCH_ASSOC);
 }
 
+/**
+ * Permet de supprimer un user de la BDD
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @return void
+ */
 function deleteUser(PDO $pdo, int $id){
     //prepare la requête
     $query = $pdo->prepare('

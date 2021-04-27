@@ -14,7 +14,7 @@
                             <li><a href="inscription" title="inscription">Inscription</a></li>
                             <li><a href="connexion" title="connexion">Connexion</a></li>
                         <?php else : ?>
-                            <li><a href="profil" title="profil">Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?></a></li>
+                            <li><a href="profil" title="profil">Profil</a></li>
                             <li><a href="deconnexion" title="déconnexion">Déconnexion</a></li>
                         <?php endif; ?>
                         <?php if (isset($_SESSION["user"]["role"])) :

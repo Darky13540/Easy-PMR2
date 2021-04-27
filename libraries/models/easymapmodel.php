@@ -61,7 +61,7 @@ function getPoiByTypeName(PDO $pdo, string $type, string $name)
 }
 
 /**
- * Permet de récupérer le POI concerné
+ * Permet de récupérer le POI concerné grâce à son id
  *
  * @param PDO $pdo
  * @param string $id
