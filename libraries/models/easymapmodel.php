@@ -9,7 +9,11 @@ require 'bdconnect.php';
  */
 function getAllPoi(PDO $pdo)
 {
-    $reponse = $pdo->query('SELECT * FROM shop');
+    $reponse = $pdo->query('
+    SELECT * 
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId
+    INNER JOIN genres ON genres.id = shops.genreId');
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
 }
@@ -23,7 +27,12 @@ function getAllPoi(PDO $pdo)
  */
 function getPoiByName(PDO $pdo, string $name)
 {
-    $reponse = $pdo->prepare('SELECT * FROM shop WHERE name LIKE ?');
+    $reponse = $pdo->prepare('
+    SELECT * 
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId
+    INNER JOIN genres ON genres.id = shops.genreId 
+    WHERE name LIKE ?');
     $reponse->execute(['%' .$name. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
@@ -38,7 +47,12 @@ function getPoiByName(PDO $pdo, string $name)
  */
 function getPoiByType(PDO $pdo, string $type)
 {
-    $reponse = $pdo->prepare("SELECT * FROM shop WHERE type LIKE ?");
+    $reponse = $pdo->prepare("
+    SELECT * 
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId 
+    INNER JOIN genres ON genres.id = shops.genreId
+    WHERE type LIKE ?");
     $reponse->execute(['%' .$type. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
@@ -54,7 +68,12 @@ function getPoiByType(PDO $pdo, string $type)
  */
 function getPoiByTypeName(PDO $pdo, string $type, string $name)
 {
-    $reponse = $pdo->prepare("SELECT * FROM shop WHERE type LIKE ? AND name LIKE ?");
+    $reponse = $pdo->prepare("
+    SELECT * 
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId 
+    INNER JOIN genres ON genres.id = shops.genreId
+    WHERE type LIKE ? AND name LIKE ?");
     $reponse->execute(['%' .$type. '%', '%' .$name. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
@@ -70,10 +89,43 @@ function getPoiByTypeName(PDO $pdo, string $type, string $name)
 function getPoiById(PDO $pdo, string $id)
 {
     $reponse = $pdo->prepare("
-    SELECT name, id, lat, longitude, typeId, cp, commune 
-    FROM shop 
-    WHERE id= :id");
+    SELECT * 
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId
+    INNER JOIN genres ON genres.id = shops.genreId
+    WHERE shops.id= :id");
     $reponse->execute([':id' => $id]);
     $details = $reponse->fetch(PDO::FETCH_ASSOC);
     return $details;
 }
+
+/**
+ * Permet de récupérer la liste des types
+ *
+ * @param PDO $pdo
+ * @return array
+ */
+function getTypes(PDO $pdo){
+    $reponse = $pdo->prepare("
+    SELECT type 
+    FROM types"); 
+    $reponse->execute();
+    $types = $reponse->fetchAll(PDO::FETCH_ASSOC);
+    return $types;
+}
+
+/**
+ * Permet de récupérer la liste des genres
+ *
+ * @param PDO $pdo
+ * @return array
+ */
+function getGenre(PDO $pdo){
+    $reponse = $pdo->prepare("
+    SELECT genre 
+    FROM genres"); 
+    $reponse->execute();
+    $genres = $reponse->fetchAll(PDO::FETCH_ASSOC);
+    return $genres;
+}
+

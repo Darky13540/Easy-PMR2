@@ -2,8 +2,28 @@
 
         <section class="filtres">
             <form action="easymap" method="post">
+            <label for="name"><i class="fas fa-search-location"></i></label>
             <input type="text" name="name" >
-            <input type="text" name="type" >
+            <input type="text" name="genre" placeholder="Magasin, lieu public...">
+            <input type="text" name="type" placeholder="Boulangerie, supermarché...">
+
+
+                <!-- idée à retenir -->
+            <!-- <select name="genre">
+            <?php foreach ($genres as $genre):?>
+            <option value="<?=ucfirst(htmlspecialchars($genre['genre']))?>"><?=ucfirst(htmlspecialchars($genre['genre']))?></option>
+
+            <?php endforeach;?>
+                    </select>
+
+                    <select name="type">
+            <?php foreach ($types as $type):?>
+            <option value="<?=ucfirst(htmlspecialchars($type['type']))?>"><?=ucfirst(htmlspecialchars($type['type']))?></option>
+
+            <?php endforeach;?>
+                    </select> -->
+
+
             <button type="submit" class="btnForm">OK/RAZ</button>
             </form>
             <?php 
@@ -21,17 +41,17 @@
             <div class="listpoi">
 
                 <?php foreach ($poi as $item): ?>
-                    <div class="item js-marker"
-                    id="id<?= intval($item['id']) ?>"
+                    <div class="item js-marker"                    
                     data-id="<?= htmlspecialchars($item['id']) ?>"
-                    data-type="<?= htmlspecialchars($item['typeId']) ?>"
+                    data-type="<?= htmlspecialchars($item['type']) ?>"
                     data-name="<?= htmlspecialchars($item['name']) ?>"
                     data-lat="<?= floatval($item['lat']) ?>"
                     data-long="<?= floatval($item['longitude']) ?>">
                     <a href="details?id=<?=$item['id'] ?>" title="page de détails">
                 <img src="https://fakeimg.pl/200/" alt="photo poi">
                 <h2><?= htmlspecialchars( $item['name']) ?></h2>
-                <p><?= htmlspecialchars($item['typeId']) ?></p>
+                <p><?= htmlspecialchars($item['type']) ?></p>
+                <p><?= htmlspecialchars($item['genre']) ?></p>
                 </a>
             </div>
                 <?php endforeach;?>
