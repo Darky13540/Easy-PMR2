@@ -6,10 +6,10 @@ require ('bdconnect.php');
 /**
  * Permet de retourner le mot de passe encrypté, passé en argument
  *
- * @param [type] $pass
+ * @param string $pass
  * /* @return string */
 
-function cryptPassword($pass)
+function cryptPassword(string $pass)
 {
     /* hashage MDP le mot de passe */
     return openssl_encrypt($pass, "AES-128-ECB", SECRETKEY);
@@ -19,11 +19,11 @@ function cryptPassword($pass)
  * Permet de comparer un mot passe en clair et un mot de passe crypté
  *  renvoie true si ils sont égaux, false si c'est pas le cas
  *
- * @param [type] $pass
- * @param [type] $pass_hash
+ * @param string $pass
+ * @param string $pass_hash
  * /* @return bool */
 
-function verifPassword($pass, $pass_hash)
+function verifPassword(string $pass, string $pass_hash)
 {
     //vérifier le mot de passe
     //https://www.php.net/manual/fr/function.openssl-decrypt
@@ -82,7 +82,7 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
  *
  * @param PDO $pdo
  * @param integer $id
- * @return array
+ * @return false ou array
  */
 function getUserFromId(PDO $pdo, int $id){
     //prepare la requête
@@ -98,7 +98,7 @@ function getUserFromId(PDO $pdo, int $id){
  * Permet de récupérer l'ensemble des users
  *
  * @param PDO $pdo
- * @return void
+ * @return array
  */
 function getAllUsers(PDO $pdo){
     //prepare la requête
@@ -171,6 +171,14 @@ function updateUser(PDO $pdo, string $mail, string $ville, int $userId)
     $query->execute([$mail, $ville, $userId]);
 }
 
+/**
+ * Permet de mettre à jour le mdp dans la bdd
+ *
+ * @param PDO $pdo
+ * @param string $pwd_crypted
+ * @param integer $userId
+ * @return void
+ */
 function updatePwd(PDO $pdo, string $pwd_crypted, int $userId)
 {
     //preparer la requête
