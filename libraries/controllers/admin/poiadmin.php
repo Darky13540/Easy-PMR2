@@ -12,7 +12,7 @@ if (isset($_SESSION)) {
 }
 
 if (isset($_POST['name'])) {
-    $poi = getPoiByName($pdo, $_POST['name']);
+    $poi = getPoiBySearch($pdo, $_POST['name']);
 } else {
     $poi = getAllPoi($pdo);
 }

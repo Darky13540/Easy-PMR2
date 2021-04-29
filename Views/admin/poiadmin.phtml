@@ -22,10 +22,10 @@
         <tbody>
             <?php foreach ($poi as $item) : ?>
                 <tr>
-                    <td><?= intval($item['id']) ?></td>
+                    <td><?= intval($item['shopId']) ?></td>
                     <td><?= htmlspecialchars($item['name']) ?></td>
                     <td><?= htmlspecialchars($item['type']) ?></td>
-                    <td><a href="admin/editpoi?id=<?=$item['id'] ?>" class="btnForm">Modifier</a></td>
+                    <td><a href="admin/editpoi?id=<?=$item['shopId'] ?>" class="btnForm">Modifier</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

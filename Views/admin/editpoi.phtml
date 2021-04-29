@@ -1,37 +1,53 @@
 <section class="editpoi">
     <h2> Edition d'un P.O.I.</h2>
-        <form action="admin/editpoi" method="post">
+        <form action="admin/editpoi?id=<?= $shop['id'] ?>" method="post">
             <fieldset>  
                 <legend>Modifiez les informations nécessaires</legend>
                 <div class="form-group">
-                    <label for="name">Nom</label>       
+                    <label for="name">Nom : </label>       
                     <input class=" inputpoi" type="text" name="name" value="<?=htmlspecialchars($shop['name'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="lat">Latitude</label>       
-                    <input class=" inputpoi" type="text" name="lat" value="<?=floatval($shop['lat'])?>" required>
+                    <label for="lat">Longitude : </label>       
+                    <input class=" inputpoi" type="text" name="longitude" value="<?=floatval($shop['lat'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="longitude">Latitude</label>       
-                    <input class=" inputpoi" type="text" name="longitude" value="<?=floatval($shop['longitude'])?>" required>
+                    <label for="longitude">Latitude : </label>       
+                    <input class=" inputpoi" type="text" name="latitude" value="<?=floatval($shop['longitude'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="type">Type</label>       
+                    <label for="genre">Genre : </label>       
+                    <input class=" inputpoi" type="text" name="genre" value="<?=htmlspecialchars($shop['genre'])?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="type">Type : </label>       
                     <input class=" inputpoi" type="text" name="type" value="<?=htmlspecialchars($shop['type'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="adresse">Adresse</label>       
-                    <input class=" inputpoi" type="text" name="adresse"  required>
+                    <label for="adresse">Adresse : </label>       
+                    <input class=" inputpoi" type="text" name="adresse" value="<?=htmlspecialchars($shop['adresse'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="cp">Cp</label>
+                    <label for="cp">Cp : </label>
                     <input type="text" class="inputpoi" name="cp" value="<?=intval($shop['cp'])?>" required>                   
                 </div>
                 <div class="form-group">
-                    <label for="cp">Ville</label>
+                    <label for="cp">Ville : </label>
                     <input type="text" class="inputpoi" name="commune" value="<?=htmlspecialchars($shop['commune'])?>" required>                   
                 </div>
-
+                <div class="form-group">
+                    <label for="opening">Horaires : </label>
+                    <input type="text" class="inputpoi" name="opening" value="<?=htmlspecialchars($shop['opening'])?>" >                   
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone : </label>
+                    <input type="text" class="inputpoi" name="phone" value="<?=htmlspecialchars($shop['phone'])?>" >                   
+                </div>
+                <div class="form-group">
+                    <label for="website">Site Web : </label>
+                    <input type="text" class="inputpoi" name="website" value="<?=htmlspecialchars($shop['website'])?>" >                   
+                </div>
+                
             </fieldset> 
         </br>
                 <button class="btnForm" type="submit">Modifier</button>

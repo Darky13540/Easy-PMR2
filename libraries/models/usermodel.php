@@ -86,7 +86,10 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
  */
 function getUserFromId(PDO $pdo, int $id){
     //prepare la requête
-    $query = $pdo->prepare('SELECT id, pseudo, role, password FROM users WHERE id = ? LIMIT 1');
+    $query = $pdo->prepare('
+    SELECT id, pseudo, role, password 
+    FROM users 
+    WHERE id = ? LIMIT 1');
 
     //executer la requête
     $query->execute([$id]);
@@ -102,7 +105,9 @@ function getUserFromId(PDO $pdo, int $id){
  */
 function getAllUsers(PDO $pdo){
     //prepare la requête
-    $query = $pdo->prepare('SELECT id, pseudo, role FROM users');
+    $query = $pdo->prepare('
+    SELECT id, pseudo, role 
+    FROM users');
 
     //executer la requête
     $query->execute();
@@ -123,7 +128,8 @@ function getAllUsers(PDO $pdo){
 function insertUser(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, string $ville)/*  */
 {
     //preparer la requête
-    $query = $pdo->prepare('INSERT INTO users (pseudo, password, mail, ville) VALUES (?, ?, ?, ?);');
+    $query = $pdo->prepare('
+    INSERT INTO users (pseudo, password, mail, ville) VALUES (?, ?, ?, ?);');
 
     //executer la requête
     $query->execute([$pseudo, $pwd_crypted, $mail, $ville]);

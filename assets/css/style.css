@@ -28,6 +28,17 @@ h1 {
     font-family: 'Kaushan Script', 'cursive';
 }
 
+input{
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid rgb(22, 177, 227);
+}
+
+label{
+    display: inline-block;
+    width: 10rem;
+}
+
 /**************************
         header
 **************************/
@@ -170,7 +181,6 @@ header li a:hover {
 }
 
 fieldset {
-    text-align: center;
     border: none;
 }
 
@@ -195,6 +205,14 @@ fieldset span {
     color: #fff;
     background-color: rgba(22, 177, 227, 0.7);
     border: rgb(22, 60, 227) 2px solid;
+    transition : all 0.3s linear;
+    text-decoration: none;
+}
+
+.btnForm:hover {
+    background-color: white;
+    color : rgb(22, 177, 227);
+    border: 2px solid rgb(22, 177, 227);
 }
 
 .btnFormDelete {
@@ -213,8 +231,14 @@ fieldset span {
     color: #fff;
     background-color: rgba(227, 22, 22, 0.7);
     border: rgb(245, 6, 6) 2px solid;
+    text-decoration: none;
 }
 
+.btnFormDelete:hover {
+    background-color: white;
+    color :red;
+    border: 2px solid red;
+}
 
 .btnForm a {
     text-decoration: none;
