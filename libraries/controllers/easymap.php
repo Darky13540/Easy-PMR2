@@ -1,27 +1,16 @@
 <?php
 require (ROOT .'/libraries/models/easymapmodel.php');
 
-if (empty($_POST['type']) && empty($_POST['name'])){
+if (!isset($_POST['query']) && empty($_POST['query'])){
     
-    /* recherche globale */
     $poi = getAllPoi($pdo);
-    
-}elseif (empty($_POST['type']) && !empty($_POST['name'])){
 
-    /* recherche par nom */
-    $poi = getPoiByName($pdo, $_POST['name']);
+} else {
 
-}elseif (!empty($_POST['type']) && empty($_POST['name'])){
-    
-    /* recherche par type */
-    $poi = getPoiByType($pdo, $_POST['type']);
-    
+    $poi = getPoiBySearch($pdo, $_POST['query']);
 
-    
-}elseif (!empty($_POST['type']) && !empty($_POST['name'])){
-    /* recherche par nom ET type*/
-    $poi = getPoiByTypeName($pdo, $_POST['type'], $_POST['name']);
-};
+}
+
 $genres = getGenre($pdo);
 $types = getTypes($pdo);
 $count = count($poi);

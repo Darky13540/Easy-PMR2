@@ -705,14 +705,48 @@ fieldset span {
     color: black;
 }
 
+.maineasymap input{
+    border : solid 2px rgb(22, 177, 227);
+    border-radius: 4px;
+    width: 75vw;
+}
+
+.maineasymap button{
+    margin: 0 auto;
+    display: block;
+}
+
+.mapListContainer p{
+    font-size: 1rem;
+}
+
+.mapListContainer span{
+    font-size: 1.6rem;
+}
+
+.mapListContainer a{
+    text-decoration: none;
+}
+
+.mapListContainer a:visited{
+    color: black;
+}
+
 /**************************
-        POI
+       détails POI
 **************************/
+.identitegenerale a{
+    color: rgb(22, 177, 227);
+}
+
+.identitegenerale a:visited{
+    color: rgb(22, 177, 227);
+}
 
 
 
 /**************************
-        profil
+        User profil
 **************************/
 
 /*Profil*/

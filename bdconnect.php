@@ -11,5 +11,5 @@ $pdo = new PDO(
    'mysql:host=' . HOST . ';dbname=' . DBNAME . ';charset=UTF8',
    LOGIN,
    PASSWORD
-); 
+);
 

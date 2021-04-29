@@ -1,25 +1,37 @@
 
 <main class="mainDetails">
-    <h1>Détails du lieu</h1>
-    <div class="identite">
-        <section class="identite">
-            <h1><?= htmlspecialchars($details['name']); ?></h1>
-
-            <button class="btnForm"><a href="easymap">Retour à la carte</a></button>
+    <h1>Détails du lieu <?= htmlspecialchars($details['name']); ?></h1>
+    <button class="btnForm"><a href="easymap">Retour à la carte</a></button>
+        <section class="identitegenerale">
+            <div class="identite">
+                <h2>Généralités</h2>
+            <p>Adresse : <?=$details['adresse']?></p>
+            <p>Code postal : <?=$details['cp']?></p>
+            <p>Ville : <?=$details['commune']?></p>
+            <p>Téléphone : <?=$details['phone']?></p>
+            <p>Horaires ouverture : <?=$details['opening']?></p>
+            <p>Site Web : <a href="<?=$details['website']?>" target="_blank"><?=$details['website']?></a></p>
+            </div>
         </section>
-    </div>
-    <div class="tag">
-        <section class="tagPark">
-            <h2>Informations concernant l'accès depuis un parking</h2>
+        <section class="tag">
+            <h2>Accessibilité</h2>
+                <?php if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0):?>
+                    <button class="btnForm"><a href="">Contribuer</a></button>
+                <?php endif?>
+                <?php if(!isset($_SESSION['user']['role'])):?>
+                    <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
+                <?php endif?>    
+            <div class="tagPark">
+                <h3>Concernant le stationnement : </h2>
+            </div>
+            <div class="tagExt">
+                <h3>Concernant l'accès depuis l'extérieur : </h2>
+            </div>
+            <div class="tagInt">
+                <h3>Concernant la circulation à l'intérieur : </h2>
+            </div>
+            <div class="commodites">
+                <h3>Concernant les commodités : </h2>
+            </div>
         </section>
-        <section class="tagExt">
-            <h2>Informations concernant l'accès depuis l'extérieur</h2>
-        </section>
-        <section class="tagInt">
-            <h2>Informations concernant l'intérieur</h2>
-        </section>
-        <section class="commodites">
-            <h2>Informations concernant les commodités</h2>
-        </section>
-    </div>
 </main>

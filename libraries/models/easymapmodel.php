@@ -10,10 +10,30 @@ require 'bdconnect.php';
 function getAllPoi(PDO $pdo)
 {
     $reponse = $pdo->query('
-    SELECT * 
+    SELECT * , shops.id AS shopId
     FROM shops 
     INNER JOIN types ON types.id = shops.typeId
     INNER JOIN genres ON genres.id = shops.genreId');
+    $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
+    return $poi;
+}
+
+/**
+ * Permet de récupérer les POI avec une recherche partielle
+ * sur nom, type ou genre
+ * @param PDO $pdo
+ * @param string $query
+ * @return array
+ */
+function getPoiBySearch(PDO $pdo, string $query)
+{
+    $reponse = $pdo->prepare('
+    SELECT * , shops.id AS shopId
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId
+    INNER JOIN genres ON genres.id = shops.genreId 
+    WHERE name LIKE ? OR type LIKE ? OR genre LIKE ?');
+    $reponse->execute(['%' .$query. '%','%' .$query. '%','%' .$query. '%']);
     $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $poi;
 }
@@ -89,7 +109,7 @@ function getPoiByTypeName(PDO $pdo, string $type, string $name)
 function getPoiById(PDO $pdo, string $id)
 {
     $reponse = $pdo->prepare("
-    SELECT * 
+    SELECT * , shops.id AS shopId
     FROM shops 
     INNER JOIN types ON types.id = shops.typeId
     INNER JOIN genres ON genres.id = shops.genreId
