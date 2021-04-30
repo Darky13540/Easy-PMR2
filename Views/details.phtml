@@ -5,12 +5,27 @@
         <section class="identitegenerale">
             <div class="identite">
                 <h2>Généralités</h2>
-            <p>Adresse : <?=$details['adresse']?></p>
-            <p>Code postal : <?=$details['cp']?></p>
-            <p>Ville : <?=$details['commune']?></p>
-            <p>Téléphone : <?=$details['phone']?></p>
-            <p>Horaires ouverture : <?=$details['opening']?></p>
-            <p>Site Web : <a href="<?=$details['website']?>" target="_blank"><?=$details['website']?></a></p>
+            <p>Adresse : <?=htmlspecialchars($details['adresse'])?></p>
+            <p>Code postal : <?=intval($details['cp'])?></p>
+            <p>Ville : <?=htmlspecialchars($details['commune'])?></p>
+            <p>Téléphone : 
+                <?php if (htmlspecialchars($details['phone']) === ""):?>
+                    Non communiqué</p>
+                <?php else:?>    
+            <?=htmlspecialchars($details['phone'])?></p>
+                <?php endif?>
+            <p>Horaires ouverture : 
+                <?php if (htmlspecialchars($details['opening']) === ""):?>
+                    Non communiqué</p>
+                <?php else:?>         
+            <?=htmlspecialchars($details['opening'])?></p>
+                <?php endif?>
+            <p>Site Web : 
+                <?php if (htmlspecialchars($details['website']) === ""):?>
+                    Non communiqué</p>
+                <?php else:?>
+            <a href="<?=htmlspecialchars($details['website'])?>" target="_blank"><?=$details['website']?></a></p>
+                <?php endif?>
             </div>
         </section>
         <section class="tag">
@@ -22,16 +37,16 @@
                     <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
                 <?php endif?>    
             <div class="tagPark">
-                <h3>Concernant le stationnement : </h2>
+                <h3>Le stationnement : </h2>
             </div>
             <div class="tagExt">
-                <h3>Concernant l'accès depuis l'extérieur : </h2>
+                <h3>L''accès depuis l'extérieur : </h2>
             </div>
             <div class="tagInt">
-                <h3>Concernant la circulation à l'intérieur : </h2>
+                <h3>La circulation à l'intérieur : </h2>
             </div>
             <div class="commodites">
-                <h3>Concernant les commodités : </h2>
+                <h3>Les commodités : </h2>
             </div>
         </section>
 </main>

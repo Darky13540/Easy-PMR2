@@ -7,6 +7,8 @@ if (empty($_GET['id'])) {
     exit();
 }
 
+
+
 $details = getPoiById($pdo, $_GET['id']);
 
 $template = 'details.phtml';

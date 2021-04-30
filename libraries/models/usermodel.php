@@ -125,11 +125,13 @@ function getAllUsers(PDO $pdo){
  * @param string $ville
  * @return void
  */
-function insertUser(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, string $ville)/*  */
+function insertUser(PDO $pdo, string $pseudo, string $pwd_crypted, string $mail, string $ville)
 {
     //preparer la requête
     $query = $pdo->prepare('
-    INSERT INTO users (pseudo, password, mail, ville) VALUES (?, ?, ?, ?);');
+    INSERT INTO users 
+    (pseudo, password, mail, ville) 
+    VALUES (?, ?, ?, ?);');
 
     //executer la requête
     $query->execute([$pseudo, $pwd_crypted, $mail, $ville]);

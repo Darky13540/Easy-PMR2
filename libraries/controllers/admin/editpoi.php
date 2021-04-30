@@ -12,6 +12,8 @@ if (isset($_SESSION)) {
 }
 
 $shop = getPoiById($pdo, $_GET['id']);
+$types = getTypes($pdo);
+$genres = getGenre($pdo);
 
 $template = 'editpoi.phtml';
 

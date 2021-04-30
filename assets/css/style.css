@@ -205,7 +205,7 @@ fieldset span {
     color: #fff;
     background-color: rgba(22, 177, 227, 0.7);
     border: rgb(22, 60, 227) 2px solid;
-    transition : all 0.3s linear;
+    transition : all 0.3s ease-in;
     text-decoration: none;
 }
 
@@ -232,12 +232,39 @@ fieldset span {
     background-color: rgba(227, 22, 22, 0.7);
     border: rgb(245, 6, 6) 2px solid;
     text-decoration: none;
+    transition : all 0.3s ease-in
 }
 
 .btnFormDelete:hover {
     background-color: white;
     color :red;
     border: 2px solid red;
+}
+
+.btnFormAdd {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    color: #fff;
+    background-color: rgba(0, 128, 0, 0.5);
+    border: green 2px solid;
+    text-decoration: none;
+    transition : all 0.3s ease-in
+}
+
+.btnFormAdd:hover {
+    background-color: white;
+    color :green;
+    border: 2px solid green;
 }
 
 .btnForm a {
@@ -642,6 +669,15 @@ fieldset span {
     border-radius: 50rem;
     max-width: 100%;
 }
+
+/**************************
+        Connexion
+**************************/
+.connexionContainer p{
+    font-size: 1rem;
+}
+
+
 /**************************
         Index
 **************************/
@@ -878,6 +914,12 @@ fieldset span {
 
 .edituser table{
     margin: 2rem auto;
+}
+
+/*Add POI*/
+.addpoi span{
+    color: red;
+    text-decoration: none;
 }
 
 /*Admin navbar*/

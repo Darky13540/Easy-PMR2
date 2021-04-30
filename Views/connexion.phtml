@@ -14,16 +14,16 @@
             <legend>Veuillez saisir votre mail et votre mot de passe</legend>
             <form action="connexion" method="POST">
                 <div class="form-group">
-                    <i class="fas fa-envelope"></i>
+                    <label for="mail"><i class="fas fa-envelope"></i></label>
                     <input type="email" name="mail" id="mail" class="" placeholder="Votre Email" required>
                 </div>
                 <div class="form-group">
-                    <i class="fas fa-key"></i>
+                    <label for="password"><i class="fas fa-key"></i></label>
                     <input type="password" name="password" id="password" class="" placeholder="Votre Mot de Passe" required>
                 </div>
                 <div class="input-group-append">
-                    <button type="submit" class="btnForm">Connexion</button><br />
-                    <a href="#">Mot de passe oublié?</a>
+                    <button type="submit" class="btnForm">Connexion</button><br>
+                    <p><a href="#">Mot de passe oublié?</a></p>
                 </div>
             </form>
         </fieldset>

@@ -1,6 +1,8 @@
 <section class="editpoi">
     <h2> Edition d'un P.O.I.</h2>
-        <form action="admin/editpoi?id=<?= $shop['id'] ?>" method="post">
+            <a href="admin/poiadmin" class="btnForm">Retour</a>
+            
+        <form action="admin/modifypoi?id=<?= intval($_GET['id']) ?>" method="post">
             <fieldset>  
                 <legend>Modifiez les informations nécessaires</legend>
                 <div class="form-group">
@@ -8,20 +10,34 @@
                     <input class=" inputpoi" type="text" name="name" value="<?=htmlspecialchars($shop['name'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="lat">Longitude : </label>       
-                    <input class=" inputpoi" type="text" name="longitude" value="<?=floatval($shop['lat'])?>" required>
+                    <label for="lat">Latitude : </label>       
+                    <input class=" inputpoi" type="text" name="latitude" value="<?=floatval($shop['lat'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="longitude">Latitude : </label>       
-                    <input class=" inputpoi" type="text" name="latitude" value="<?=floatval($shop['longitude'])?>" required>
+                    <label for="longitude">Longitude : </label>       
+                    <input class=" inputpoi" type="text" name="longitude" value="<?=floatval($shop['longitude'])?>" required>
                 </div>
                 <div class="form-group">
-                    <label for="genre">Genre : </label>       
-                    <input class=" inputpoi" type="text" name="genre" value="<?=htmlspecialchars($shop['genre'])?>" required>
+                    <label for="genre">Genre : </label>
+                    <select name="genre" id="genre">
+                        <?php foreach($genres as $genre):?>
+                        <option <?php if ($genre['id'] === $shop['genreId']):?>
+                        <?=  " selected "?>
+                        <?php endif;?>                        
+                        value="<?=intval($genre['id'])?>"><?=htmlspecialchars($genre['genre'])?></option>
+                        <?php endforeach?>
+                    </select>                    
                 </div>
                 <div class="form-group">
-                    <label for="type">Type : </label>       
-                    <input class=" inputpoi" type="text" name="type" value="<?=htmlspecialchars($shop['type'])?>" required>
+                    <label for="type">Type : </label>
+                    <select name="type" id="">
+                        <?php foreach($types as $type):?>
+                        <option <?php if ($type['id'] === $shop['typeId']):?>
+                        <?=  " selected "?>
+                        <?php endif;?>                     
+                        value="<?=intval($type['id'])?>"><?=htmlspecialchars($type['type'])?></option>
+                        <?php endforeach?>
+                    </select>                    
                 </div>
                 <div class="form-group">
                     <label for="adresse">Adresse : </label>       
@@ -46,16 +62,12 @@
                 <div class="form-group">
                     <label for="website">Site Web : </label>
                     <input type="text" class="inputpoi" name="website" value="<?=htmlspecialchars($shop['website'])?>" >                   
-                </div>
-                
+                </div>                
             </fieldset> 
-        </br>
+                </br>
                 <button class="btnForm" type="submit">Modifier</button>
                 <button class="btnFormDelete" type="submit" name="delete" value="delete">Supprimer</button>
-                </td>
             </form>
-            <a href="admin/poiadmin" class="btnForm">Retour</a>
-            </tr>
         </tbody>
     </table>
 </section>

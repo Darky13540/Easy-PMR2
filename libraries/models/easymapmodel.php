@@ -127,7 +127,7 @@ function getPoiById(PDO $pdo, string $id)
  */
 function getTypes(PDO $pdo){
     $reponse = $pdo->prepare("
-    SELECT type 
+    SELECT type, id 
     FROM types"); 
     $reponse->execute();
     $types = $reponse->fetchAll(PDO::FETCH_ASSOC);
@@ -142,22 +142,22 @@ function getTypes(PDO $pdo){
  */
 function getGenre(PDO $pdo){
     $reponse = $pdo->prepare("
-    SELECT genre 
+    SELECT genre, id 
     FROM genres"); 
     $reponse->execute();
     $genres = $reponse->fetchAll(PDO::FETCH_ASSOC);
     return $genres;
 }
-// non FONCTIONNELLE///////
+
 /**
  * Permet d'éditer un POI
  *
  * @param PDO $pdo
  * @param string $name
- * @param float $longitude
  * @param float $latitude
- * @param string $genre
- * @param string $type
+ * @param float $longitude
+ * @param int $genre
+ * @param int $type
  * @param string $adresse
  * @param integer $cp
  * @param string $commune
@@ -169,29 +169,62 @@ function getGenre(PDO $pdo){
  */
 function editPoi(
     PDO $pdo, string $name, 
-    float $longitude, float $latitude, 
-    string $genre, string $type, 
+    float $latitude, float $longitude, 
+    int $genre, int $type, 
     string $adresse, int $cp, 
     string $commune, string $opening, 
     string $phone, string $website, int $id){
 
     //prepare la requête
     $query = $pdo->prepare('
-    UPDATE shops
-    INNER JOIN types ON types.id = shops.typeId
-    INNER JOIN genres ON genres.id = shops.genreId
-    SET role = ? 
-    WHERE shops.id = ? LIMIT 1');
+    UPDATE shops 
+    SET name = ? , 
+    lat = ? ,
+    longitude = ? ,
+    genreId = ? ,
+    typeId = ? ,
+    shops.adresse = ? ,
+    cp = ? ,
+    commune = ? ,
+    opening = ? ,
+    phone = ? ,
+    website = ?  
+    WHERE id = ? ');
 
     //execute la requête
     $query->execute([
-    $name, $longitude,
-    $latitude, $genre,
+    $name, floatval($latitude),
+    floatval($longitude), $genre,
     $type, 
     $adresse, $cp, 
     $commune, $opening, 
-    $phone, $website, $id]);   
-
-
+    $phone, $website, intval($id)]);   
 }
 
+
+function insertPoi(PDO $pdo, string $name, 
+float $latitude, float $longitude, 
+int $genre, int $type, 
+string $adresse, int $cp, 
+string $commune, string $opening, 
+string $phone, string $website)
+{
+    //preparer la requête
+    $query = $pdo->prepare('
+    INSERT INTO shops 
+    (name, lat, longitude, genreId, typeId, adresse, cp, commune, opening, phone, website) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+
+    //executer la requête
+    $query->execute([
+        $name, floatval($latitude),
+        floatval($longitude), $genre,
+        $type, 
+        $adresse, $cp, 
+        $commune, $opening, 
+        $phone, $website]);
+
+    $pdo->lastInsertId();
+
+    return $query->fetch(PDO::FETCH_ASSOC);
+}

@@ -1,0 +1,69 @@
+<section class="addpoi">
+    <h2> Rajout d'un P.O.I.</h2>
+            <a href="admin/poiadmin" class="btnForm">Retour</a>
+           
+        <form action="admin/addpoi" method="post">
+            <fieldset>  
+                <legend>Remplir les informations nécessaires <span>*</span></legend>
+                <div class="form-group">
+                    <label for="name">Nom : <span>*</span></label>       
+                    <input class=" inputpoi" type="text" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lat">Latitude : <span>*</span></label>       
+                    <input class=" inputpoi" type="text" name="latitude" required>
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude : <span>*</span></label>       
+                    <input class=" inputpoi" type="text" name="longitude" required>
+                </div>
+                <div class="form-group">
+                    <label for="genre">Genre : <span>*</span></label>
+                    <select name="genre" id="genre">
+                        <?php foreach($genres as $genre):?>
+                        <option value="<?=intval($genre['id'])?>"><?=htmlspecialchars($genre['genre'])?></option>
+                        <?php endforeach?>
+                    </select>                    
+                </div>
+                <div class="form-group">
+                    <label for="type">Type : <span>*</span></label>
+                    <select name="type" id="">
+                        <?php foreach($types as $type):?>
+                        <option value="<?=intval($type['id'])?>"><?=htmlspecialchars($type['type'])?></option>
+                        <?php endforeach?>
+                    </select>                    
+                </div>
+                <div class="form-group">
+                    <label for="adresse">Adresse : <span>*</span></label>       
+                    <input class=" inputpoi" type="text" name="adresse" required>
+                </div>
+                <div class="form-group">
+                    <label for="cp">Cp : <span>*</span></label>
+                    <input type="text" class="inputpoi" name="cp" required>                   
+                </div>
+                <div class="form-group">
+                    <label for="cp">Ville : <span>*</span></label>
+                    <input type="text" class="inputpoi" name="commune" required>                   
+                </div>
+                <div class="form-group">
+                    <label for="opening">Horaires : </label>
+                    <input type="text" class="inputpoi" name="opening">                   
+                </div>
+                <div class="form-group">
+                    <label for="phone">Téléphone : </label>
+                    <input type="text" class="inputpoi" name="phone">                   
+                </div>
+                <div class="form-group">
+                    <label for="website">Site Web : </label>
+                    <input type="text" class="inputpoi" name="website" >                   
+                </div>                
+            </fieldset> 
+                </br>
+                <button class="btnForm" type="submit">Modifier</button>
+                <button class="btnFormDelete" type="submit" name="delete" value="delete">Supprimer</button>
+            </form>
+        </tbody>
+    </table>
+</section>
+</section>
+</main>

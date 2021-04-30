@@ -14,7 +14,7 @@ if (isset($_GET['p'])) {
     if ($path[0] != "") {
         $controller = $path[0];
 
-        //on construit le chemin à appeler pour charger le controlleur
+        //on construit le chemin à appeler pour charger le contrôleur
         if (file_exists('libraries/controllers/' . $controller . '.php')) {
             require(ROOT . 'libraries/controllers/' . $controller . '.php');
         } else {
