@@ -851,6 +851,8 @@ fieldset span {
     margin-bottom: 2rem;
     border-bottom: solid 2px rgb(22, 177, 227);
     border-right: none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .inputpoi{
@@ -894,6 +896,10 @@ fieldset span {
  
 }
 
+.homeAdminUser .btnFormAdd{
+    float : left;
+}
+
 .homeAdminUser table, th, td{
     text-align: center;
     border: 2px solid rgb(22, 177, 227);
@@ -928,7 +934,7 @@ fieldset span {
     justify-content: space-between;
     justify-items: center;
     align-content: center;
-    align-items: center;
+    align-items: start;
     flex-direction: column;
 }
 
@@ -1024,9 +1030,6 @@ fieldset span {
     }
     
     .sidenav {
-        position: static;
-        top: 0;
-        left: 0;
         max-width: 20rem;
         background-color: white;
         border-right: 2px solid rgb(22, 177, 227);

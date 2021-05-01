@@ -69,10 +69,10 @@ function getUserFromPseudo(PDO $pdo, string $pseudo)
     $query = $pdo->prepare('
     SELECT id, pseudo, password, role
     FROM users 
-    WHERE pseudo = ? LIMIT 1');
+    WHERE pseudo LIKE ? LIMIT 1');
 
     //execute la requête
-    $query->execute([$pseudo]);
+    $query->execute(['%' .$pseudo. '%']);
 
     return $query->fetchAll(PDO::FETCH_ASSOC);
 }

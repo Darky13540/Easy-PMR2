@@ -1,6 +1,5 @@
 <?php
-error_reporting(E_ALL);
-error_reporting(-1);
+
 require(ROOT . 'libraries/models/notificationsmodel.php');
 require(ROOT . 'libraries/models/easymapmodel.php');
 
@@ -13,9 +12,13 @@ if (isset($_SESSION)) {
     }
 }
 
-
-    
-if (isset(
+if (isset($_POST['delete'])) {
+    deletePoi($pdo, $_GET['id']);
+    addFlash('success', 'La suppression a bien été faite');
+    header('Location: poiadmin');
+    exit();
+}
+    if(isset(
     $_POST['name']) 
     && isset($_POST['longitude']) 
     && isset($_POST['latitude']) 
@@ -27,10 +30,7 @@ if (isset(
     && isset($_POST['opening']) 
     && isset($_POST['phone']) 
     && isset($_POST['website'])){
-
-     
-
-
+   
         editPoi($pdo, $_POST['name'], 
                     $_POST['latitude'], 
                     $_POST['longitude'], 
@@ -45,8 +45,11 @@ if (isset(
                     $_GET['id']);
 
         addFlash('success', 'La modification est prise en compte');
+        header('Location: poiadmin');
+        exit();
         
     }
+    
 
     $shop = getPoiById($pdo, $_GET['id']);
     $types = getTypes($pdo);

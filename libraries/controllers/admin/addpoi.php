@@ -40,7 +40,8 @@ if (isset(
                         $_POST['website']);
 
             addFlash('success', 'Lieu ajouté !');
-            header('Location poiadmin');
+            header('Location: poiadmin');
+            exit();
 }
 
 $template = 'addpoi.phtml';

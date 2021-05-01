@@ -1,5 +1,9 @@
 
 <main class="mainDetails">
+
+        <?php if(isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1):?>
+            <a href="admin/editpoi?id=<?=$_GET['id'] ?>" class="btnForm">Modifier</a>
+        <?php endif?>     
     <h1>Détails du lieu <?= htmlspecialchars($details['name']); ?></h1>
     <a class="btnForm" href="easymap">Retour à la carte</a>
         <section class="identitegenerale">

@@ -11,19 +11,23 @@ if (isset($_SESSION)) {
     }
 }
 
+if (isset($_POST['delete'])) {
+    deleteUser($pdo, $_GET['id']);
+    addFlash('success', 'La suppression a bien été faite');
+    header('Location: useradmin');
+    exit();
+}
 //Si le role est défini en $_POST on traite la modification du statut
 if (isset($_POST['role']) && in_array($_POST['role'], ["1", "0"])) {
 
 
     $user = changeRole($pdo, $_GET['id'], $_POST['role']);
-}
-
-if (isset($_POST['delete'])) {
-    deleteUser($pdo, $_GET['id']);
-    addFlash('succes', 'La suppression a bien été faite');
+    addFlash('success', 'La modification a bien été faite');
     header('Location: useradmin');
     exit();
+
 }
+
 
 
 $user = getUserFromId($pdo, $_GET['id']);

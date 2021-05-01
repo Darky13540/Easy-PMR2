@@ -201,8 +201,25 @@ function editPoi(
     $phone, $website, intval($id)]);   
 }
 
-
-function insertPoi(PDO $pdo, string $name, 
+/**
+ * Permet d'insérer un lieu
+ *
+ * @param PDO $pdo
+ * @param string $name
+ * @param float $latitude
+ * @param float $longitude
+ * @param int $genre
+ * @param int $type
+ * @param string $adresse
+ * @param integer $cp
+ * @param string $commune
+ * @param string $opening
+ * @param string $phone
+ * @param string $website
+ * @return void
+ */
+function insertPoi(
+PDO $pdo, string $name, 
 float $latitude, float $longitude, 
 int $genre, int $type, 
 string $adresse, int $cp, 
@@ -227,4 +244,18 @@ string $phone, string $website)
     $pdo->lastInsertId();
 
     return $query->fetch(PDO::FETCH_ASSOC);
+}
+
+
+
+function deletePoi(PDO $pdo, $id){
+    //prepare la requête
+    $query = $pdo->prepare('
+    DELETE FROM shops 
+    WHERE id = ? LIMIT 1');
+    //execute la requête
+    $query->execute([$id]);
+
+    $query->fetch(PDO::FETCH_ASSOC);
+
 }
