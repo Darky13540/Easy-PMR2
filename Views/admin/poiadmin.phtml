@@ -1,8 +1,9 @@
 <section class="homeAdminUser">
     <h2>Points d'intérêt</h2>
     <p>Ici vous pouvez voir tous les lieux dans la base, les créer, les supprimer, les éditer...</p>
+    <p>La recherche peut être faite par nom, genre ou type.</p>
     <form action="admin/poiadmin" method="post">
-        <input type="text" name="name" placeholder="Nom, type, genre">
+        <input type="text" name="name" placeholder="Nom ou genre ou type">
         <button type="submit" class="btnForm">OK/RAZ</button>
         <?php
         if ($count == 0) {
@@ -14,8 +15,8 @@
     <table>
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Nom</th>
+                <th>Genre</th>
                 <th>Type</th>
                 <th>Action</th>
             </tr>
@@ -23,8 +24,8 @@
         <tbody>
             <?php foreach ($poi as $item) : ?>
                 <tr>
-                    <td><?= intval($item['shopId']) ?></td>
                     <td><?= htmlspecialchars($item['name']) ?></td>
+                    <td><?= htmlspecialchars($item['genre']) ?></td>
                     <td><?= htmlspecialchars($item['type']) ?></td>
                     <td><a href="admin/editpoi?id=<?= $item['shopId'] ?>" class="btnForm">Modifier</a></td>
                 </tr>

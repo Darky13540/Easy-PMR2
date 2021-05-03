@@ -13,6 +13,9 @@
             <?php if(count($poitype) > 0):?>
             <p>Il reste <?=count($poitype)?> lieu(x) avec ce type</p>
             <?php endif;?>
+            <?php if(count($poitype) === 0):?>
+            <p>Aucun lieu n'a ce type, vous pouvez supprimer le libellé en toute sécurité !</p>
+            <?php endif;?>
 </section>
 </section>
 </main>

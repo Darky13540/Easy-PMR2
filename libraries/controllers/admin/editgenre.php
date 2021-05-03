@@ -11,6 +11,12 @@ if (isset($_SESSION)) {
     }
 }
 
+if(!isset($_GET['id'])){
+    addFlash('error', 'l\'id du magasin n\'est pas précisé');
+    header("Location: poiadmin");
+    exit();
+}
+
 $genre = getGenreById($pdo, $_GET['id']);
 
 $poigenre = getPoiByGenre($pdo, $_GET['id']);
