@@ -2,13 +2,13 @@
     <h2>Points d'intérêt</h2>
     <p>Ici vous pouvez voir tous les lieux dans la base, les créer, les supprimer, les éditer...</p>
     <form action="admin/poiadmin" method="post">
-            <input type="text" name="name" placeholder="Nom lieu">
-            <button type="submit" class="btnForm">OK/RAZ</button>
-            <?php 
-            if ($count == 0){
-                echo "<p>Il n'y a pas de résultat à votre recherche</p>";
-            }
-            ?>
+        <input type="text" name="name" placeholder="Nom lieu">
+        <button type="submit" class="btnForm">OK/RAZ</button>
+        <?php
+        if ($count == 0) {
+            echo "<p>Il n'y a pas de résultat à votre recherche</p>";
+        }
+        ?>
     </form>
     <a href="admin/addpoi" class="btnFormAdd">+</i></a>
     <table>
@@ -26,7 +26,7 @@
                     <td><?= intval($item['shopId']) ?></td>
                     <td><?= htmlspecialchars($item['name']) ?></td>
                     <td><?= htmlspecialchars($item['type']) ?></td>
-                    <td><a href="admin/editpoi?id=<?=$item['shopId'] ?>" class="btnForm">Modifier</a></td>
+                    <td><a href="admin/editpoi?id=<?= $item['shopId'] ?>" class="btnForm">Modifier</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -35,6 +35,6 @@
 </section>
 <div id="scroll_to_top">
     <a href="admin/poiadmin#top" title="Retour haut"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
- </div> 
+</div>
 </section>
 </main>

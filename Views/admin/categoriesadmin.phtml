@@ -1,0 +1,52 @@
+<section class="homeAdminUser">
+    <h2>Les catégories</h2>
+    <p>Ici vous pouvez modifier, créer, supprimer les types et genres</p>
+    <h3>Les genres : </h3>
+    <a href="admin/addcategories" class="btnFormAdd">+</i></a>
+    <p>Genres existants</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libellé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($genres as $genre) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($genre['id']) ?></td>
+                    <td><?= htmlspecialchars($genre['genre']) ?></td>
+                    <td><a href="admin/editgenre?id=<?=$genre['id'] ?>" class="btnForm">Modifier</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <h3>Les types : </h3>
+    <a href="admin/addcategories" class="btnFormAdd">+</i></a>
+    <p>Types existants</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libellé</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($types as $type) : ?>
+                <tr>
+                    <td><?= htmlspecialchars($type['id']) ?></td>
+                    <td><?= htmlspecialchars($type['type']) ?></td>
+                    <td><a href="admin/edittype?id=<?=$type['id'] ?>" class="btnForm">Modifier</a></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>
+<div id="scroll_to_top">
+    <a href="admin/useradmin#top" title="Retour haut"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
+ </div> 
+</section>
+</main>

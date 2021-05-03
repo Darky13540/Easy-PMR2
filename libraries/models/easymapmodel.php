@@ -247,8 +247,15 @@ string $phone, string $website)
 }
 
 
-
+/**
+ * Permet d'effacer un POI de la BDD
+ *
+ * @param PDO $pdo
+ * @param [type] $id
+ * @return void
+ */
 function deletePoi(PDO $pdo, $id){
+    
     //prepare la requête
     $query = $pdo->prepare('
     DELETE FROM shops 
@@ -257,5 +264,141 @@ function deletePoi(PDO $pdo, $id){
     $query->execute([$id]);
 
     $query->fetch(PDO::FETCH_ASSOC);
+}
 
+/**
+ * Permet d'ajouter un type en BDD
+ *
+ * @param PDO $pdo
+ * @param string $type
+ * @return void
+ */
+function addType(PDO $pdo, string $type){
+    //preparer la requête
+    $query = $pdo->prepare('
+    INSERT INTO types 
+    (type) 
+    VALUES (?)');
+
+    //executer la requête
+    $query->execute([$type]);
+}
+
+/**
+ * Permet d'ajouter un genre en BDD
+ *
+ * @param PDO $pdo
+ * @param string $genre
+ * @return void
+ */
+function addGenre(PDO $pdo, string $genre){
+    //preparer la requête
+    $query = $pdo->prepare('
+    INSERT INTO genres 
+    (genre) 
+    VALUES (?)');
+
+    //executer la requête
+    $query->execute([$genre]);
+}
+
+/**
+ * Permet de modifier un genre
+ *
+ * @param PDO $pdo
+ * @param string $genre
+ * @param integer $id
+ * @return void
+ */
+function editGenre(PDO $pdo, string $genre, int $id){
+    //prepare la requête
+    $query = $pdo->prepare('
+    UPDATE genres 
+    SET genre = ?      
+    WHERE id = ? ');
+
+    //execute la requête
+    $query->execute([$genre, $id]);
+}
+
+/**
+ * Permet de modifier un type
+ *
+ * @param PDO $pdo
+ * @param string $type
+ * @param integer $id
+ * @return void
+ */
+function editType(PDO $pdo, string $type, int $id){
+    //prepare la requête
+    $query = $pdo->prepare('
+    UPDATE types 
+    SET type = ?      
+    WHERE id = ? ');
+
+    //execute la requête
+    $query->execute([$type, $id]);
+}
+
+/**
+ * Permet d'avoir les infos du type par son Id
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @return void
+ */
+function getGenreById(PDO $pdo, int $id){
+    //prepare la requête
+    $reponse = $pdo->prepare("
+    SELECT genre, id 
+    FROM genres
+    WHERE id=?"); 
+
+    //execute la requête
+    $reponse->execute([$id]);
+    $genre = $reponse->fetch(PDO::FETCH_ASSOC);
+    return $genre;
+}
+
+/**
+ * Permet d'avoir les infos du genre par son Id
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @return void
+ */
+function getTypeById(PDO $pdo, int $id){
+    //prepare la requête
+    $reponse = $pdo->prepare("
+    SELECT type, id 
+    FROM types
+    WHERE id=?"); 
+
+    //execute la requête
+    $reponse->execute([$id]);
+    $type = $reponse->fetch(PDO::FETCH_ASSOC);
+    return $type;
+}
+
+function deleteType(PDO $pdo, int $id){
+    //prepare la requête
+    $query = $pdo->prepare('
+    DELETE FROM types 
+    WHERE id = ? LIMIT 1');
+    //execute la requête
+    $query->execute([$id]);
+
+    $query->fetch(PDO::FETCH_ASSOC);
+}
+
+
+function deleteGenre(PDO $pdo, int $id){
+    //prepare la requête
+    $query = $pdo->prepare('
+    DELETE FROM genres 
+    WHERE id = ? LIMIT 1');
+    //execute la requête
+    $query->execute([$id]);
+
+    $query->fetch(PDO::FETCH_ASSOC);
 }

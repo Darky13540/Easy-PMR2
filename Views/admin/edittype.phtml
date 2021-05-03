@@ -1,0 +1,12 @@
+<section class="editcategories">
+    <a href="admin/categoriesadmin" class="btnForm">Retour</a>
+    <h2> Edition du type</h2>   
+        <form action="admin/edittype?id=<?= intval($_GET['id']) ?>" method="post">
+            <fieldset>Genre à modifier</fieldset> 
+                <input type="text" name="editedType" value="<?=htmlspecialchars($type['type'])?>">
+                <button class="btnForm" type="submit">Modifier</button>
+                <button class="btnFormDelete" type="submit" name="deleteType" value="delete">Supprimer</button>          
+        </form>  
+</section>
+</section>
+</main>

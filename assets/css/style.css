@@ -896,9 +896,9 @@ fieldset span {
  
 }
 
-.homeAdminUser .btnFormAdd{
+/* .homeAdminUser .btnFormAdd{
     float : left;
-}
+} */
 
 .homeAdminUser table, th, td{
     text-align: center;
