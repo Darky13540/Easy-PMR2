@@ -62,20 +62,40 @@ function getPoiByName(PDO $pdo, string $name)
  * Permet de récupérer les POI par type
  *
  * @param PDO $pdo
- * @param string $type
+ * @param integer $typeid
  * @return array
  */
-function getPoiByType(PDO $pdo, string $type)
+function getPoiByType(PDO $pdo, int $typeid)
 {
     $reponse = $pdo->prepare("
     SELECT * 
     FROM shops 
     INNER JOIN types ON types.id = shops.typeId 
     INNER JOIN genres ON genres.id = shops.genreId
-    WHERE type LIKE ?");
-    $reponse->execute(['%' .$type. '%']);
-    $poi = $reponse->fetchAll(PDO::FETCH_ASSOC);
-    return $poi;
+    WHERE typeId = ?");
+    $reponse->execute([$typeid]);
+    $poitype = $reponse->fetchAll(PDO::FETCH_ASSOC);
+    return $poitype;
+}
+
+/**
+ * Permet de récupérer les POI par genre
+ *
+ * @param PDO $pdo
+ * @param integer $typeid
+ * @return array
+ */
+function getPoiByGenre(PDO $pdo, int $typeid)
+{
+    $reponse = $pdo->prepare("
+    SELECT * 
+    FROM shops 
+    INNER JOIN types ON types.id = shops.typeId 
+    INNER JOIN genres ON genres.id = shops.genreId
+    WHERE genreId = ?");
+    $reponse->execute([$typeid]);
+    $poigenre = $reponse->fetchAll(PDO::FETCH_ASSOC);
+    return $poigenre;
 }
 
 /**

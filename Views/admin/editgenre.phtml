@@ -1,13 +1,19 @@
 <section class="editcategories">
     <a href="admin/categoriesadmin" class="btnForm">Retour</a>
     <h2> Edition/suppression du genre</h2>
-    <p><span><i class="fas fa-exclamation-triangle"></i></span > Avant de supprimer un genre soyez sur qu'aucun lieu ne l'a encore <span><i class="fas fa-exclamation-triangle"></i></span></p>    
+    <p><span><i class="fas fa-exclamation-triangle"></i></span > Le bouton supprimer n'apparaitra que si AUCUN lieu n'a ce genre de défini <span><i class="fas fa-exclamation-triangle"></i></span></p>    
         <form action="admin/editgenre?id=<?= intval($_GET['id']) ?>" method="post">
             <fieldset>Genre à modifier</fieldset> 
                 <input type="text" name="editedGenre" value="<?=htmlspecialchars($genre['genre'])?>">
                 <button class="btnForm" type="submit">Modifier</button>
+                <?php if(count($poigenre) === 0):?>
                 <button class="btnFormDelete" type="submit" name="deleteGenre" value="delete">Supprimer</button>          
-        </form>  
+                <?php endif?>  
+        </form>
+        <?php if(count($poigenre) > 0):?>
+            <p>Il reste <?=count($poigenre)?> lieu(x) avec ce genre</p>
+            <?php endif;?>
+
 </section>
 </section>
 </main>

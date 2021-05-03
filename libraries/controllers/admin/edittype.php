@@ -13,6 +13,8 @@ if (isset($_SESSION)) {
 
 $type = getTypeById($pdo, $_GET['id']);
 
+$poitype = getPoiByType($pdo, $_GET['id']);
+
 if (isset($_POST['deleteType'])) {
     deleteType($pdo, $_GET['id']);
     addFlash('success', 'La suppression a bien été faite');
@@ -22,7 +24,7 @@ if (isset($_POST['deleteType'])) {
 
 
 if(isset($_POST['editedType'])){
-    editType($pdo, $_POST['editedType'], $_GET['id']);
+    editType($pdo, ucFirst($_POST['editedType']), $_GET['id']);
     addFlash('success','Modification faite!');
     header('Location: categoriesadmin');
     exit();

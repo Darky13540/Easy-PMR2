@@ -13,6 +13,8 @@ if (isset($_SESSION)) {
 
 $genre = getGenreById($pdo, $_GET['id']);
 
+$poigenre = getPoiByGenre($pdo, $_GET['id']);
+
 if (isset($_POST['deleteGenre'])) {
     deleteGenre($pdo, $_GET['id']);
     addFlash('success', 'La suppression a bien été faite');
@@ -21,7 +23,7 @@ if (isset($_POST['deleteGenre'])) {
 }
 
 if(isset($_POST['editedGenre'])){
-    editGenre($pdo, $_POST['editedGenre'], $_GET['id']);
+    editGenre($pdo, ucFirst($_POST['editedGenre']), $_GET['id']);
     addFlash('success','Modification faite!');
     header('Location: categoriesadmin');
     exit();
