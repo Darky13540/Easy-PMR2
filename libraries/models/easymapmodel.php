@@ -380,6 +380,13 @@ function getTypeById(PDO $pdo, int $id){
     return $type;
 }
 
+/**
+ * Permet de supprimer un type de la BDD
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @return void
+ */
 function deleteType(PDO $pdo, int $id){
     //prepare la requête
     $query = $pdo->prepare('
@@ -391,7 +398,13 @@ function deleteType(PDO $pdo, int $id){
     $query->fetch(PDO::FETCH_ASSOC);
 }
 
-
+/**
+ * Permet de supprimer un genre de la BDD
+ *
+ * @param PDO $pdo
+ * @param integer $id
+ * @return void
+ */
 function deleteGenre(PDO $pdo, int $id){
     //prepare la requête
     $query = $pdo->prepare('

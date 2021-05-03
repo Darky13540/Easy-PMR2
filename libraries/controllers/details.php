@@ -10,6 +10,11 @@ if (empty($_GET['id'])) {
 
 $details = getPoiById($pdo, $_GET['id']);
 
+if($details === false){
+    header('Location: easymap');
+    exit();
+}
+
 $template = 'details.phtml';
 
 require(ROOT . '/views/layout.phtml');

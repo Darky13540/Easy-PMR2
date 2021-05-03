@@ -11,6 +11,8 @@ if (isset($_SESSION)) {
     }
 }
 
+$user = getUserFromId($pdo, $_GET['id']);
+
 if (isset($_POST['delete'])) {
     deleteUser($pdo, $_GET['id']);
     addFlash('success', 'La suppression a bien été faite');
@@ -28,9 +30,11 @@ if (isset($_POST['role']) && in_array($_POST['role'], ["1", "0"])) {
 
 }
 
+if($user === false){
+    header('Location: useradmin');
+    exit();
+}
 
-
-$user = getUserFromId($pdo, $_GET['id']);
 
 $template = 'edituser.phtml';
 

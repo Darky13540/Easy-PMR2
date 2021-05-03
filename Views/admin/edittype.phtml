@@ -1,6 +1,7 @@
 <section class="editcategories">
     <a href="admin/categoriesadmin" class="btnForm">Retour</a>
-    <h2> Edition du type</h2>   
+    <h2> Edition/suppression du type</h2>
+    <p><span><i class="fas fa-exclamation-triangle"></i></span > Avant de supprimer un type soyez sur qu'aucun lieu ne l'a encore <span><i class="fas fa-exclamation-triangle"></i></span></p>   
         <form action="admin/edittype?id=<?= intval($_GET['id']) ?>" method="post">
             <fieldset>Genre à modifier</fieldset> 
                 <input type="text" name="editedType" value="<?=htmlspecialchars($type['type'])?>">
