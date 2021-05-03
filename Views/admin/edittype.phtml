@@ -7,11 +7,12 @@
                 <input type="text" name="editedType" value="<?=htmlspecialchars($type['type'])?>">
                 <button class="btnForm" type="submit">Modifier</button>
                 <?php if(count($poitype) === 0):?>
-                <button class="btnFormDelete" type="submit" name="deleteType" value="delete">Supprimer</button>
+                <button class="btnFormDelete" type="submit"  onclick="return confirm('Êtes vous sur de vouloir supprimer?')" name="deleteType" >Supprimer</button>
                 <?php endif?>          
         </form> 
             <?php if(count($poitype) > 0):?>
             <p>Il reste <?=count($poitype)?> lieu(x) avec ce type</p>
+            <a href="admin/poiadmin">Le(s) trouver</a>
             <?php endif;?>
             <?php if(count($poitype) === 0):?>
             <p>Aucun lieu n'a ce type, vous pouvez supprimer le libellé en toute sécurité !</p>
