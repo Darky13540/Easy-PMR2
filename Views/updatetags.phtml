@@ -1,0 +1,75 @@
+<main class="mainTags">
+
+    <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
+        <a href="admin/editpoi?id=<?= intval($_GET['id']) ?>" class="btnForm">Modifier</a>
+    <?php endif ?>
+    <h1>Détails sur l'accessibilité du lieu <?= htmlspecialchars($details['name']); ?></h1>
+    <a class="btnForm" href="details?id=<?=intval($_GET['id'])?>">Retour au lieu</a>
+    <section class="accessibilite">
+            <form action="updatetags?id=<?= intval($_GET['id']) ?>" method="post">   
+            <fieldset>Vous devez sélectionner à chaque fois la proposition qui correspond au lieu.</fieldset>
+            <p>Merci de compléter uniquement les informations que vous avez.</p>
+                <div>
+                    <h2>Le stationnement</h2>
+                    <p>A 100m maximum, combien y'a t'il de stationnement(s) PMR?</p>
+                        <select name="park" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsPark as $park):?>
+                                <option value="<?=intval($park['id'])?>"><?=htmlspecialchars($park['parking'])?></option>
+                            <?php endforeach?>
+                        </select>
+                </div>
+                <div>
+                    <h2>L'accès au lieu</h2>
+                    <p>Comment est l'entrée principal du lieu?</p>
+                        <select name="entree" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsEntree as $entree):?>
+                                <option value="<?=intval($entree['id'])?>"><?=htmlspecialchars($entree['entree'])?></option>
+                            <?php endforeach?>
+                        </select>
+                    <p>Comment est la porte du lieu?</p>
+                        <select name="porte" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsPorte as $porte):?>
+                                <option value="<?=intval($porte['id'])?>"><?=htmlspecialchars($porte['porte'])?></option>
+                            <?php endforeach?>
+                        </select>       
+                </div>
+                <div>
+                    <h2>L'intérieur du lieu</h2>
+                    <p>Comment est la circulation dans le lieu?</p>
+                        <select name="interieur" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsInt as $int):?>
+                                <option value="<?=intval($int['id'])?>"><?=htmlspecialchars($int['interieur'])?></option>
+                            <?php endforeach?>
+                        </select>
+                    <p>Si il y a un comptoir comment est il?</p>
+                        <select name="service" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsService as $service):?>
+                                <option value="<?=intval($service['id'])?>"><?=htmlspecialchars($service['services'])?></option>
+                            <?php endforeach?>
+                        </select>
+                    <p>Si il y a un comptoir comment est il?</p>
+                        <select name="toilettes" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsToilettes as $toilettes):?>
+                                <option value="<?=intval($toilettes['id'])?>"><?=htmlspecialchars($toilettes['toilettes'])?></option>
+                            <?php endforeach?>
+                        </select>
+                </div>
+                <div>
+                    <h2>Le batiment</h2>
+                    <p>Si c'est un bâtiment, a t'il des étages et peut on y accéder?</p>
+                        <select name="batiment" id="">
+                            <option value="">Choisir la proposition la plus adéquate</option>
+                            <?php foreach($tagsBat as $batiment):?>
+                                <option value="<?=intval($batiment['id'])?>"><?=htmlspecialchars($batiment['batiment'])?></option>
+                            <?php endforeach?>
+                        </select>
+                </div>
+                <button class="btnForm" type="submit">Rajouter</button>               
+            </form> 
+    </section>

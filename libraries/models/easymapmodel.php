@@ -133,6 +133,14 @@ function getPoiById(PDO $pdo, string $id)
     FROM shops 
     INNER JOIN types ON types.id = shops.typeId
     INNER JOIN genres ON genres.id = shops.genreId
+    INNER JOIN tagsPark ON tagsPark.id = shops.tagsParkId
+    INNER JOIN tagsEntree ON tagsEntree.id = shops.tagsEntreeId
+    INNER JOIN tagsPorte ON tagsPorte.id = shops.tagsPorteId
+    INNER JOIN tagsInt ON tagsInt.id = shops.tagsIntId
+    INNER JOIN tagsBatiment ON tagsBatiment.id = shops.tagsBatimentId
+    INNER JOIN tagsToilettes ON tagsToilettes.id = shops.tagsToilettesId
+    INNER JOIN tagsService ON tagsService.id = shops.tagsServiceId
+    INNER JOIN users ON users.id = shops.contributeurId
     WHERE shops.id= :id");
     $reponse->execute([':id' => $id]);
     $details = $reponse->fetch(PDO::FETCH_ASSOC);
@@ -434,4 +442,30 @@ function deleteGenre(PDO $pdo, int $id){
     $query->execute([$id]);
 
     $query->fetch(PDO::FETCH_ASSOC);
+}
+
+function updatePoiTags(PDO $pdo, int $park, int $entree, 
+                        int $porte, int $batiment, 
+                        int $interieur, int $service, 
+                        int $toilettes, int $id, 
+                        int $userId)
+{
+    //prepare la requête
+    $query = $pdo->prepare('
+    UPDATE shops 
+    SET tagsParkId = ? , 
+    tagsEntreeId = ? ,
+    tagsPorteId = ? ,
+    tagsIntId = ? ,
+    tagsBatimentId = ? ,
+    tagsToilettesId = ? ,
+    tagsServiceId = ? ,
+    contributeurId = ?, 
+    lastUpdate = NOW()   
+    WHERE id = ? ');
+
+    //execute la requête
+    $query->execute([intval($park), intval($entree), intval($porte), intval($batiment),
+                    intval($interieur), intval($service), intval($toilettes), 
+                    intval($userId), intval($id)]);
 }

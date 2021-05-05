@@ -269,6 +269,10 @@ fieldset span {
     color: white;
 }
 
+.btnForm a:hover {
+    color: rgb(22, 177, 227);
+}
+
 .form-group {
     color: rgb(22, 177, 227);
     margin: 0.5rem;

@@ -152,7 +152,8 @@ function updateLoginDate(PDO $pdo, int $userId)
 {
     //preparer la requête
     $query = $pdo->prepare('
-    UPDATE users SET LastLogin = NOW() 
+    UPDATE users 
+    SET LastLogin = NOW() 
     WHERE Id = ?');
 
     //executer la requête
