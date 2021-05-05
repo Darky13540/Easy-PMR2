@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    font-size: 1.6rem;
+    font-size: calc(7px + .5vw);
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -36,7 +36,7 @@ input{
 
 label{
     display: inline-block;
-    width: 10rem;
+    width: 7rem;
 }
 
 /**************************
@@ -200,7 +200,6 @@ fieldset span {
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
-    font-size: 1.4rem;
     border-radius: 4px;
     color: #fff;
     background-color: rgba(22, 177, 227, 0.7);
@@ -226,13 +225,12 @@ fieldset span {
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
-    font-size: 1.4rem;
     border-radius: 4px;
     color: #fff;
     background-color: rgba(227, 22, 22, 0.7);
     border: rgb(245, 6, 6) 2px solid;
     text-decoration: none;
-    transition : all 0.3s ease-in
+    transition : all 0.3s ease-in;
 }
 
 .btnFormDelete:hover {
@@ -252,7 +250,6 @@ fieldset span {
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
-    font-size: 1.4rem;
     border-radius: 4px;
     color: #fff;
     background-color: rgba(0, 128, 0, 0.5);
@@ -861,7 +858,6 @@ fieldset span {
 
 .sidenav a{
     text-decoration: none;
-    font-size: 1.6rem;
     padding: 1rem;
     text-align: center;
 }
@@ -998,9 +994,9 @@ fieldset span {
         padding: 2rem;
     }
 
-    .sidenav {
+/*     .sidenav {
         font-size: 1.6rem;  
-    }
+    } */
 }
 
 /* Tablette */
@@ -1034,7 +1030,7 @@ fieldset span {
         background-color: white;
         border-right: 2px solid rgb(22, 177, 227);
         border-bottom: none;
-        font-size: 1.6rem;
+        /* font-size: 1.6rem; */
         padding-right: 2rem;  
     }
     
