@@ -33,7 +33,7 @@
     </section>
     <section class="tag">
         <h2>Accessibilité</h2>
-        <p>Dernière observation faite par <?=$tagsById['pseudo']?> le <?=date("m-d-Y", strtotime($tagsById['lastUpdate']))?></p>
+        <p>Dernière observation faite par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
         <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>
             <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
         <?php endif ?>
