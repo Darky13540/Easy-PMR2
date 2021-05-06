@@ -8,8 +8,12 @@ if (!isset($_SESSION['user'])) {
     header("Location: connexion.php");
     exit();
 };
-
 $details = getPoiById($pdo, intval($_GET['id']));
+
+if($details === false){
+    header('Location: easymap');
+    exit();
+}
 $tagsById = getTagsByShopId($pdo, intval($_GET['id']));
 $tagsPark = getParkTags($pdo);
 $tagsEntree = getEntreeTags($pdo);

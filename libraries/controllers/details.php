@@ -8,10 +8,14 @@ if (empty($_GET['id'])) {
     exit();
 }
 
-
+/* var_dump($_GET); */
 $details = getPoiById($pdo, $_GET['id']);
 $tagsById = getTagsByShopId($pdo, $_GET['id']);
-$tagsBat = getBatimentTags($pdo);
+
+/* var_dump($tagsById);
+var_dump($details);
+die(); */
+
 
 if($details === false){
     header('Location: easymap');

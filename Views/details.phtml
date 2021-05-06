@@ -3,7 +3,7 @@
     <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
         <a href="admin/editpoi?id=<?= intval($_GET['id']) ?>" class="btnForm">Modifier</a>
     <?php endif ?>
-    <h1>Détails du lieu <?= htmlspecialchars($details['name']); ?></h1>
+    <h1>Détails du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
     <a class="btnForm" href="easymap">Retour à la carte</a>
     <section class="identitegenerale">
         <div class="identite">
@@ -33,7 +33,7 @@
     </section>
     <section class="tag">
         <h2>Accessibilité</h2>
-        <p>Dernière observation faite par <?=$details['pseudo']?> le <?=date("m-d-Y", strtotime($details['lastUpdate']))?></p>
+        <p>Dernière observation faite par <?=$tagsById['pseudo']?> le <?=date("m-d-Y", strtotime($tagsById['lastUpdate']))?></p>
         <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>
             <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
         <?php endif ?>
@@ -43,25 +43,70 @@
         <?php if (!isset($_SESSION['user']['role'])) : ?>
             <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
         <?php endif ?>
-        <div class="tagPark">
-            <h3>Le stationnement : </h2>
-            <p><?=$details['parking']?></p>
-            <p><?=$details['entree']?></p>
-            <p><?=$details['porte']?></p>
-            <p><?=$details['interieur']?></p>
-            <p><?=$details['batiment']?></p>
-            <p><?=$details['toilettes']?></p>
-            <p><?=$details['services']?></p>
-            
-        </div>
-        <div class="tagExt">
-            <h3>L'accès depuis l'extérieur : </h2>
-        </div>
-        <div class="tagInt">
-            <h3>La circulation à l'intérieur : </h2>
-        </div>
-        <div class="commodites">
-            <h3>Les commodités : </h2>
-        </div>
+
+            <div class="park">
+                <h3>Le stationnement : </h3>
+                <p>Pour vous stationner il y a :</p>
+
+                <?php if($details['parking'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>
+                    <p><?=htmlspecialchars($details['parking'])?></p>
+                <?php endif?>
+            </div>
+            <div class="entree">
+                <h3>L'entrée : </h3>
+                <p>L'entrée est : </p>
+                <?php if($details['entree'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>
+                    <p><?=htmlspecialchars($details['entree'])?></p>
+                <?php endif?>
+            </div>
+            <div class="porte">
+                <h3>La porte : </h3>
+                <p>La porte est : </p>
+                <?php if($details['porte'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>
+                    <p><?=htmlspecialchars($details['porte'])?></p>
+                <?php endif?>
+            </div> 
+            <div class="circulation">
+                <h3>La circulation dans le lieu : </h3>
+                <p>La circulation est : </p>
+                <?php if($details['interieur'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>
+                    <p><?=htmlspecialchars($details['interieur'])?></p>
+                <?php endif?>
+            </div>
+            <div class="comptoir">
+                <h3>Le comptoir : </h3>
+                <p>Le comptoir est : </p>
+                <?php if($details['services'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>
+                    <p><?=$details['services']?></p>
+                <?php endif?> 
+            </div>
+            <div class="toilettes">
+                <h3>Les toilettes : </h3>
+                <p>Les toilettes sont : </p>
+                <?php if($details['toilettes'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>       
+                    <p><?=htmlspecialchars($details['toilettes'])?></p>
+                <?php endif?>
+            </div>
+            <div class="batiment">
+                <h3>Le batiment : </h3>
+                <p>Le batiment est : </p>
+                <?php if($details['batiment'] === "Ne remplir que si observé"):?>
+                    <p>Nous n'avons pas encore d'observation</p>
+                <?php else :?>
+                    <p><?=htmlspecialchars($details['batiment'])?></p>
+                <?php endif?>
+            </div>      
     </section>
 </main>

@@ -11,7 +11,7 @@ function getTagsByShopId(PDO $pdo, int $id)
     $reponse = $pdo->prepare("
     SELECT shops.id AS shopId, tagsParkId, tagsEntreeId,
     tagsPorteId, tagsIntId, tagsBatimentId, tagsToilettesId,
-    tagsServiceId, contributeurId
+    tagsServiceId, contributeurId, genreId, typeId, lastUpdate, pseudo 
     FROM shops 
     INNER JOIN tagsPark ON tagsPark.id = shops.tagsParkId
     INNER JOIN tagsEntree ON tagsEntree.id = shops.tagsEntreeId
