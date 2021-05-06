@@ -196,7 +196,7 @@ fieldset span {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    touch-action: manipulation;
+    /* touch-action: manipulation; */
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
@@ -221,7 +221,7 @@ fieldset span {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    touch-action: manipulation;
+    /* touch-action: manipulation; */
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
@@ -246,7 +246,7 @@ fieldset span {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
-    touch-action: manipulation;
+    /* touch-action: manipulation; */
     cursor: pointer;
     background-image: none;
     padding: 0.6rem 1.2rem;
@@ -944,7 +944,7 @@ fieldset span {
 .greetings {
     text-align: center;
     font-weight: bold;
-    margin: 3rem;
+    margin: 3rem 3rem 0 3rem;
 }
 
 .footercontainer {
@@ -968,6 +968,9 @@ fieldset span {
     list-style-type: none;
 }
 
+.footer p{
+    margin-bottom: 0;
+}
 .footer a {
     text-decoration: none;
     color: black;

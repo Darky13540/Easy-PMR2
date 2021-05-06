@@ -18,6 +18,7 @@ if (!empty($_POST)) {
         $mail = htmlspecialchars($_POST['mail']);
         $ville = htmlspecialchars($_POST['ville']);
         $userId = $_SESSION['user']['id'];
+        $user = getUserFromId($pdo, $userId);
 
         updateUser($pdo, $mail, $ville, $userId);
 
@@ -26,8 +27,9 @@ if (!empty($_POST)) {
             'id' => intVal($userId),
             'mail' => htmlspecialchars($_POST["mail"]),
             'ville' => htmlspecialchars($_POST["ville"]),
-            'pseudo' => htmlspecialchars($_SESSION['user']['pseudo'])
-        ];
+            'pseudo' => htmlspecialchars($_SESSION['user']['pseudo']),
+            'role' => intVal($user['role'])
+        ];      
 
         //on redirige vers la page de profil
         addFlash('success', 'La demande de modification est bien prise en compte');

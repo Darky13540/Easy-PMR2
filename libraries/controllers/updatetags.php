@@ -28,7 +28,7 @@ if(isset($_POST) && !empty($_POST)){
                     $_POST['interieur'], $_POST['batiment'], $_POST['toilettes'], 
                     $_POST['service'], $_GET['id'], $_SESSION['user']['id']);
 
-                    header('Location: details');
+                    header('Location: details?id='.$_GET['id']);
                     exit();
 }
 
