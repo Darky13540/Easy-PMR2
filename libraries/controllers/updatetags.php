@@ -23,14 +23,19 @@ $tagsInt = getIntTags($pdo);
 $tagsService = getServiceTags($pdo);
 $tagsToilettes = getToilettesTags($pdo);
 
-if(isset($_POST) && !empty($_POST)){
+if(!empty($_POST)){
     updatePoiTags($pdo, $_POST['park'], $_POST['entree'], $_POST['porte'], 
                     $_POST['interieur'], $_POST['batiment'], $_POST['toilettes'], 
                     $_POST['service'], $_GET['id'], $_SESSION['user']['id']);
-
-                    header('Location: details?id='.$_GET['id']);
-                    exit();
+    
+    
+    insertRating($pdo, $_POST['rating'], $_GET['id'], $_SESSION['user']['id']);              
+    addFlash('success','Merci pour votre participation !!') ;   
+    header('Location: details?id='.$_GET['id']);
+    exit();
 }
+
+
 
 $template = 'updatetags.phtml';
 

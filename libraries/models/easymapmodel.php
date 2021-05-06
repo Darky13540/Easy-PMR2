@@ -444,6 +444,21 @@ function deleteGenre(PDO $pdo, int $id){
     $query->fetch(PDO::FETCH_ASSOC);
 }
 
+/**
+ * Permet de mettre à jour les tags dans shops
+ *
+ * @param PDO $pdo
+ * @param integer $park
+ * @param integer $entree
+ * @param integer $porte
+ * @param integer $batiment
+ * @param integer $interieur
+ * @param integer $service
+ * @param integer $toilettes
+ * @param integer $id
+ * @param integer $userId
+ * @return void
+ */
 function updatePoiTags(PDO $pdo, int $park, int $entree, 
                         int $porte, int $batiment, 
                         int $interieur, int $service, 
@@ -468,4 +483,31 @@ function updatePoiTags(PDO $pdo, int $park, int $entree,
     $query->execute([intval($park), intval($entree), intval($porte), intval($batiment),
                     intval($interieur), intval($service), intval($toilettes), 
                     intval($userId), intval($id)]);
+}
+
+
+function insertRating(PDO $pdo, int $rate, int $shopId, int $userId){
+    //preparer la requête
+    $query = $pdo->prepare('
+    INSERT INTO ratings 
+    (note, shopId, userId) 
+    VALUES (?, ?, ?)');
+
+    //executer la requête
+    $query->execute([$rate, $shopId, $userId]);
+}
+
+function getRatingById(PDO $pdo, $shopId){
+    //prepare la requête
+    $query = $pdo->prepare('
+    SELECT AVG(note) as average, COUNT(note) as count, note, shopId, userId, 
+            commentDate, pseudo  
+    FROM ratings 
+    INNER JOIN users ON ratings.userId = users.id
+    WHERE shopId = ? ');
+
+    //executer la requête
+    $query->execute([$shopId]);
+
+    return $query->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -18,6 +18,11 @@ if(!isset($_GET['id'])){
 
 $type = getTypeById($pdo, $_GET['id']);
 
+if($type === false){
+    header('Location: easymap');
+    exit();
+}
+
 $poitype = getPoiByType($pdo, $_GET['id']);
 
 if (isset($_POST['deleteType'])) {

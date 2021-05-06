@@ -19,6 +19,11 @@ if(!isset($_GET['id'])){
 
 $genre = getGenreById($pdo, $_GET['id']);
 
+if($genre === false){
+    header('Location: easymap');
+    exit();
+}
+
 $poigenre = getPoiByGenre($pdo, $_GET['id']);
 
 if (isset($_POST['deleteGenre'])) {

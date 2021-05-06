@@ -1,6 +1,7 @@
 <?php
 require(ROOT . '/libraries/models/easymapmodel.php');
 require(ROOT . '/libraries/models/tagsmodel.php');
+require(ROOT . '/libraries/models/notificationsmodel.php');
 
 if (empty($_GET['id'])) {
     //rediriger vers la page index.php
@@ -11,9 +12,10 @@ if (empty($_GET['id'])) {
 /* var_dump($_GET); */
 $details = getPoiById($pdo, $_GET['id']);
 $tagsById = getTagsByShopId($pdo, $_GET['id']);
+$rating = getRatingById($pdo, $_GET['id']);
 
-/* var_dump($tagsById);
-var_dump($details);
+/* var_dump($rating);
+
 die(); */
 
 

@@ -6,11 +6,13 @@
     <h1>Détails sur l'accessibilité du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
     <a class="btnForm" href="details?id=<?=intval($_GET['id'])?>">Retour au lieu</a>
     <section class="accessibilite">
+        <h2>L'accessibilité</h2>
             <form action="updatetags?id=<?= intval($_GET['id']) ?>" method="post">   
-            <fieldset>Vous devez sélectionner à chaque fois la proposition qui correspond au lieu.</fieldset>
-            <p>Merci de compléter uniquement les informations que vous avez.</p>
+                <fieldset>
+                <legend>Vous devez sélectionner à chaque fois la proposition qui correspond au lieu.</legend>
+                    <p>Merci de compléter uniquement les informations que vous avez observé.</p>
                 <div>
-                    <h2>Le stationnement</h2>
+                    <h3>Le stationnement</h3>
                     <p>A 100m maximum, combien y'a t'il de stationnement(s) PMR?</p>
                         <select name="park" id="">
                            
@@ -24,7 +26,7 @@
                         </select>
                 </div>
                 <div>
-                    <h2>L'accès au lieu</h2>
+                    <h3>L'accès au lieu</h3>
                     <p>Comment est l'entrée principal du lieu?</p>
                         <select name="entree" id="">
                            
@@ -49,7 +51,7 @@
                         </select>       
                 </div>
                 <div>
-                    <h2>L'intérieur du lieu</h2>
+                    <h3>L'intérieur du lieu</h3>
                     <p>Comment est la circulation dans le lieu?</p>
                         <select name="interieur" id="">
                             
@@ -82,7 +84,7 @@
                         </select>
                 </div>
                 <div>
-                    <h2>Le batiment</h2>
+                    <h3>Le batiment</h3>
                     <p>Si c'est un bâtiment, a t'il des étages et peut on y accéder?</p>
                         <select name="batiment" id="">
                             
@@ -91,10 +93,29 @@
                          <?=  " selected "?>
                              <?php endif;?>
                                 value="<?=intval($batiment['id'])?>"><?=htmlspecialchars($batiment['batiment'])?></option>
-                            <?php endforeach?>
-                        </select>
-                </div>
-                <button class="btnForm" type="submit">Rajouter</button>               
+                                <?php endforeach?>
+                            </select>
+                        </div>
+    </section>
+    <section class="avis">
+        <h2>Votre avis : </h2>
+        <p>Sur une échelle de 1 à 5, comment jugez vous l'accessibilité?</p>                                
+        <p>1 étant impossible et 5 totale</p>                                
+        <div class="star-rating__stars">               
+            <input class="star-rating__input" type="radio" name="rating" value="1" id="rating-1" required/>
+            <label class="star-rating__label" for="rating-1" aria-label="1/5"></label>
+            <input class="star-rating__input" type="radio" name="rating" value="2" id="rating-2" />
+            <label class="star-rating__label" for="rating-2" aria-label="2/5"></label>
+            <input class="star-rating__input" type="radio" name="rating" value="3" id="rating-3" />
+            <label class="star-rating__label" for="rating-3" aria-label="3/5e"></label>
+            <input class="star-rating__input" type="radio" name="rating" value="4" id="rating-4" />
+            <label class="star-rating__label" for="rating-4" aria-label="4/5"></label>
+            <input class="star-rating__input" type="radio" name="rating" value="5" id="rating-5" />
+            <label class="star-rating__label" for="rating-5" aria-label="5/5"></label>
+            <div class="star-rating__focus"></div>
+        </div>
+        <button class="btnForm" type="submit">Soumettre</button>
+                </fieldset>               
             </form> 
     </section>
 </main>

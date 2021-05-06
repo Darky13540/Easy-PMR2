@@ -1,5 +1,8 @@
 <main class="mainDetails">
-
+<!-- notifications   -->
+<?php
+    require 'inc/notifications.phtml';
+?>
     <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
         <a href="admin/editpoi?id=<?= intval($_GET['id']) ?>" class="btnForm">Modifier</a>
     <?php endif ?>
@@ -107,6 +110,21 @@
                 <?php else :?>
                     <p><?=htmlspecialchars($details['batiment'])?></p>
                 <?php endif?>
-            </div>      
+            </div> 
+            <?php if($rating[0]['pseudo'] === NULL):?>
+                <p>Pas encore d'avis</p>
+                <p>Pensez à contribuer !</p>
+            <?php else:?>
+            <div class="test">
+                <?php foreach($rating as $avis):?>
+                <p>Moyenne de : <?= doubleval($avis['average'])?></p>
+                <p>nb avis : <?= intval($avis['count'])?></p>
+                <p>Dernier avis : <?= htmlspecialchars($avis['pseudo'])?></p>
+                <p>Le : <?=date("m-Y", strtotime($avis['commentDate']))?></p>
+                <?php endforeach;?>
+            </div>
+            <?php endif;?>
+
+
     </section>
 </main>
