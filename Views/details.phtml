@@ -9,6 +9,14 @@
     <h1>Détails du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
     <a class="btnForm" href="easymap">Retour à la carte</a>
     <section class="identitegenerale">
+        <?php if($rating[0]['pseudo'] === NULL):?>
+            <p>Pas encore d'avis, pensez à contribuer !</p>
+        <?php else:?>
+        <?php foreach($rating as $avis):?>
+            <p><?= doubleval($avis['average'])?> <i class="fas fa-star"></i> (<?= intval($avis['count'])?> avis) </p>
+            <p>Dernièr avis/observation posté(s) par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
+        <?php endforeach;?>
+        <?php endif;?>
         <div class="identite">
             <h2>Généralités</h2>
             <p>Adresse : <?= htmlspecialchars($details['adresse']) ?></p>
@@ -35,9 +43,7 @@
         </div>
     </section>
     <section class="tag">
-        <h2>Accessibilité</h2>
-        <p>Dernière observation faite par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
-        
+        <h2>Accessibilité</h2>               
         <?php if($alreadyRate !== false):?>
         <p>Vous avez déjà contribué, encore merci !!</p>
         <?php else:?>
@@ -117,20 +123,5 @@
                     <p><?=htmlspecialchars($details['batiment'])?></p>
                 <?php endif?>
             </div> 
-            <?php if($rating[0]['pseudo'] === NULL):?>
-                <p>Pas encore d'avis</p>
-                <p>Pensez à contribuer !</p>
-            <?php else:?>
-            <div class="test">
-                <?php foreach($rating as $avis):?>
-                <p>Moyenne de : <?= doubleval($avis['average'])?></p>
-                <p>nb avis : <?= intval($avis['count'])?></p>
-                <p>Dernier avis : <?= htmlspecialchars($avis['pseudo'])?></p>
-                <p>Le : <?=date("m-Y", strtotime($avis['commentDate']))?></p>
-                <?php endforeach;?>
-            </div>
-            <?php endif;?>
-
-
     </section>
 </main>

@@ -15,7 +15,11 @@ if (empty($_GET['id'])) {
 $details = getPoiById($pdo, $_GET['id']);
 $tagsById = getTagsByShopId($pdo, intval($_GET['id']));
 $rating = getRatingById($pdo, $_GET['id']);
-$alreadyRate = userHasAlreadyRate($pdo, $_SESSION['user']['id'], intval($_GET['id']),);
+
+if(!empty($_SESSION['user'])){
+
+    $alreadyRate = userHasAlreadyRate($pdo, $_SESSION['user']['id'], intval($_GET['id']),);
+}
 
 if($details === false){
     header('Location: easymap');
