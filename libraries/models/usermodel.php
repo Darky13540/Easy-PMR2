@@ -99,7 +99,7 @@ function getUserFromId(PDO $pdo, int $id){
 
 /**
  * Permet de récupérer l'ensemble des users
- *
+ * sans le compte anonyme de transfert en cas de delete d'un user
  * @param PDO $pdo
  * @return array
  */
@@ -107,7 +107,8 @@ function getAllUsers(PDO $pdo){
     //prepare la requête
     $query = $pdo->prepare('
     SELECT id, pseudo, role 
-    FROM users');
+    FROM users 
+    WHERE NOT pseudo = "anonyme"');
 
     //executer la requête
     $query->execute();
@@ -224,18 +225,43 @@ function changeRole(PDO $pdo, int $id, int $role)
 
 /**
  * Permet de supprimer un user de la BDD
- *
+ * Si il est le dernier contributeur du shop, son id 
+ * est remplacé par un compte anonyme générique
  * @param PDO $pdo
  * @param integer $id
  * @return void
  */
 function deleteUser(PDO $pdo, int $id){
     //prepare la requête
+   /*  $query = $pdo->prepare('
+    SELECT id, contributeurId 
+    FROM shops 
+    WHERE contributeurId = ?');
+    //executer la requête
+    $query->execute($id);
+    
+    $anonyme = $query->fetchAll(PDO::FETCH_ASSOC);
+    return $anonyme;
+    var_dump($anonyme);
+    die();
+ */
+   /*  if($anonyme !== false){
     $query = $pdo->prepare('
-    DELETE FROM users 
-    WHERE id = ? LIMIT 1');
-    //execute la requête
-    $query->execute([$id]);
+    UPDATE shops 
+    SET contributeurId = 59 
+    WHERE contributeurId = ?');
+    //executer la requête
+    $query->execute($id);
 
-    $query->fetch(PDO::FETCH_ASSOC);
+    }else{
+ */
+        //prepare la requête
+        $query = $pdo->prepare('
+        DELETE FROM users 
+        WHERE id = ? LIMIT 1');
+        //execute la requête
+        $query->execute([$id]);
+    /* } */
+
+
 }

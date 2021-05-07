@@ -15,6 +15,7 @@ if (empty($_GET['id'])) {
 $details = getPoiById($pdo, $_GET['id']);
 $tagsById = getTagsByShopId($pdo, intval($_GET['id']));
 $rating = getRatingById($pdo, $_GET['id']);
+$lastContributeur = getLastContributeur($pdo, $_GET['id']);
 
 if(!empty($_SESSION['user'])){
 

@@ -140,7 +140,6 @@ function getPoiById(PDO $pdo, string $id)
     INNER JOIN tagsBatiment ON tagsBatiment.id = shops.tagsBatimentId
     INNER JOIN tagsToilettes ON tagsToilettes.id = shops.tagsToilettesId
     INNER JOIN tagsService ON tagsService.id = shops.tagsServiceId
-    INNER JOIN users ON users.id = shops.contributeurId
     WHERE shops.id= :id");
     $reponse->execute([':id' => $id]);
     $details = $reponse->fetch(PDO::FETCH_ASSOC);
@@ -462,8 +461,7 @@ function deleteGenre(PDO $pdo, int $id){
 function updatePoiTags(PDO $pdo, int $park, int $entree, 
                         int $porte, int $batiment, 
                         int $interieur, int $service, 
-                        int $toilettes, int $id, 
-                        int $userId)
+                        int $toilettes, int $id)
 {
     //prepare la requête
     $query = $pdo->prepare('
@@ -474,15 +472,14 @@ function updatePoiTags(PDO $pdo, int $park, int $entree,
     tagsIntId = ? ,
     tagsBatimentId = ? ,
     tagsToilettesId = ? ,
-    tagsServiceId = ? ,
-    contributeurId = ?, 
+    tagsServiceId = ? , 
     lastUpdate = NOW()   
     WHERE id = ? ');
 
     //execute la requête
     $query->execute([intval($park), intval($entree), intval($porte), intval($batiment),
                     intval($interieur), intval($service), intval($toilettes), 
-                    intval($userId), intval($id)]);
+                    intval($id)]);
 }
 
 /**
@@ -524,9 +521,37 @@ function getRatingById(PDO $pdo, $shopId){
     //executer la requête
     $query->execute([$shopId]);
 
-    return $query->fetchAll(PDO::FETCH_ASSOC);
+    return $query->fetch(PDO::FETCH_ASSOC);
+
 }
 
+function getLastContributeur(PDO $pdo, $shopId)
+{
+    //prepare la requête
+    $query = $pdo->prepare('
+    SELECT userId, commentDate, pseudo  
+    FROM ratings 
+    INNER JOIN users ON ratings.userId = users.id
+    WHERE shopId = ? 
+    ORDER BY commentDate DESC LIMIT 1');
+
+    //executer la requête
+    $query->execute([$shopId]);
+
+    $lastContributeur= $query->fetch(PDO::FETCH_ASSOC);
+    return $lastContributeur;
+}
+
+
+/**
+ * Permet de savoir si le user a déjà commenté ce lieu
+ * recherche du couple userId et shopId 
+ *
+ * @param PDO $pdo
+ * @param integer $userId
+ * @param integer $shopId
+ * @return void
+ */
 function userHasAlreadyRate(PDO $pdo, int $userId, int $shopId)
 {   
     //prepare la requête

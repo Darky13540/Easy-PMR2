@@ -54,12 +54,15 @@ if (isset($_POST)) {
                 //on insère les informations en BDD
                 insertUser($pdo, $pseudo, $pwd_crypted, $mail, $ville);
 
+                $infoUser = getUserFromEmail($pdo, $_POST["mail"]);
+
                 //on stocke dans $_SESSION les infos
                 $_SESSION['user'] = [
-                        'id' => intVal($id),
-                        'pseudo' => htmlspecialchars($_POST["pseudo"]),
-                        'mail' => htmlspecialchars($_POST["mail"]),
-                        'ville' => htmlspecialchars($_POST["ville"])
+                        'id' => intval($infoUser['id']),
+                        'pseudo' => htmlspecialchars($infoUser['pseudo']),
+                        'mail' => htmlspecialchars($infoUser["mail"]),
+                        'ville' => htmlspecialchars($infoUser["ville"]), 
+                        'role' => intval($infoUser['role']) 
                 ];
 
                 //on redirige vers la page de profil

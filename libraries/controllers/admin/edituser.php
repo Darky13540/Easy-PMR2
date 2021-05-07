@@ -14,7 +14,7 @@ if (isset($_SESSION)) {
 $user = getUserFromId($pdo, $_GET['id']);
 
 if (isset($_POST['delete'])) {
-    deleteUser($pdo, $_GET['id']);
+    deleteUser($pdo, intval($_GET['id']));
     addFlash('success', 'La suppression a bien été faite');
     header('Location: useradmin');
     exit();

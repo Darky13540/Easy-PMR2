@@ -11,7 +11,7 @@ function getTagsByShopId(PDO $pdo, int $id)
     $reponse = $pdo->prepare("
     SELECT shops.id AS shopId, tagsParkId, tagsEntreeId,
     tagsPorteId, tagsIntId, tagsBatimentId, tagsToilettesId,
-    tagsServiceId, contributeurId, genreId, typeId, lastUpdate, pseudo 
+    tagsServiceId, genreId, typeId, lastUpdate 
     FROM shops 
     INNER JOIN tagsPark ON tagsPark.id = shops.tagsParkId
     INNER JOIN tagsEntree ON tagsEntree.id = shops.tagsEntreeId
@@ -20,7 +20,6 @@ function getTagsByShopId(PDO $pdo, int $id)
     INNER JOIN tagsBatiment ON tagsBatiment.id = shops.tagsBatimentId
     INNER JOIN tagsToilettes ON tagsToilettes.id = shops.tagsToilettesId
     INNER JOIN tagsService ON tagsService.id = shops.tagsServiceId
-    INNER JOIN users ON users.id = shops.contributeurId
     WHERE shops.id= ?");
     $reponse->execute([$id]);
     $tagsById = $reponse->fetch(PDO::FETCH_ASSOC);

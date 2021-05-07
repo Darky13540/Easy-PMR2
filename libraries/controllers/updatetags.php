@@ -26,9 +26,9 @@ $tagsToilettes = getToilettesTags($pdo);
 if(!empty($_POST)){
     updatePoiTags($pdo, $_POST['park'], $_POST['entree'], $_POST['porte'], 
                     $_POST['interieur'], $_POST['batiment'], $_POST['toilettes'], 
-                    $_POST['service'], $_GET['id'], $_SESSION['user']['id']);
+                    $_POST['service'], $_GET['id']);
     
-    
+
     insertRating($pdo, $_POST['rating'], $_GET['id'], $_SESSION['user']['id']);              
     addFlash('success','Merci pour votre participation !!') ;   
     header('Location: details?id='.$_GET['id']);

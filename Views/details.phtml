@@ -9,14 +9,14 @@
     <h1>Détails du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
     <a class="btnForm" href="easymap">Retour à la carte</a>
     <section class="identitegenerale">
-        <?php if($rating[0]['pseudo'] === NULL):?>
+
+        <?php if($rating['pseudo'] === NULL):?>
             <p>Pas encore d'avis, pensez à contribuer !</p>
         <?php else:?>
-        <?php foreach($rating as $avis):?>
-            <p><?= doubleval($avis['average'])?> <i class="fas fa-star"></i> (<?= intval($avis['count'])?> avis) </p>
-            <p>Dernier avis/observation posté par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
-        <?php endforeach;?>
+            <p><?= doubleval($rating['average'])?> <i class="fas fa-star"></i> (<?= intval($rating['count'])?> avis) </p>
+            <p>Dernier avis/observation posté par <?=htmlspecialchars($lastContributeur['pseudo'])?> le <?=date("d-m-Y", strtotime($lastContributeur['commentDate']))?></p>
         <?php endif;?>
+
         <div class="identite">
             <h2>Généralités</h2>
             <p>Adresse : <?= htmlspecialchars($details['adresse']) ?></p>
