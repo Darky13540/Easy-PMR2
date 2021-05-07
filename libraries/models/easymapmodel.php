@@ -485,7 +485,15 @@ function updatePoiTags(PDO $pdo, int $park, int $entree,
                     intval($userId), intval($id)]);
 }
 
-
+/**
+ * Permet d'inscrire en BDD la note du lieu
+ *
+ * @param PDO $pdo
+ * @param integer $rate
+ * @param integer $shopId
+ * @param integer $userId
+ * @return void
+ */
 function insertRating(PDO $pdo, int $rate, int $shopId, int $userId){
     //preparer la requête
     $query = $pdo->prepare('
@@ -497,6 +505,13 @@ function insertRating(PDO $pdo, int $rate, int $shopId, int $userId){
     $query->execute([$rate, $shopId, $userId]);
 }
 
+/**
+ * Permet de connaitre les notes d'un lieu
+ *
+ * @param PDO $pdo
+ * @param [type] $shopId
+ * @return void
+ */
 function getRatingById(PDO $pdo, $shopId){
     //prepare la requête
     $query = $pdo->prepare('
@@ -510,4 +525,19 @@ function getRatingById(PDO $pdo, $shopId){
     $query->execute([$shopId]);
 
     return $query->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function userHasAlreadyRate(PDO $pdo, int $userId, int $shopId)
+{   
+    //prepare la requête
+    $query = $pdo->prepare('
+    SELECT shopId, userId  
+    FROM ratings 
+    WHERE shopId = :shopId AND userId = :userId');
+
+    //executer la requête
+    $query->bindParam(':shopId', $shopId, PDO::PARAM_INT);
+    $query->bindParam(':userId', $userId, PDO::PARAM_INT);
+    $query->execute();
+    return $query->fetch(PDO::FETCH_ASSOC); 
 }

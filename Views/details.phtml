@@ -37,16 +37,22 @@
     <section class="tag">
         <h2>Accessibilité</h2>
         <p>Dernière observation faite par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
+        
+        <?php if($alreadyRate !== false):?>
+        <p>Vous avez déjà contribué, encore merci !!</p>
+        <?php else:?>
         <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>
+            <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
             <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
         <?php endif ?>
         <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
+            <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
             <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
         <?php endif ?>
         <?php if (!isset($_SESSION['user']['role'])) : ?>
             <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
-        <?php endif ?>
-
+        <?php endif; ?>
+        <?php endif;?>
             <div class="park">
                 <h3>Le stationnement : </h3>
                 <p>Pour vous stationner il y a :</p>
