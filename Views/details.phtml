@@ -14,7 +14,7 @@
         <?php else:?>
         <?php foreach($rating as $avis):?>
             <p><?= doubleval($avis['average'])?> <i class="fas fa-star"></i> (<?= intval($avis['count'])?> avis) </p>
-            <p>Dernièr avis/observation posté(s) par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
+            <p>Dernier avis/observation posté par <?=$tagsById['pseudo']?> le <?=date("d-m-Y", strtotime($tagsById['lastUpdate']))?></p>
         <?php endforeach;?>
         <?php endif;?>
         <div class="identite">
@@ -44,7 +44,7 @@
     </section>
     <section class="tag">
         <h2>Accessibilité</h2>               
-        <?php if($alreadyRate !== false):?>
+        <?php if(isset($alreadyRate) && $alreadyRate !== false):?>
         <p>Vous avez déjà contribué, encore merci !!</p>
         <?php else:?>
         <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>

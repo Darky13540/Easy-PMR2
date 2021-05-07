@@ -19,6 +19,8 @@ $rating = getRatingById($pdo, $_GET['id']);
 if(!empty($_SESSION['user'])){
 
     $alreadyRate = userHasAlreadyRate($pdo, $_SESSION['user']['id'], intval($_GET['id']),);
+}else{
+    $alreadyRate = false;
 }
 
 if($details === false){
