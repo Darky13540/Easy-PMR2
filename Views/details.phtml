@@ -3,26 +3,34 @@
 <?php
     require 'inc/notifications.phtml';
 ?>
+
+    <!-- Affichage du bouton modifier si admin -->
     <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
         <a href="admin/editpoi?id=<?= intval($_GET['id']) ?>" class="btnForm">Modifier</a>
     <?php endif ?>
+
+
     <h1>Détails du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
     <a class="btnForm" href="easymap">Retour à la carte</a>
     <section class="identitegenerale">
 
+        <!-- On teste si il y a une note dans la BDD pour le lieu -->
         <?php if($lastContributeur === false):?>
             <p>Pas encore d'avis, pensez à contribuer !</p>
         <?php else:?>
             <p><?= doubleval($rating['average'])?> <i class="fas fa-star"></i> (<?= intval($rating['count'])?> avis) </p>
             <p>Dernier avis/observation posté par <?=htmlspecialchars($lastContributeur['pseudo'])?> le <?=date("d-m-Y", strtotime($lastContributeur['commentDate']))?></p>
         <?php endif;?>
-
+        
+        <!-- Généralités sur le lieu -->
         <div class="identite">
             <h2>Généralités</h2>
             <p>Adresse : <?= htmlspecialchars($details['adresse']) ?></p>
             <p>Code postal : <?= intval($details['cp']) ?></p>
             <p>Ville : <?= htmlspecialchars($details['commune']) ?></p>
             <p>Téléphone :
+
+            <!-- On teste chaque champs non obligatoire, msg générique selon le retour de la BDD -->
                 <?php if (htmlspecialchars($details['phone']) === "") : ?>
                     Non communiqué</p>
             <?php else : ?>
@@ -42,11 +50,17 @@
             <?php endif ?>
         </div>
     </section>
+
+    <!-- Partie sur l'accessibilité du lieu -->
     <section class="tag">
-        <h2>Accessibilité</h2>               
+        <h2>Accessibilité</h2>
+        
+        <!-- Permet de savoir si l'utilisateur a DEJA contribué à ce lieu -->
         <?php if(isset($alreadyRate) && $alreadyRate !== false):?>
         <p>Vous avez déjà contribué, encore merci !!</p>
         <?php else:?>
+
+        <!-- Selon si user, visiteur ou admin, le bouton est s'inscrire ou contribuer -->
         <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>
             <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
             <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
@@ -59,16 +73,18 @@
             <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
         <?php endif; ?>
         <?php endif;?>
+
             <div class="park">
                 <h3>Le stationnement : </h3>
                 <p>Pour vous stationner il y a :</p>
-
+                <!-- Message générique selon retour BDD de chaque item-->
                 <?php if($details['parking'] === "Ne remplir que si observé"):?>
                     <p>Nous n'avons pas encore d'observation</p>
                 <?php else :?>
                     <p><?=htmlspecialchars($details['parking'])?></p>
                 <?php endif?>
             </div>
+
             <div class="entree">
                 <h3>L'entrée : </h3>
                 <p>L'entrée est : </p>
@@ -78,6 +94,7 @@
                     <p><?=htmlspecialchars($details['entree'])?></p>
                 <?php endif?>
             </div>
+
             <div class="porte">
                 <h3>La porte : </h3>
                 <p>La porte est : </p>
@@ -87,6 +104,7 @@
                     <p><?=htmlspecialchars($details['porte'])?></p>
                 <?php endif?>
             </div> 
+
             <div class="circulation">
                 <h3>La circulation dans le lieu : </h3>
                 <p>La circulation est : </p>
@@ -96,6 +114,7 @@
                     <p><?=htmlspecialchars($details['interieur'])?></p>
                 <?php endif?>
             </div>
+
             <div class="comptoir">
                 <h3>Le comptoir : </h3>
                 <p>Le comptoir est : </p>
@@ -105,6 +124,7 @@
                     <p><?=$details['services']?></p>
                 <?php endif?> 
             </div>
+
             <div class="toilettes">
                 <h3>Les toilettes : </h3>
                 <p>Les toilettes sont : </p>
@@ -114,6 +134,7 @@
                     <p><?=htmlspecialchars($details['toilettes'])?></p>
                 <?php endif?>
             </div>
+
             <div class="batiment">
                 <h3>Le batiment : </h3>
                 <p>Le batiment est : </p>
@@ -123,5 +144,6 @@
                     <p><?=htmlspecialchars($details['batiment'])?></p>
                 <?php endif?>
             </div> 
+            
     </section>
 </main>

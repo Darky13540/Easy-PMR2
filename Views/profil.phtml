@@ -7,8 +7,9 @@
 
   <h1>Page de profil</h1>
   <section class="profil">
-    <nav class="sidenav">
-          
+
+    <!-- Navigation dans le profil -->
+    <nav class="sidenav">     
           <a href="editprofil">Éditer mes informations</a>
           <a href="editpwd">Modifier mon mot de passe</a>
           <?php if (isset($_SESSION['user']['role'])) :
@@ -19,11 +20,15 @@
           <a href="deconnexion">Déconnexion</a>
       </nav>
     <div class="homeProfil">
+
+        <!-- Page de profil -->
         <p>Bienvenue <?= htmlspecialchars($_SESSION["user"]["pseudo"]) ?>, voici votre page de profil, vous pouvez modifier votre profil grâce au panel</p>
         <p>Vos informations actuelles :</p>
           <ul>
             <li>Votre mail est : <?= htmlspecialchars($_SESSION["user"]["mail"]) ?></li>
             <li>Votre ville de résidence actuelle est : <?= htmlspecialchars($_SESSION["user"]["ville"]) ?></li>
+          
+          <!-- Confirmation si l'utilisateur est admin -->
           <?php if (isset($_SESSION['user']['role'])) :
                  if ($_SESSION['user']['role'] == 1) : ?>
             <li>Vous êtes Administrateur du site</li>

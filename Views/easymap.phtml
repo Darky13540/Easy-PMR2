@@ -1,5 +1,6 @@
     <main class="maineasymap">
 
+        <!-- recherche -->
         <section class="filtres">
             <form action="easymap" method="post">
                 <div class="form-group">
@@ -8,6 +9,8 @@
                 </div>
                 <button type="submit" class="btnForm">OK/RAZ</button>
             </form>
+
+            <!-- On affiche le résultat de la recherche -->
             <?php
             if ($count > 0) {
                 echo "<p>Il y a " . $count . " résultat(s) à votre recherche</p>";
@@ -15,11 +18,16 @@
                 echo "<p>Il n'y a aucun résultat à votre recherche : " . htmlspecialchars($_POST['query']) . " !</p>";
             }
             ?>
-        </section>  <!-- https://fakeimg.pl/200/ -->
-        <div class="mapListContainer">
-            <div id="mapid"></div>
-            <div class="listpoi">
+        </section>
 
+
+        <div class="mapListContainer">
+            <!-- container de la carte -->
+            <div id="mapid"></div>
+
+            <!-- Résultats -->
+            <div class="listpoi">
+                <!-- On boucle sur chaque retour de BDD, tous ou en recherche -->
                 <?php foreach ($poi as $item) : ?>
                     <div class="item js-marker"
                             data-id="<?= intval($item['shopId']) ?>" 
@@ -29,12 +37,12 @@
                             data-long="<?= floatval($item['longitude']) ?>">
                             <a href="details?id=<?= intval($item['shopId']) ?>" title="page de détails">
 
+                            <!-- si l'image est présente en BDD on l'appelle, sinon fake -->
                             <?php if($item['image'] !== ""):?>
                             <img src="upload/<?=htmlspecialchars($item['image'])?>" alt="photo poi">
                             <?php else:?>
                             <img src="https://fakeimg.pl/200/" alt="photo poi">
                             <?php endif;?>
-
 
                             <p><span><?= htmlspecialchars($item['name']) ?></span></p>
                             <p><?= htmlspecialchars($item['genre']) ?></p>
@@ -43,7 +51,8 @@
                     </div>
                 <?php endforeach; ?>
             </div>
-            <div id="scroll_to_top">
+            <!-- Ancre pour remonter au top du site -->
+            <div id="scroll_to_top" class="scroll_to_top">
                 <a href="easymap#top"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
             </div>
     </main>

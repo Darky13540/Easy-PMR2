@@ -7,13 +7,16 @@
     require 'inc/notifications.phtml';
     ?>
 
-
     <h1>Edition de vos informations</h1>
     <section class="editProfil">
+
+        <!-- Navigation dans le profil -->
         <nav class="sidenav">
         <a href="profil">Retour au profil</a>
         <a href="editprofil">Éditer mes informations</a>
         <a href="editpwd">Modifier mon mot de passe</a>
+
+        <!-- Affichage du raccourci admin si admin -->
         <?php if (isset($_SESSION['user']['role'])) :
             if ($_SESSION['user']['role'] == 1) : ?>
             <a href="admin/administration">Administration</a>
@@ -21,7 +24,10 @@
         <?php endif; ?>
         <a href="deconnexion">Déconnexion</a>
         </nav>
-        <div class="display">      
+
+        <div class="display">  
+            
+            <!-- Formulaire de modification -->
             <fieldset >
                 <legend>Merci de remplir les informations à modifier.</legend>
                 <form role="form" action="editprofil" method="POST" class="formulaire">
@@ -39,5 +45,6 @@
                 </form>
             </fieldset>
         </div>
+        
     </section>
 </main>

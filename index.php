@@ -17,18 +17,24 @@ if (isset($_GET['p'])) {
         //on construit le chemin à appeler pour charger le contrôleur
         if (file_exists('libraries/controllers/' . $controller . '.php')) {
             require(ROOT . 'libraries/controllers/' . $controller . '.php');
+
         } else {
+
             //sinon rediriger vers la page d'erreur
             require(ROOT . 'page404.php');
             die();
         }
     } else {
+
         //si $path=null on affiche l'accueil
         $template = 'accueil.phtml';
         require('views/layout.phtml');
+
     }
 } else {
+
     //si $_GET['p'] n'existe pas on affiche la page d'accueil
     $template = 'accueil.phtml';
     require('views/layout.phtml');
+    
 }

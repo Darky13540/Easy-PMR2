@@ -820,6 +820,11 @@ fieldset span {
     align-content: space-around;
 }
 
+.listpoi img{
+    width: 200px;
+    height: 200px;
+}
+
 .item {
     width: 95%;
     text-align: center;
@@ -863,11 +868,6 @@ fieldset span {
 
 .mapListContainer a:visited{
     color: black;
-}
-
-.mapListContainer img{
-    width: 200px;
-    height: 200px;
 }
 
 /**************************

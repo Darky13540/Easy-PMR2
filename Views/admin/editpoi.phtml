@@ -4,6 +4,8 @@
             
         <form action="admin/modifypoi?id=<?= intval($_GET['id']) ?>" method="post" enctype="multipart/form-data">
             <fieldset>  
+
+                <!-- Le lieu s'affiche avec les information de la BDD en value -->
                 <legend>Modifiez les informations nécessaires</legend>
                 <div class="form-group">
                     <label for="name">Nom : </label>       
@@ -20,6 +22,8 @@
                 <div class="form-group">
                     <label for="genre">Genre : </label>
                     <select name="genre" id="genre">
+
+                        <!-- On boucle sur le genre et le genre pour tous les avoir -->
                         <?php foreach($genres as $genre):?>
                         <option <?php if ($genre['id'] === $shop['genreId']):?>
                         <?=  " selected "?>
@@ -31,6 +35,8 @@
                 <div class="form-group">
                     <label for="type">Type : </label>
                     <select name="type" id="">
+
+                        <!-- Idem pour le type -->
                         <?php foreach($types as $type):?>
                         <option <?php if ($type['id'] === $shop['typeId']):?>
                         <?=  " selected "?>
@@ -39,6 +45,7 @@
                         <?php endforeach?>
                     </select>                    
                 </div>
+
                 <div class="form-group">
                     <label for="adresse">Adresse : </label>       
                     <input class=" inputpoi" type="text" name="adresse" value="<?=htmlspecialchars($shop['adresse'])?>" required>
@@ -71,9 +78,6 @@
                 </br>
                 <button class="btnForm" type="submit">Modifier</button>
                 <button class="btnFormDelete" type="submit" name="delete"  onclick="return confirm('Êtes vous sur de vouloir supprimer?')" value="delete">Supprimer</button>
-            </form>
-        </tbody>
-    </table>
-</section>
+        </form>
 </section>
 </main>

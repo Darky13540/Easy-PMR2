@@ -523,6 +523,13 @@ function getRatingById(PDO $pdo, $shopId){
 
 }
 
+/**
+ * Permet de connaitre la date et le pseudo du dernier contributeur
+ *
+ * @param PDO $pdo
+ * @param [type] $shopId
+ * @return void
+ */
 function getLastContributeur(PDO $pdo, $shopId)
 {
     //prepare la requête
@@ -566,6 +573,14 @@ function userHasAlreadyRate(PDO $pdo, int $userId, int $shopId)
 }
 
 
+/**
+ * Permet de mettre à jour l'image du lieu
+ *
+ * @param PDO $pdo
+ * @param integer $shopId
+ * @param string $link
+ * @return void
+ */
 function updatePoiImage(PDO $pdo, int $shopId, string $link)
 {
     //prepare la requête
@@ -578,14 +593,3 @@ function updatePoiImage(PDO $pdo, int $shopId, string $link)
     $query->execute([htmlspecialchars($link), intval($shopId)]);
 
 }
-
-/* function getPoiImage(PDO $pdo){
-    //prepare la requête
-    $query = $pdo->prepare('
-    SELECT image  
-    FROM shops');
-
-    //executer la requête
-    $query->execute();
-    return $query->fetchAll(PDO::FETCH_ASSOC);
-} */

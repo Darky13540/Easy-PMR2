@@ -3,9 +3,11 @@
     <?php
     require 'inc/notifications.phtml';
     ?>
-    <!--Formulaire de connexion-->
+    
     <h1>Edition de votre mot de passe</h1>
     <section class="editpwd">
+
+        <!-- Navigation dans le profil -->
         <nav class="sidenav">
             <a href="profil">Retour au profil</a>
             <a href="editprofil">Éditer mes informations</a>
@@ -18,10 +20,14 @@
             <a href="deconnexion">Déconnexion</a>
         </nav>
         <div>
+
+        <!-- Formulaire d'édition -->
         <fieldset class="formulaire">
             <legend>Merci de remplir les informations à modifier.</legend>
             <form role="form" action="editpwd" method="POST" class="formulaire">
                 <div class="form-group">
+
+                    <!-- On demande le MDP actuel pour éviter les sessions laissées ouvertes -->
                     <p>Par sécurité, entrez votre mot de passe actuel en premier</p>
                     <label for="password3"><i class="fab fa-keycdn"></i></label>
                     <input type="password" name="password3" class="password" placeholder="Actuel" required>
@@ -40,5 +46,6 @@
             </form>
         </fieldset>
         </div>
+        
     </section>
 </main>

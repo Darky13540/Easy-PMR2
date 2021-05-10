@@ -1,12 +1,17 @@
 <main class="mainTags">
 
+    <!-- Si admin a un accès direct à la modification du lieu -->
     <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
         <a href="admin/editpoi?id=<?= intval($_GET['id']) ?>" class="btnForm">Modifier</a>
     <?php endif ?>
+
+
     <h1>Détails sur l'accessibilité du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
     <a class="btnForm" href="details?id=<?=intval($_GET['id'])?>">Retour au lieu</a>
     <section class="accessibilite">
         <h2>L'accessibilité</h2>
+
+            <!-- Formulaire avec les choix de la BDD, mis en value si présent -->
             <form action="updatetags?id=<?= intval($_GET['id']) ?>" method="post">   
                 <fieldset>
                 <legend>Vous devez sélectionner à chaque fois la proposition qui correspond au lieu.</legend>
@@ -16,15 +21,17 @@
                     <p>A 100m maximum, combien y'a t'il de stationnement(s) PMR?</p>
                         <select name="park" id="">
                            
+                            <!-- On boucle sur chaque tag -->
                             <?php foreach($tagsPark as $park):?>
                                 <option <?php if ($park['id'] === $details['tagsParkId']):?>
                          <?=  " selected "?>
-                             <?php endif;?> 
-                                
+                             <?php endif;?>                               
                                 value="<?=intval($park['id'])?>"><?=htmlspecialchars($park['parking'])?></option>
                             <?php endforeach?>
+
                         </select>
                 </div>
+
                 <div>
                     <h3>L'accès au lieu</h3>
                     <p>Comment est l'entrée principal du lieu?</p>
@@ -33,12 +40,12 @@
                             <?php foreach($tagsEntree as $entree):?>
                                 <option <?php if ($entree['id'] === $details['tagsEntreeId']):?>
                          <?=  " selected "?>
-                             <?php endif;?>
-                                
+                             <?php endif;?>                                
                                 value="<?=intval($entree['id'])?>"><?=htmlspecialchars($entree['entree'])?></option>
                             <?php endforeach?>
-                        </select>
 
+                        </select>
+                <div>
                     <p>Comment est la porte du lieu?</p>
                         <select name="porte" id="">
                             
@@ -48,9 +55,11 @@
                              <?php endif;?>
                                 value="<?=intval($porte['id'])?>"><?=htmlspecialchars($porte['porte'])?></option>
                             <?php endforeach?>
+
                         </select>       
                 </div>
                 <div>
+
                     <h3>L'intérieur du lieu</h3>
                     <p>Comment est la circulation dans le lieu?</p>
                         <select name="interieur" id="">
@@ -61,7 +70,9 @@
                              <?php endif;?>
                                 value="<?=intval($int['id'])?>"><?=htmlspecialchars($int['interieur'])?></option>
                             <?php endforeach?>
+
                         </select>
+        
                     <p>Si il y a un comptoir comment est il?</p>
                         <select name="service" id="">
                             
@@ -71,7 +82,9 @@
                              <?php endif;?>
                                 value="<?=intval($service['id'])?>"><?=htmlspecialchars($service['services'])?></option>
                             <?php endforeach?>
+
                         </select>
+
                     <p>Comment sont les toilettes?</p>
                         <select name="toilettes" id="">
                             
@@ -81,6 +94,7 @@
                              <?php endif;?>
                                 value="<?=intval($toilettes['id'])?>"><?=htmlspecialchars($toilettes['toilettes'])?></option>
                             <?php endforeach?>
+
                         </select>
                 </div>
                 <div>
@@ -94,13 +108,18 @@
                              <?php endif;?>
                                 value="<?=intval($batiment['id'])?>"><?=htmlspecialchars($batiment['batiment'])?></option>
                                 <?php endforeach?>
+
                             </select>
-                        </div>
+                </div>
+            </form>
     </section>
+
     <section class="avis">
         <h2>Votre avis : </h2>
         <p>Sur une échelle de 1 à 5, comment jugez vous l'accessibilité?</p>                                
-        <p>1 étant impossible et 5 totale</p>                                
+        <p>1 étant impossible et 5 totale</p>  
+        
+        <!-- Systeme de notation à étoiles -->
         <div class="star-rating__stars">               
             <input class="star-rating__input" type="radio" name="rating" value="1" id="rating-1" required/>
             <label class="star-rating__label" for="rating-1" aria-label="1/5"></label>
