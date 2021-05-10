@@ -10,7 +10,7 @@
     <a class="btnForm" href="easymap">Retour à la carte</a>
     <section class="identitegenerale">
 
-        <?php if($rating['pseudo'] === NULL):?>
+        <?php if($lastContributeur === false):?>
             <p>Pas encore d'avis, pensez à contribuer !</p>
         <?php else:?>
             <p><?= doubleval($rating['average'])?> <i class="fas fa-star"></i> (<?= intval($rating['count'])?> avis) </p>

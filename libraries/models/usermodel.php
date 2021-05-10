@@ -232,36 +232,10 @@ function changeRole(PDO $pdo, int $id, int $role)
  * @return void
  */
 function deleteUser(PDO $pdo, int $id){
-    //prepare la requête
-   /*  $query = $pdo->prepare('
-    SELECT id, contributeurId 
-    FROM shops 
-    WHERE contributeurId = ?');
-    //executer la requête
-    $query->execute($id);
-    
-    $anonyme = $query->fetchAll(PDO::FETCH_ASSOC);
-    return $anonyme;
-    var_dump($anonyme);
-    die();
- */
-   /*  if($anonyme !== false){
-    $query = $pdo->prepare('
-    UPDATE shops 
-    SET contributeurId = 59 
-    WHERE contributeurId = ?');
-    //executer la requête
-    $query->execute($id);
-
-    }else{
- */
         //prepare la requête
         $query = $pdo->prepare('
         DELETE FROM users 
         WHERE id = ? LIMIT 1');
         //execute la requête
         $query->execute([$id]);
-    /* } */
-
-
 }

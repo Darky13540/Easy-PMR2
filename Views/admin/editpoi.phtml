@@ -2,7 +2,7 @@
     <h2> Edition d'un lieu</h2>
             <a href="admin/poiadmin" class="btnForm">Retour</a>
             
-        <form action="admin/modifypoi?id=<?= intval($_GET['id']) ?>" method="post">
+        <form action="admin/modifypoi?id=<?= intval($_GET['id']) ?>" method="post" enctype="multipart/form-data">
             <fieldset>  
                 <legend>Modifiez les informations nécessaires</legend>
                 <div class="form-group">
@@ -62,7 +62,11 @@
                 <div class="form-group">
                     <label for="website">Site Web : </label>
                     <input type="text" class="inputpoi" name="website" value="<?=htmlspecialchars($shop['website'])?>" >                   
-                </div>                
+                </div>
+                <div class="form-group">
+                    <label for="image">Photo : </label>
+                    <input type="file" class="inputpoi" name="picture" accept="image/png, image/jpeg">                   
+                </div>                   
             </fieldset> 
                 </br>
                 <button class="btnForm" type="submit">Modifier</button>

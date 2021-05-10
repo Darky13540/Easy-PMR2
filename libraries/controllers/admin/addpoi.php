@@ -39,6 +39,9 @@ if (isset(
                         $_POST['phone'], 
                         $_POST['website']);
 
+        
+
+
             addFlash('success', 'Lieu ajouté !');
             header('Location: poiadmin');
             exit();

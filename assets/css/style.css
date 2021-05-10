@@ -865,6 +865,11 @@ fieldset span {
     color: black;
 }
 
+.mapListContainer img{
+    width: 200px;
+    height: 200px;
+}
+
 /**************************
        détails POI
 **************************/

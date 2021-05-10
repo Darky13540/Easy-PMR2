@@ -9,6 +9,7 @@ if (!isset($_POST['query']) && empty($_POST['query'])) {
     $poi = getPoiBySearch($pdo, $_POST['query']);
 }
 
+
 $genres = getGenre($pdo);
 $types = getTypes($pdo);
 $count = count($poi);

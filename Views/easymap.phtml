@@ -15,10 +15,11 @@
                 echo "<p>Il n'y a aucun résultat à votre recherche : " . htmlspecialchars($_POST['query']) . " !</p>";
             }
             ?>
-        </section>
+        </section>  <!-- https://fakeimg.pl/200/ -->
         <div class="mapListContainer">
             <div id="mapid"></div>
             <div class="listpoi">
+
                 <?php foreach ($poi as $item) : ?>
                     <div class="item js-marker"
                             data-id="<?= intval($item['shopId']) ?>" 
@@ -27,7 +28,14 @@
                             data-lat="<?= floatval($item['lat']) ?>" 
                             data-long="<?= floatval($item['longitude']) ?>">
                             <a href="details?id=<?= intval($item['shopId']) ?>" title="page de détails">
+
+                            <?php if($item['image'] !== ""):?>
+                            <img src="upload/<?=htmlspecialchars($item['image'])?>" alt="photo poi">
+                            <?php else:?>
                             <img src="https://fakeimg.pl/200/" alt="photo poi">
+                            <?php endif;?>
+
+
                             <p><span><?= htmlspecialchars($item['name']) ?></span></p>
                             <p><?= htmlspecialchars($item['genre']) ?></p>
                             <p><?= htmlspecialchars($item['type']) ?></p>

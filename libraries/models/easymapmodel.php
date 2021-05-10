@@ -512,10 +512,8 @@ function insertRating(PDO $pdo, int $rate, int $shopId, int $userId){
 function getRatingById(PDO $pdo, $shopId){
     //prepare la requête
     $query = $pdo->prepare('
-    SELECT AVG(note) as average, COUNT(note) as count, note, shopId, userId, 
-            commentDate, pseudo  
+    SELECT AVG(note) as average, COUNT(note) as count  
     FROM ratings 
-    INNER JOIN users ON ratings.userId = users.id
     WHERE shopId = ? ');
 
     //executer la requête
@@ -566,3 +564,28 @@ function userHasAlreadyRate(PDO $pdo, int $userId, int $shopId)
     $query->execute();
     return $query->fetch(PDO::FETCH_ASSOC); 
 }
+
+
+function updatePoiImage(PDO $pdo, int $shopId, string $link)
+{
+    //prepare la requête
+    $query = $pdo->prepare('
+    UPDATE shops 
+    SET image = ?   
+    WHERE id = ? ');
+
+    //execute la requête
+    $query->execute([htmlspecialchars($link), intval($shopId)]);
+
+}
+
+/* function getPoiImage(PDO $pdo){
+    //prepare la requête
+    $query = $pdo->prepare('
+    SELECT image  
+    FROM shops');
+
+    //executer la requête
+    $query->execute();
+    return $query->fetchAll(PDO::FETCH_ASSOC);
+} */

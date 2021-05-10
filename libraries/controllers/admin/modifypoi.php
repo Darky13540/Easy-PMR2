@@ -44,6 +44,51 @@ if (isset($_POST['delete'])) {
                     $_POST['website'],
                     $_GET['id']);
 
+
+            /* if(isset($_FILES['picture'])){ */
+                if ($_FILES['picture']['name'] !== ""){
+                    
+                    //Seules les images .png et .jpeg sont autorisées
+                    $allowedFiletypes = ['image/png', 'image/jpeg'];
+                    //le type est bien dans le array il faut le renommer
+                    
+                    //On teste le type
+                    if (in_array(mime_content_type($_FILES['picture']['tmp_name']), $allowedFiletypes)){
+                        /* var_dump(in_array(mime_content_type($_FILES['picture']['tmp_name']), $allowedFiletypes));
+                        die; */
+                        
+                        switch(mime_content_type($_FILES['picture']['tmp_name'])){
+
+                            case 'image/png':
+                                $fileName = $_GET['id'].'.png';
+                                break;
+                            case 'image/jpeg':
+                                $fileName = $_GET['id'].'.jpg';
+                                break;
+
+
+                        }
+                                
+                        // on déplace le fichier dans le dossier d'upload
+                        $resultMoveFile = move_uploaded_file($_FILES['picture']['tmp_name'], "upload/".$fileName);
+
+                        //Test pour savoir si le fichier a bien été déplacé dans le dossier upload
+                        if ($resultMoveFile){
+                            $queryFile = ', Photo = ?';
+                        }
+
+                        //upload du lien dans la BDD
+                        updatePoiImage($pdo, intval($_GET['id']), htmlspecialchars($fileName));
+                    }
+            
+            
+            
+                /* } */
+            }
+
+
+
+
         addFlash('success', 'La modification est prise en compte');
         header('Location: poiadmin');
         exit();
