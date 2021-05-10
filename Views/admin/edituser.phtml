@@ -1,6 +1,7 @@
 <section class="edituser">
     <h2> Edition du rôle et suppression</h2>
     
+    <!-- Affichage les users -->
     <table>
         <thead>
             <tr>
@@ -15,13 +16,17 @@
             <tr>
                 <td><?= htmlspecialchars($user['id']) ?></td>
                 <td><?= htmlspecialchars($user['pseudo']) ?></td>
-                <td><?php
+                <td>
+
+                    <!-- On affiche le role en oui ou non plutôt que 0 ou 1 -->
+                    <?php
                     if (intval($user['role']) == 1) :
                         echo 'Oui';
                     else :
                         echo 'Non';
                     endif;
                     ?>
+
                     </td>
                 <td>
                     <form action="admin/edituser?id=<?= $user['id'] ?>" method="post">

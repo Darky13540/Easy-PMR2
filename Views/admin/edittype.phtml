@@ -2,21 +2,31 @@
     <a href="admin/categoriesadmin" class="btnForm">Retour</a>
     <h2> Edition/suppression du type</h2>
     <p><span><i class="fas fa-exclamation-triangle"></i></span > Le bouton supprimer n'apparaitra que si AUCUN lieu n'a ce type de défini <span><i class="fas fa-exclamation-triangle"></i></span></p>   
+        
+        <!-- Formulaire d'édition du genre -->
         <form action="admin/edittype?id=<?= intval($_GET['id']) ?>" method="post">
             <fieldset>Genre à modifier</fieldset> 
                 <input type="text" name="editedType" value="<?=htmlspecialchars($type['type'])?>">
                 <button class="btnForm" type="submit">Modifier</button>
+
+                <!-- Le bouton supprimer ne s'affiche que si le type n'est pas actuellement utilisé -->
                 <?php if(count($poitype) === 0):?>
                 <button class="btnFormDelete" type="submit"  onclick="return confirm('Êtes vous sur de vouloir supprimer?')" name="deleteType" >Supprimer</button>
-                <?php endif?>          
+                <?php endif?> 
+
         </form> 
+
+            <!-- On teste si des lieux utilisent ce type actuellement -->
             <?php if(count($poitype) > 0):?>
             <p>Il reste <?=count($poitype)?> lieu(x) avec ce type</p>
             <a href="admin/poiadmin">Le(s) trouver</a>
             <?php endif;?>
+
+            <!-- Non on affiche un message générique -->
             <?php if(count($poitype) === 0):?>
             <p>Aucun lieu n'a ce type, vous pouvez supprimer le libellé en toute sécurité !</p>
             <?php endif;?>
+            
 </section>
 </section>
 </main>

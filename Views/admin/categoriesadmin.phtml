@@ -13,6 +13,8 @@
             </tr>
         </thead>
         <tbody>
+
+            <!-- On boucle pour avoir les genres et les types de la BDD -->
             <?php foreach ($genres as $genre) : ?>
                 <tr>
                     <td><?= htmlspecialchars($genre['id']) ?></td>
@@ -20,10 +22,13 @@
                     <td><a href="admin/editgenre?id=<?=$genre['id'] ?>" class="btnForm">Modifier</a></td>
                 </tr>
             <?php endforeach; ?>
+
         </tbody>
     </table>
 
     <h3>Les types : </h3>
+
+    <!-- Pour ajouter un nouveau genre -->
     <a href="admin/addcategories" class="btnFormAdd">+</i></a>
     <p>Types existants</p>
     <table>
@@ -35,6 +40,7 @@
             </tr>
         </thead>
         <tbody>
+
             <?php foreach ($types as $type) : ?>
                 <tr>
                     <td><?= htmlspecialchars($type['id']) ?></td>
@@ -42,9 +48,12 @@
                     <td><a href="admin/edittype?id=<?=$type['id'] ?>" class="btnForm">Modifier</a></td>
                 </tr>
             <?php endforeach; ?>
+
         </tbody>
     </table>
 </section>
+
+<!-- Ancre pour remonter au top -->
 <div id="scroll_to_top">
     <a href="admin/useradmin#top" title="Retour haut"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
  </div> 

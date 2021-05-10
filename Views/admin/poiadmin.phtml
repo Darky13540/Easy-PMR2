@@ -12,6 +12,8 @@
         ?>
     </form>
     <a href="admin/addpoi" class="btnFormAdd">+</i></a>
+
+    <!-- On affiche les lieux -->
     <table>
         <thead>
             <tr>
@@ -22,6 +24,8 @@
             </tr>
         </thead>
         <tbody>
+
+            <!-- On boucle sur le résultat de la BDD selon la recherche -->
             <?php foreach ($poi as $item) : ?>
                 <tr>
                     <td><?= htmlspecialchars($item['name']) ?></td>
@@ -30,10 +34,12 @@
                     <td><a href="admin/editpoi?id=<?= $item['shopId'] ?>" class="btnForm">Modifier</a></td>
                 </tr>
             <?php endforeach; ?>
+
         </tbody>
     </table>
-    </div>
 </section>
+
+<!-- Ancre pour retour au top -->
 <div id="scroll_to_top">
     <a href="admin/poiadmin#top" title="Retour haut"><img src="assets/img/icons/top.png" alt="Retourner en haut" /></a>
 </div>
