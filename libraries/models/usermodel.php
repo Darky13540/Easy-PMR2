@@ -1,12 +1,16 @@
 <?php
+//Constante pour l'encryptage
 const SECRETKEY = 'mysecretkey1234';
 require ('bdconnect.php');
+
+
 //déclaration des functions
 
 /**
  * Permet de retourner le mot de passe encrypté, passé en argument
  *
  * @param string $pass
+ * 
  * /* @return string */
 
 function cryptPassword(string $pass)
@@ -225,8 +229,6 @@ function changeRole(PDO $pdo, int $id, int $role)
 
 /**
  * Permet de supprimer un user de la BDD
- * Si il est le dernier contributeur du shop, son id 
- * est remplacé par un compte anonyme générique
  * @param PDO $pdo
  * @param integer $id
  * @return void
