@@ -8,71 +8,79 @@
     <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
         <a href="admin/editpoi?id=<?= intval($_GET['id']) ?>" class="btnForm">Modifier</a>
     <?php endif ?>
-
-
     <h1>Détails du lieu "<?= htmlspecialchars($details['name']); ?>"</h1>
-    <a class="btnForm" href="easymap">Retour à la carte</a>
-    <section class="identitegenerale">
+    <section class="general">
+        <div class="presentation">
 
+        <!-- si l'image est présente en BDD on l'appelle, sinon fake -->
+        <?php if($details['image'] !== ""):?>
+            <img src="upload/<?=htmlspecialchars($details['image'])?>" alt="photo poi">
+        <?php else:?>
+            <img src="https://fakeimg.pl/200/" alt="photo poi">
+            <p>Pas encore d'image du lieu</p>
+        <?php endif;?>
+            <a class="btnForm" href="easymap">Retour à la carte</a>
+        </div>
+        <div class="identitegenerale">
+        
         <!-- On teste si il y a une note dans la BDD pour le lieu -->
         <?php if($lastContributeur === false):?>
             <p>Pas encore d'avis, pensez à contribuer !</p>
-        <?php else:?>
-            <p><?= doubleval($rating['average'])?> <i class="fas fa-star"></i> (<?= intval($rating['count'])?> avis) </p>
-            <p>Dernier avis/observation posté par <?=htmlspecialchars($lastContributeur['pseudo'])?> le <?=date("d-m-Y", strtotime($lastContributeur['commentDate']))?></p>
-        <?php endif;?>
-        
-        <!-- Généralités sur le lieu -->
-        <div class="identite">
-            <h2>Généralités</h2>
-            <p>Adresse : <?= htmlspecialchars($details['adresse']) ?></p>
-            <p>Code postal : <?= intval($details['cp']) ?></p>
-            <p>Ville : <?= htmlspecialchars($details['commune']) ?></p>
-            <p>Téléphone :
-
-            <!-- On teste chaque champs non obligatoire, msg générique selon le retour de la BDD -->
-                <?php if (htmlspecialchars($details['phone']) === "") : ?>
-                    Non communiqué</p>
-            <?php else : ?>
-                <?= htmlspecialchars($details['phone']) ?></p>
-                <?php endif ?>
-            <p>Horaires ouverture :
-            <?php if (htmlspecialchars($details['opening']) === "") : ?>
-                Non communiqué</p>
-            <?php else : ?>
-                 <?= htmlspecialchars($details['opening']) ?></p>
-            <?php endif ?>
-            <p>Site Web :
-            <?php if (htmlspecialchars($details['website']) === "") : ?>
-              Non communiqué</p>
-            <?php else : ?>
-            <a href="<?= htmlspecialchars($details['website']) ?>" target="_blank"><?= $details['website'] ?></a></p>
-            <?php endif ?>
-        </div>
+            <?php else:?>
+                <p><?= doubleval($rating['average'])?> <i class="fas fa-star"></i> (<?= intval($rating['count'])?> avis) </p>
+                <p>Dernier avis/observation posté par <?=htmlspecialchars($lastContributeur['pseudo'])?> le <?=date("d-m-Y", strtotime($lastContributeur['commentDate']))?></p>
+                <?php endif;?>                
+                
+                <!-- Généralités sur le lieu -->
+                <h2>Généralités</h2>
+                <p>Adresse : <?= htmlspecialchars($details['adresse']) ?></p>
+                <p>Code postal : <?= intval($details['cp']) ?></p>
+                <p>Ville : <?= htmlspecialchars($details['commune']) ?></p>
+                <p>Téléphone :
+                    
+                    <!-- On teste chaque champs non obligatoire, msg générique selon le retour de la BDD -->
+                    <?php if (htmlspecialchars($details['phone']) === "") : ?>
+                            Non communiqué</p>
+                    <?php else : ?>
+                            <?= htmlspecialchars($details['phone']) ?></p>
+                    <?php endif ?>
+                            <p>Horaires ouverture :
+                    <?php if (htmlspecialchars($details['opening']) === "") : ?>
+                            Non communiqué</p>
+                    <?php else : ?>
+                            <?= htmlspecialchars($details['opening']) ?></p>
+                    <?php endif ?>
+                            <p>Site Web :
+                    <?php if (htmlspecialchars($details['website']) === "") : ?>
+                            Non communiqué</p>
+                    <?php else : ?>
+                            <a href="<?= htmlspecialchars($details['website']) ?>" target="_blank"><?= $details['website'] ?></a></p>
+                    <?php endif ?>
+            </div>
     </section>
-
-    <!-- Partie sur l'accessibilité du lieu -->
+                                            
+                    <!-- Partie sur l'accessibilité du lieu -->                                    
     <section class="tag">
-        <h2>Accessibilité</h2>
-        
-        <!-- Permet de savoir si l'utilisateur a DEJA contribué à ce lieu -->
-        <?php if(isset($alreadyRate) && $alreadyRate !== false):?>
-        <p>Vous avez déjà contribué, encore merci !!</p>
-        <?php else:?>
-
-        <!-- Selon si user, visiteur ou admin, le bouton est s'inscrire ou contribuer -->
-        <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>
-            <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
-            <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
-        <?php endif ?>
-        <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
-            <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
-            <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
-        <?php endif ?>
-        <?php if (!isset($_SESSION['user']['role'])) : ?>
-            <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
-        <?php endif; ?>
-        <?php endif;?>
+                        <h2>Accessibilité</h2>
+                                                
+                            <!-- Permet de savoir si l'utilisateur a DEJA contribué à ce lieu -->
+                        <?php if(isset($alreadyRate) && $alreadyRate !== false):?>
+                            <p>Vous avez déjà contribué, encore merci !!</p>
+                        <?php else:?>
+                                                        
+                            <!-- Selon si user, visiteur ou admin, le bouton est s'inscrire ou contribuer -->
+                        <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 0) : ?>
+                            <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
+                            <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
+                        <?php endif ?>
+                        <?php if (isset($_SESSION['user']['role']) && $_SESSION['user']['role'] === 1) : ?>
+                            <p>Vous ne pourrez contribuer qu'une seule fois pour ce lieu</p>
+                            <button class="btnForm"><a href="updatetags?id=<?=intval($_GET['id'])?>">Contribuer</a></button>
+                        <?php endif ?>
+                        <?php if (!isset($_SESSION['user']['role'])) : ?>
+                            <button class="btnForm"><a href="connexion">Se connecter pour contribuer</a></button>
+                        <?php endif; ?>
+                        <?php endif;?>
 
             <div class="park">
                 <h3>Le stationnement : </h3>

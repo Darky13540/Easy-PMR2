@@ -885,6 +885,12 @@ fieldset span {
     color: gold;
 }
 
+.presentation img{
+    height: 200px;
+    width: 200px;
+    margin: 1rem auto;
+    display: block;
+}
 
 
 /**************************
@@ -1143,6 +1149,26 @@ fieldset span {
     #links {
         display: flex;
         flex-direction: row;
+    }
+
+    .general{
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content:space-around;
+        align-items: center;
+        align-content: center;
+    }
+
+    .presentation img{
+        width: 400px;
+        height: 400px;
+        margin: 2rem;
+    }
+
+    .identitegenerale {
+        border : 2px solid rgb(22, 177, 227);
+        padding : 2rem;
+        border-radius: 4px;
     }
 }
 

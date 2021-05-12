@@ -43,7 +43,7 @@ if (isset(
                         $_POST['opening'],
                         $_POST['phone'], 
                         $_POST['website']);   
-
+                
             //Notification de succés et redirection
             addFlash('success', 'Lieu ajouté !');
             header('Location: poiadmin');
