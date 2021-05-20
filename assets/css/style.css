@@ -174,7 +174,6 @@ header li a:hover {
     position: relative;
     height: 5rem;
     width: 25rem;
-    background: url(../img/off.svg);
     background-size: 1rem 1rem;
     margin: 2rem 0;
   }
